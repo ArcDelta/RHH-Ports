@@ -1,0 +1,50 @@
+{
+    "version": 3,
+    "name": "am2r.zip",
+    "items": [
+        "AM2R.sh",
+        "am2r/"
+    ],
+    "items_opt": null,
+    "attr": {
+        "title": "AM2R",
+        "desc": "Another Metroid 2 Remake.  An action-adventure game developed by Argentinian programmer Milton Guasti (also known as DoctorM64).",
+        "inst": "You'll need to provide your own am2r android apk into the ports/am2r/gamedata folder.  Make sure it is named am2r.apk.  The name is case sensitive.",
+        "genres": [
+            "action",
+            "adventure",
+            "platformer"
+        ],
+        "porter": [
+            "Johnny on Flame"
+        ],
+        "image": {
+            "screenshot": "screenshot.jpg",
+            "covers": [
+                "cover.png"
+            ],
+            "thumbnail": null,
+            "video": null
+        },
+        "rtr": false,
+        "runtime": null,
+        "reqs": [],
+        "arch": [
+            "armhf"
+        ],
+        "desc_md": null,
+        "inst_md": null,
+        "exp": false,
+        "min_glibc": ""
+    },
+    "status": {
+        "source": "PortMaster Multiverse",
+        "md5": "eaa6fb4d7c26742d0776a393a19232b7",
+        "status": "Installed"
+    },
+    "files": {
+        "port.json": "am2r/port.json",
+        "AM2R.sh": "AM2R.sh",
+        "am2r/": "am2r/"
+    }
+}
