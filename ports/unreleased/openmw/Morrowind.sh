@@ -13,15 +13,13 @@ else
 fi
 
 source $controlfolder/control.txt
-
 [ -f "${controlfolder}/mod_${CFW_NAME}.txt" ] && source "${controlfolder}/mod_${CFW_NAME}.txt"
-
 get_controls
 
 $ESUDO chmod 666 /dev/tty1
 $ESUDO chmod 666 /dev/uinput
 
-GAMEDIR=/$directory/ports/openmw
+GAMEDIR="/$directory/ports/openmw"
 mkdir -p "$GAMEDIR"
 
 cd $GAMEDIR
@@ -35,8 +33,8 @@ export OPENMW_DECOMPRESS_TEXTURES=1
 #export TEXTINPUTPRESET="Eddie"
 #export TEXTINPUTINTERACTIVE="Y"
 
-$GPTOKEYB2 "openmw" -c "openmw.ini" &
-pm_platform_helper "$GAMEDIR/openmw" > /dev/null
+$GPTOKEYB2 "morrowind" -c "openmw.ini" &
+pm_platform_helper "$GAMEDIR/morrowind" > /dev/null
 ./morrowind
 
 pm_finish
