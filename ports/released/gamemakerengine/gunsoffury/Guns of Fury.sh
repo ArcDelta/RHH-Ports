@@ -40,17 +40,6 @@ if [ ! -f patchlog.txt ] || [ -f $GAMEDIR/assets/data.win ]; then
     fi
 fi
 
-# Source news for this port
-source "$GAMEDIR/tools/steam_news" check
-
-if [ "$PATCHER_NEWS" = true ]; then
-    if [ -f "$controlfolder/utils/patcher.txt" ]; then
-        export PATCHER_FILE="$GAMEDIR/tools/steam_news"
-        source "$controlfolder/utils/patcher.txt"
-        $ESUDO kill -9 $(pidof gptokeyb)
-    fi
-fi
-
 # Display loading splash
 if [ -f "$GAMEDIR/patchlog.txt" ]; then
     [ "$CFW_NAME" == "muOS" ] && $ESUDO "$GAMEDIR/tools/splash" "$GAMEDIR/splash.png" 1
