@@ -31,7 +31,9 @@
       }
     ],
     "availability": "free",
-    "reqs": [],
+    "reqs": [
+      "!rk3326"
+	],
     "arch": [
       "aarch64"
     ],
