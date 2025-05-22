@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<gamelist>
+	<game>
+		<path>./Celeste64.sh</path>
+		<name>Celeste64</name>
+		<desc>Relive the magic of Celeste Mountain alongside Madeline in this small, heartfelt 3D platformer. Created in a week(ish) to celebrate the game’s sixth anniversary 🍓✨</desc>
+		<image>./celeste64/cover.png</image>
+		<releasedate>20240130</releasedate>
+		<developer>EXOK Games</developer>
+		<genre>Adventure</genre>
+	</game>
+</gamelist>
