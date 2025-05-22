@@ -26,6 +26,9 @@ chmod 777 "$TOOLDIR/oggdec"
 cd "$GAMEDIR"
 
 sanitize() {
+    # Delete everything in $DATADIR except base.port
+    find "$DATADIR" -mindepth 1 ! -name 'base.port' -exec rm -rf {} \;
+    
     # Case check: Move files to $DATADIR, excluding install and archives
     echo "Moving files from $GAMEDIR/assets/ to $DATADIR"
     mkdir -p "$DATADIR"  # Ensure DATADIR exists
@@ -51,6 +54,16 @@ sanitize() {
         # Move non-archive files
         mv "$item" "$DATADIR/"
     done
+}
+
+move_shared_files() {
+    # Files shared among all the chapters must be moved to the saves folder
+    mkdir -p "$GAMEDIR/saves"
+    if [ -d "$DATADIR/mus" ]; then
+        rm -rf "$GAMEDIR/saves/mus"
+        mv "$DATADIR/mus" "$GAMEDIR/saves/"
+        echo "Moved shared files to $GAMEDIR/saves/"
+    fi
 }
 
 process_assets() {
@@ -80,6 +93,7 @@ process_assets() {
         echo "ERROR: No data.win file in $DATADIR/$GAMEFILE"
         rm -rf "$DATADIR/assets"
         mv "$LOGFILE" "$LOGERR"
+        echo "Patching process failed."
         exit 1
     fi
 }
@@ -100,10 +114,13 @@ apply_xdelta() {
             echo "Failed to apply patch for $GAMEFILE"
             echo "$output"
             mv "$LOGFILE" "$LOGERR"
+            echo "Patching process failed."
             exit 1
         fi
     else
         echo "No data.win file found to patch for $GAMEFILE!"
+        echo "Patching process failed."
+        exit 1
     fi
 }
 
@@ -112,9 +129,8 @@ compress_audio() {
 
     PYTHON=$(which python3)
     echo "Running GMTools on data and audiogroups for $GAMEFILE."
-    $PYTHON "$TOOLDIR/gmKtool.py" -vv -m 1000 -r -b 64 -d "$TMPDIR" "$DATADIR/assets/game.droid"
-
-    if [ $? -eq 0 ]; then
+    
+    if $PYTHON "$TOOLDIR/gmKtool.py" -v -m 1000 -r -b 64 -d "$TMPDIR" "$DATADIR/assets/game.droid"; then
         echo "Compression completed successfully for $GAMEFILE."
         mv "$TMPDIR/"* "$DATADIR/assets/"
         echo "Moved compressed files to $DATADIR/assets/."
@@ -122,10 +138,12 @@ compress_audio() {
         echo "Temporary directory $TMPDIR removed."
         echo "Audio compression applied successfully for $GAMEFILE."
     else
+        # Failure
         echo "Audio compression failed for $GAMEFILE."
         echo "Cleaning up temporary directory $TMPDIR."
         rm -rf "$TMPDIR"
         mv "$LOGFILE" "$LOGERR"
+        echo "Patching process failed."
         exit 1
     fi
 }
@@ -139,36 +157,27 @@ zip_archive() {
     mv "$DATADIR/$GAMEFILE.zip" "$GAMEDIR/assets/$GAMEFILE"
 }
 
-move_shared_files() {
-    # Files shared among all the chapters must be moved to the saves folder
-    mkdir -p "$GAMEDIR/saves"
-    if [ -d "$DATADIR/mus" ]; then
-        mv "$DATADIR/mus" "$GAMEDIR/saves/"
-        echo "Moved shared files (mus folder) to $GAMEDIR/saves/"
-    fi
-}
-
 process_game() {
     # The only things in $GAMEDIR/assets should be zip archives, anything else must be moved to the install folder for processing.
     echo "Sanitizing $GAMEDIR/assets"
-    sanitize || { echo "Patching process failed."; exit 1; }
+    sanitize
     
     # If there's a $GAMEDIR/assets/install/data.win then it must be the launcher. Process that.
     GAMEFILE="deltarune"
     if [ -f "$DATADIR/data.win" ]; then
-        echo "=============================="
+        echo "============================="
         echo "Preparing top-level $GAMEFILE"
-        echo "=============================="
+        echo "============================="
 
         # Create assets folder and move top-level files (except subfolders and base.port)
         mkdir -p "$DATADIR/assets"
         find "$DATADIR" -maxdepth 1 -type f -not -name "base.port" -exec mv {} "$DATADIR/assets/" \;
         
         # Move shared files (mus folder) to $GAMEDIR/saves
-        move_shared_files || { echo "Patching process failed."; exit 1; }
+        move_shared_files
 
         # Process the assets folder
-        process_assets || { echo "Patching process failed."; exit 1; }
+        process_assets
     fi
 
     # Process chapter subfolders in assets/install
@@ -176,12 +185,14 @@ process_game() {
     if [ -n "$subfolders" ]; then
         for subfolder in $subfolders; do
             GAMEFILE=$(basename "$subfolder")
-            echo "=============================="
+            echo "====================================="
             echo "Preparing subfolder: $GAMEFILE"
-            echo "=============================="
+            echo "====================================="
 
-            # Rename subfolder to assets
-            mv "$subfolder" "$DATADIR/assets"
+            # Rename subfolder to assets -- echo it so log is easier to follow
+            if mv "$subfolder" "$DATADIR/assets"; then
+                echo "Renamed $subfolder to $DATADIR/assets"
+            fi
 
             # Process the assets folder
             process_assets
