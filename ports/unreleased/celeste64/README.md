@@ -1,6 +1,8 @@
 ## Install
 Ready to run!
 
+This port requires OpenGL 3.3+.
+
 ## License
 As noted by the source repository at https://github.com/EXOK/Celeste64:
 
