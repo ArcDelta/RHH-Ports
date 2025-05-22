@@ -29,6 +29,13 @@ bind_directories ~/.local/share/Celeste64 "$GAMEDIR/savedata"
 # Permissions
 chmod +x Celeste64
 
+# First run
+if [ -f "Content.zip" ]; then
+    if unzip "Content.zip"; then
+        rm -f "Content.zip"
+    fi
+fi
+
 # Run
 $GPTOKEYB "Celeste64" xbox360 &
 pm_platform_helper "$GAMEDIR/Celeste64" > /dev/null
