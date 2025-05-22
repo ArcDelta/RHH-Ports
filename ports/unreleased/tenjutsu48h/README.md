@@ -38,6 +38,12 @@ Add line: `-lib hlopenal` and save
 
 Retrieve `bin/client.hl`
 
+## Troubleshooting
+The Haxe engine (heaps actually) requires OpenGL 3.3. If you get an OpenGL error in your log and can't start the game, check that:
+
+- You are in Panfrost mode (if applicable)
+- The return for `glxinfo | grep "OpenGL version"` is at least `OpenGL version string: 3.3`
+
 ## Thanks
 Deepnight -- Compiling guidance  
 Deepnight Games -- The game  

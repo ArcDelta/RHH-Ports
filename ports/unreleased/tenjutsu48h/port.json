@@ -25,7 +25,8 @@
     "store": [],
     "availability": "full",
     "reqs": [
-      "opengl"
+      "opengl",
+      "ultra"
 	],
     "arch": [
       "aarch64"
