@@ -62,7 +62,9 @@ process_assets() {
     # Process data.win if it exists
     if [ -f "$DATADIR/assets/data.win" ]; then
         echo "Applying xdelta patch for $GAMEFILE"
-        apply_xdelta || { echo "Patching process failed."; exit 1; }
+        # DISABLE APPLYING XDELTA FOR TESTING PURPOSES
+        #apply_xdelta || { echo "Patching process failed."; exit 1; }
+        mv "$DATADIR/assets/data.win" "$DATADIR/assets/game.droid"
         sleep 1
         echo "Compressing audio for $GAMEFILE..."
         compress_audio || { echo "Patching process failed."; exit 1; }
