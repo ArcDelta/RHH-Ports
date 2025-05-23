@@ -19,9 +19,7 @@ export PATH="$GAMEDIR/tools:$PATH"
 
 # Permissions
 chmod 666 /dev/uinput
-chmod 777 "$TOOLDIR/gmKtool.py"
-chmod 777 "$TOOLDIR/oggenc"
-chmod 777 "$TOOLDIR/oggdec"
+chmod 755 "$TOOLDIR/gmKtool.py" "$TOOLDIR/oggenc" "$TOOLDIR/oggdec"
 
 cd "$GAMEDIR"
 
@@ -84,15 +82,14 @@ process_assets() {
         # DISABLE APPLYING XDELTA FOR TESTING PURPOSES
         #apply_xdelta || { echo "Patching process failed."; exit 1; }
         mv "$DATADIR/assets/data.win" "$DATADIR/assets/game.droid"
-        sleep 1
+        
+        # Compress audio
         echo "Compressing audio for $GAMEFILE..."
         compress_audio || { echo "Patching process failed."; exit 1; }
-        sleep 1
         
         # Zip and finalize
         echo "Finishing up for $GAMEFILE..."
         zip_archive || { echo "Patching process failed."; exit 1; }
-        sleep 1
         rm -rf "$DATADIR/assets"  # Clean up temporary assets folder
         echo "Finished processing $GAMEFILE!"
     else
@@ -105,7 +102,7 @@ process_assets() {
 }
 
 clean_assets() {
-    rm -rf "$DATADIR/assets"/*.exe "$DATADIR/assets"/*.dll
+    find "$DATADIR/assets" -type f \( -name "*.exe" -o -name "*.dll" \) -exec rm -f {} \; 2>>"$LOGERR"
     echo "Removed unnecessary files from $DATADIR/assets"
 }
 
@@ -190,18 +187,23 @@ process_game() {
     subfolders=$(find "$DATADIR" -maxdepth 1 -type d -not -path "$DATADIR" | sort)
     if [ -n "$subfolders" ]; then
         for subfolder in $subfolders; do
-            GAMEFILE=$(basename "$subfolder")
-            echo "====================================="
-            echo "Preparing subfolder: $GAMEFILE"
-            echo "====================================="
+            if [ ! -f "$subfolder/data.win" ]; then
+                echo "Warning: Skipping $subfolder, no data.win found"
+                continue
+            else
+                GAMEFILE=$(basename "$subfolder")
+                echo "====================================="
+                echo "Preparing subfolder: $GAMEFILE"
+                echo "====================================="
 
-            # Rename subfolder to assets -- echo it so log is easier to follow
-            if mv "$subfolder" "$DATADIR/assets"; then
-                echo "Renamed $subfolder to $DATADIR/assets"
+                # Rename subfolder to assets -- echo it so log is easier to follow
+                if mv "$subfolder" "$DATADIR/assets"; then
+                    echo "Renamed $subfolder to $DATADIR/assets"
+                fi
+
+                # Process the assets folder
+                process_assets
             fi
-
-            # Process the assets folder
-            process_assets
         done
     fi
 }
