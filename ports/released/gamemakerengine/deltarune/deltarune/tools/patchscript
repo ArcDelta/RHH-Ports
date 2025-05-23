@@ -26,12 +26,18 @@ chmod 777 "$TOOLDIR/oggdec"
 cd "$GAMEDIR"
 
 sanitize() {
+    # Check if base.port exists in $DATADIR
+    if [ ! -e "$DATADIR/base.port" ]; then
+        echo "Error: base.port not found in $DATADIR!"
+        echo "Patching process failed."
+        exit 1
+    fi
+    
     # Delete everything in $DATADIR except base.port
     find "$DATADIR" -mindepth 1 ! -name 'base.port' -exec rm -rf {} \;
     
     # Case check: Move files to $DATADIR, excluding install and archives
     echo "Moving files from $GAMEDIR/assets/ to $DATADIR"
-    mkdir -p "$DATADIR"  # Ensure DATADIR exists
 
     # Loop through all files and directories in $GAMEDIR/assets/
     for item in "$GAMEDIR/assets"/*; do
