@@ -79,7 +79,7 @@ process_assets() {
     # Process data.win if it exists
     if [ -f "$DATADIR/assets/data.win" ]; then
         echo "Applying xdelta patch for $GAMEFILE"
-        # DISABLE APPLYING XDELTA FOR TESTING PURPOSES
+        # DISABLE APPLYING XDELTA UNTIL NECESSARY
         #apply_xdelta || { echo "Patching process failed."; exit 1; }
         mv "$DATADIR/assets/data.win" "$DATADIR/assets/game.droid"
         
