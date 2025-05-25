@@ -2,7 +2,14 @@
 Starship was built from GitHub Actions at the [HM64 Autobuild Factory](https://github.com/JeodC/hm64-builder).
 
 ## Installation
-The supported ROM is the USA 1.1 Rev A version. You can verify you have dumped a supported copy of the game by using the SHA-1 File Checksum Online at https://www.romhacking.net/hash/. The hash for a US 1.1 ROM is SHA-1: 09F0D105F476B00EFA5303A3EBC42E60A7753B7A.
+The supported ROMs are:
+- US 1.0
+- US 1.1
+- JP 1.0 (JP Voices only)
+- EU 1.0 (Lylat Voices only)
+- CN 1.1
+
+ You can verify you have dumped a supported copy of the game by using the SHA-1 File Checksum Online at https://www.romhacking.net/hash/. The hash for a US 1.1 ROM is SHA-1: 09F0D105F476B00EFA5303A3EBC42E60A7753B7A.
 
 Legally obtain your rom and place it in `ports/starship`, then start the port. Texture pack files can be added to the `ports/starship/mods` folder.
 

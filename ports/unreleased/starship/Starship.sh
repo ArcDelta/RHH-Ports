@@ -62,8 +62,15 @@ done < "$input_file"
 # Replace the original file with the modified one
 mv "$temp_file" "$input_file"
 
+# Check if we need to unzip the assets archive
+if [ -f "$GAMEDIR/tools/assets.zip" ]; then
+    if ! unzip -o "$GAMEDIR/tools/assets.zip" -d "$GAMEDIR/tools/"; then
+        pm_message "Couldn't unzip assets folder."
+    fi
+fi
+
 # Check if we need to generate any o2r files
-if [ ! -f "sf64.otr" ]; then
+if [ ! -f "sf64.o2r" ]; then
     # Ensure we have a rom file before attempting to generate o2r
     if ls *.*64 1> /dev/null 2>&1; then
         if [ -f "$controlfolder/utils/patcher.txt" ]; then
@@ -77,18 +84,17 @@ if [ ! -f "sf64.otr" ]; then
     fi
 fi
 
-# Check if OTR files were generated
-if [ ! -f "sf64.otr" ]; then
-    echo "No otr found, can't run the game!"
+# Check if O2R files were generated
+if [ ! -f "sf64.o2r" ]; then
+    echo "No o2r found, can't run the game!"
     exit 1
 fi
 
 # Run the game
-pm_message "Loading, please wait... (might take a while!)"
 $GPTOKEYB "Starship" -c "starship.gptk" & 
-pm_platform_helper "$GAMEDIR/Starship"
+pm_platform_helper "$GAMEDIR/Starship" > /dev/null
 ./Starship
 
 # Cleanup
-rm -rf "$GAMEDIR/logs/"
 pm_cleanup
+rm -rf logs

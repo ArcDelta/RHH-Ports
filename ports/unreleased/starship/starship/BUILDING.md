@@ -17,6 +17,6 @@ make install
 git clone --recursive https://github.com/HarbourMasters/starship.git && cd starship
 git checkout tags/vx.x.x
 cmake -H. -Bbuild-cmake -GNinja -DUSE_OPENGLES=1 -DBUILD_CROWD_CONTROL=0 -DCMAKE_BUILD_TYPE=Release
-cmake --build build-cmake --config Release --target GeneratePortOTR
+cmake --build build-cmake --config Release --target GeneratePortO2R
 cmake --build build-cmake
 ```

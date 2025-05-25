@@ -3,6 +3,11 @@
         "gControllers": {
         },
 		"gControlNav": 1,
+        "gEnhancements": {
+            "Mods": {
+                "AlternateAssets": 1
+            }
+        },
         "gForceCursorVisibility": 0,
         "gInterpolationFPS": 30,
         "gMainMusicVolume": 0.9900000095367432,
