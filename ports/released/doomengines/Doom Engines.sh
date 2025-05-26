@@ -56,7 +56,7 @@ done
 # Run launcher
 chmod +xr ./love
 $GPTOKEYB "love" &
-./love launcher
+./love .
 
 # Read line from selected_game.txt
 while IFS= read -r line; do
@@ -132,13 +132,16 @@ fi
 ENGINE_BASE="$(basename "$ENGINE")"
 IWAD_BASE=$(basename "$IWAD")
 
-# Switch the engine based on the IWAD selected
+# Switch the engine based on the IWAD selected or default if no ENGINE key provided
 if [ "$ENGINE_BASE" = "crispydoom" ]; then
     case "$IWAD_BASE" in
         "heretic.wad") ENGINE="crispy/crispyheretic" ;;
         "hexen.wad") ENGINE="crispy/crispyhexen" ;;
         "strife1.wad") ENGINE="crispy/crispystrife" ;;
+        *) ENGINE="crispy/crispydoom" ;;
     esac
+elif [ "$ENGINE" = "gzdoom" ]; then
+    ENGINE="gzdoom_4.14.2/$ENGINE"
 fi
 
 # Switch INI if it's empty

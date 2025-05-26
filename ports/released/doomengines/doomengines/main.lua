@@ -3,7 +3,7 @@
 -------------------------------------------------------------------------------------------
 
 -- Splash globals
-local splashlib = require("splash")
+local splashlib = require("launcher/splash")
 local splash
 local fadeParams = {
     fadeAlpha = 1,
@@ -96,7 +96,7 @@ function loadMusic()
     end
 
     -- Load a specific music file
-    backgroundMusic = love.audio.newSource("assets/audio/music/menu.ogg", "stream")
+    backgroundMusic = love.audio.newSource("launcher/assets/audio/music/menu.ogg", "stream")
 
     -- Set the music to loop and play it if it is not nil
     if backgroundMusic then
@@ -131,8 +131,8 @@ end
 -- Play UI sounds
 function playUISound(actionType)
     local soundMapping = {
-        toggle = "assets/audio/fx/toggle.ogg",
-        enter = "assets/audio/fx/enter.ogg"
+        toggle = "launcher/assets/audio/fx/toggle.ogg",
+        enter = "launcher/assets/audio/fx/enter.ogg"
     }
 
     local soundPath = soundMapping[actionType]
@@ -183,7 +183,7 @@ function loadBackground()
     end
 
     -- Load the background image
-    bg = love.graphics.newImage("assets/doombg.png")
+    bg = love.graphics.newImage("launcher/assets/doombg.png")
 end
 
 function drawBackground()
@@ -206,7 +206,7 @@ function setupFonts()
     local fontSize = 44 * scaleFactor  -- Adjust the font size based on the scale factor
 
     -- Create regular font with specified filter mode
-    font = love.graphics.newFont("assets/font/Proxima Nova Regular Italic.otf", fontSize)
+    font = love.graphics.newFont("launcher/assets/font/Proxima Nova Regular Italic.otf", fontSize)
     font:setFilter("linear", "linear")  -- Set filter mode to nearest for sharp edges
 
     love.graphics.setFont(font)  -- Set the default font
@@ -276,141 +276,123 @@ end
 -- DYNAMIC MENU BUIULDING -----------------------------------------------------------------
 -------------------------------------------------------------------------------------------
 function readDoomFile(filePath)
-    local file = io.open(filePath, "r")
-
-    if not file then
+    if not love.filesystem.getInfo(filePath) then
         print("[LOG]: .doom file not found at", filePath)
+        return nil
+    end
+
+    local contents = love.filesystem.read(filePath)
+    if not contents then
+        print("[LOG]: Failed to read .doom file:", filePath)
         return nil
     end
 
     local iwadPaths = {}
     local modPaths = {}
 
-    for line in file:lines() do
+    for line in contents:gmatch("[^\r\n]+") do
         -- Stop processing if the EOF marker is found
-        if line:match("^%s*--%s*end%s*--%s*$") then
-            break
-        end
+        if line:match("^%s*--%s*end%s*--%s*$") then break end
 
-        -- Remove leading/trailing whitespace from the line
-        line = line:match("^%s*(.-)%s*$")
-
-        -- Parse key-value pairs
+        line = line:match("^%s*(.-)%s*$")  -- Trim
         local key, value = line:match("^(%S+)%s*=%s*(.+)$")
+
         if key and value then
             if key == "IWAD" then
-                table.insert(iwadPaths, value)
+                table.insert(iwadPaths, value:lower())
             elseif key == "MOD" then
-                table.insert(modPaths, value)
+                table.insert(modPaths, value:lower())
             end
         else
             print("[LOG]: Skipping malformed line in .doom file:", line)
         end
     end
 
-    file:close()
-
-    return {iwads = iwadPaths, mods = modPaths}
+    return { iwads = iwadPaths, mods = modPaths }
 end
 
 -- Function to process all .doom files in the "doom" folder
 function loadMenuOptions()
-    resetMenu()  -- Reset the menu first
-    
-    local cwd = love.filesystem.getSourceBaseDirectory()  -- Get current directory path
-    local currentDir = cwd .. "/" .. currentPath  -- Full path to the current directory
+    resetMenu()
 
-    -- List subfolders in the current directory only (no deeper subfolders)
-    local handle = io.popen("find \"" .. currentDir .. "\" -type d -maxdepth 1 -mindepth 1 2>/dev/null")
-    local result = handle:read("*a")
-    handle:close()
+    menus.subfolders = {}
+    menus.filePaths = {}
 
-    -- Add subfolders to the list
-    for folderPath in result:gmatch("[^\n]+") do
-        local folderName = folderPath:match("([^/]+)$")
-        if folderName then
-            table.insert(menus.subfolders, folderName)  -- Use menus.subfolders
-        end
-    end
+    local items = love.filesystem.getDirectoryItems(currentPath)
 
-    -- Sort subfolders alphabetically
-    table.sort(menus.subfolders)
+    for _, item in ipairs(items) do
+        local fullPath = currentPath .. "/" .. item
+        local info = love.filesystem.getInfo(fullPath)
 
-    -- Add sorted subfolders to the main menu
-    for _, folderName in ipairs(menus.subfolders) do
-        table.insert(menus.mainMenu, "[Folder] " .. folderName .. "/")
-    end
-
-    -- List .doom files in the current directory only (no subfolder search)
-    handle = io.popen("find \"" .. currentDir .. "\" -maxdepth 1 -type f -name '*.doom' 2>/dev/null")
-    result = handle:read("*a")
-    handle:close()
-
-    -- Store the .doom file paths
-    for filePath in result:gmatch("[^\n]+") do
-        local fileName = filePath:match("([^/]+)%.doom$")  -- Extract file name without extension
-        if fileName then
-            -- Read the .doom file and extract IWAD and MOD paths
-            local doomFileData = readDoomFile(filePath)
-            if doomFileData then
-                local allFilesValid = true
-
-                -- Validate the IWAD files
-                for _, iwad in ipairs(doomFileData.iwads) do
-                    if not validateFiles({iwad}) then
-                        allFilesValid = false
-                        break
+        if info then
+            if info.type == "directory" then
+                table.insert(menus.subfolders, item)
+            elseif info.type == "file" and item:match("%.doom$") then
+                local fileName = item:match("(.+)%.doom$")
+                if fileName then
+                    local doomFileData = readDoomFile(fullPath)
+                    if doomFileData then
+                        local allValid = true
+                        for _, iwad in ipairs(doomFileData.iwads) do
+                            if not validateFiles({iwad}) then allValid = false break end
+                        end
+                        for _, mod in ipairs(doomFileData.mods) do
+                            if not validateFiles({mod}) then allValid = false break end
+                        end
+                        if allValid then
+                            table.insert(menus.filePaths, fileName)
+                        else
+                            print("[LOG]: Skipping invalid .doom file:", fileName)
+                        end
                     end
-                end
-
-                -- Validate the MOD files
-                for _, mod in ipairs(doomFileData.mods) do
-                    if not validateFiles({mod}) then
-                        allFilesValid = false
-                        break
-                    end
-                end
-
-                -- Only add the file to the menu if all files are valid
-                if allFilesValid then
-                    table.insert(menus.filePaths, fileName)  -- Use menus.filePaths
-                else
-                    print("[LOG]: Skipping invalid .doom file:", fileName)
                 end
             end
         end
     end
 
-    -- Sort .doom files alphabetically
-    table.sort(menus.filePaths)
-
-    -- Add sorted .doom files to the main menu
-    for _, fileName in ipairs(menus.filePaths) do
-        table.insert(menus.mainMenu, fileName)  -- Add .doom file to the menu
+    -- Add folders to menu
+    table.sort(menus.subfolders)
+    for _, folder in ipairs(menus.subfolders) do
+        table.insert(menus.mainMenu, "[Folder] " .. folder .. "/")
     end
 
-    -- Add the "Exit" option at the end of the menu
+    -- Add .doom files to menu
+    table.sort(menus.filePaths)
+    for _, fileName in ipairs(menus.filePaths) do
+        table.insert(menus.mainMenu, fileName)
+    end
+
     table.insert(menus.mainMenu, "Exit")
+end
+
+function scanBaseDirectory(subdir, results)
+    results = results or {}
+    local base = subdir or "doomfiles"
+
+    for _, item in ipairs(love.filesystem.getDirectoryItems(base)) do
+        local fullPath = base .. "/" .. item
+        local info = love.filesystem.getInfo(fullPath)
+
+        if info then
+            if info.type == "directory" then
+                scanBaseDirectory(fullPath, results) -- Recurse into subdir
+            elseif fullPath:match("%.doom$") then
+                table.insert(results, fullPath)
+            end
+        end
+    end
+
+    return results
 end
 
 -- Function to check if all files in a list exist
 function validateFiles(filePaths)
-    local cwd = love.filesystem.getSourceBaseDirectory()  -- Get current directory path
-
     for _, relativePath in ipairs(filePaths) do
-        local fullPath = cwd .. "/" .. relativePath  -- Construct the full path
-        fullPath = string.lower(fullPath)  -- Convert to lowercase for case-insensitive comparison
-
-        -- Check if the file exists
-        local file = io.open(fullPath, "r")
-        if not file then
-            print("[LOG]: File not found:", fullPath)  -- Log full path for debugging
+        if not love.filesystem.getInfo(relativePath) then
+            print("[LOG]: File not found:", relativePath)
             return false
-        else
-            file:close()
         end
     end
-
     return true
 end
 
