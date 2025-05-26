@@ -1,5 +1,4 @@
 #!/bin/bash
-# PORTMASTER: sonic.1.zip, Sonic 1.sh
 
 XDG_DATA_HOME=${XDG_DATA_HOME:-$HOME/.local/share}
 
@@ -36,28 +35,14 @@ else
   source "${controlfolder}/libgl_default.txt"
 fi
 
-# Modify ScreenWidth
-LOW=214 # 3:2
-MED=320 # 4:3
-HIGH=426 # 16:9
+# Calculate aspect ratio with full precision
+ASPECT=$(awk -v w="$DISPLAY_WIDTH" -v h="$DISPLAY_HEIGHT" 'BEGIN { printf "%.6f", w / h }')
 
-# Calculate the aspect ratio with floating-point precision
-ASPECT=$(awk -v w="$DISPLAY_WIDTH" -v h="$DISPLAY_HEIGHT" 'BEGIN { printf "%.2f", w / h }')
-
-# Set WIDTH based on the calculated aspect ratio
-if (( $(echo "$ASPECT == 1.50" | bc -l) )); then
-    WIDTH=$LOW  # 3:2
-elif (( $(echo "$ASPECT == 1.33" | bc -l) )); then
-    WIDTH=$MED  # 4:3
-elif (( $(echo "$ASPECT == 1.78" | bc -l) )); then
-    WIDTH=$HIGH  # 16:9
-else
-    echo "Unknown aspect ratio: $ASPECT"
-    WIDTH=$MED  # Default value if aspect ratio is unknown
-fi
+# Calculate pixWidth
+PIXWIDTH=$(awk -v h="240" -v a="$ASPECT" 'BEGIN { printf "%d", h * a }')
 
 if grep -q "^ScreenWidth=[0-9]\+" "$GAMEDIR/settings.ini"; then
-    sed -i "s/^ScreenWidth=[0-9]\+/ScreenWidth=$WIDTH/" "$GAMEDIR/settings.ini"
+    sed -i "s/^ScreenWidth=[0-9]\+/ScreenWidth=$PIXWIDTH/" "$GAMEDIR/settings.ini"
 else
     echo "Possible invalid or missing settings.ini!"
 fi
@@ -72,7 +57,6 @@ else
 fi
 
 # Run the game
-echo "Loading, please wait!" > $CUR_TTY
 $GPTOKEYB $GAME -c "sonic.gptk" &
 pm_platform_helper "$GAME"
 ./$GAME
