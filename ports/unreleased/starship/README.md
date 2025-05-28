@@ -18,6 +18,15 @@ Logs are recorded automatically as `ports/starship/log.txt`. Please provide a lo
 ## Menu Navigation
 There is a `starship.gptk` file you can use to change which button emulates F1 (default is L3). Some devices have a special button called `guide` that makes for a good F1 mapping.
 
+## Japan / EU Audio Language
+The menu has an option in `Settings->Language` where you can choose to install JP/EU Audio. **This will crash the port** because our supported devices are incompatible with the file explorer ui Starship uses. There is a way around this.
+
+#### Generate audio from PC
+Load Starship on a PC and use it to generate the audio you wish to use. Gather your ROM and use https://hack64.net/tools/swapper.php to convert it to .z64 format if it is not already. Audio will be generated to the `mods` folder as either `sf64eu.o2r` or `sf64jp.o2r`. The following are the differences:
+
+- EU: English or Lylatese gibberish voices
+- JP: Japanese voices
+
 ## Adding Mods
 Mods are available at the port's [Gamebanana Page](https://gamebanana.com/games/21612).
 
