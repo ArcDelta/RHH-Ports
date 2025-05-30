@@ -1,0 +1,4 @@
+ENGINE=gzdoom
+IWAD=iwads/freedoom2.wad
+MOD=mods/myhouse.pk3
+-- end --
