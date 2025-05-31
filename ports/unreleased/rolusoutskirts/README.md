@@ -1,22 +1,17 @@
 ## Installation
+Download the demo from Steam: https://store.steampowered.com/app/3008890/Rolus_in_the_Outskirts and add the data to `rolusoutskirts/assets`.
 
-
-## Default Gameplay Controls (Xbox Layout)
+## Default Gameplay Controls
 | Button            | Action |
 |--                 |--|
-| START             | |
-| SELECT            | |
-| D-PAD / JOYSTICK  | |
-| A                 | |
-| B                 | |
-| X                 | |
-| Y                 | |
-| L1                | |
-| R1                | |
-| L2                | |
-| R2                | |
+| START             |Menu|
+| SELECT            |Crystal Power|
+| D-PAD / JOYSTICK  |Move|
+| A                 |Interact|
+| B                 |Shoot|
+| Y                 |Use item|
 
 ## Thanks
-    
+Penguins at Work -- The game  
 JohnnyOnFlame -- GMLoader-Next  
 PortMaster -- Testers & Devs  
