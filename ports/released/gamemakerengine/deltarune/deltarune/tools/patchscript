@@ -26,6 +26,23 @@ chmod 755 "$TOOLDIR/gmKtool.py" "$TOOLDIR/oggenc" "$TOOLDIR/oggdec"
 
 cd "$GAMEDIR" || exit
 
+# Set up trap for cleaning TMPDIR on exit
+trap 'rm -rf "$TMPDIR"; echo "Cleaned up temporary files." >> "$LOGFILE"' 0
+
+# Attempt to get SAVEDIR from gmloader.json using jq
+if command -v jq >/dev/null 2>&1; then
+    SAVEDIR=$(jq -r '.save_dir // empty' "$GAMEDIR/gmloader.json" 2>/dev/null)
+else
+    SAVEDIR="$GAMEDIR/saves"
+fi
+
+# Bail if the dotnet runtime is missing or wasn't mounted
+if ! command -v dotnet >/dev/null 2>&1; then
+    echo "Dotnet is required but not installed. Please install the runtime."
+    echo "Patching process failed."
+    exit 1
+fi
+
 # SANITIZE THE INSTALL DIRECTORIES
 sanitize() {
     echo "Sanitizing $ASSETDIR"
@@ -104,6 +121,34 @@ process_launcher() {
 
     # Process the assets folder
     process_assets
+    
+    # Move the launcher textures up one level
+    if [ -d "$SAVEDIR/textures/$GAMEFILE" ]; then
+        mv "$SAVEDIR/textures/$GAMEFILE"/* "$SAVEDIR/textures"
+        rmdir "$SAVEDIR/textures/$GAMEFILE"
+    fi
+}
+
+# Externalize game textures with compression
+dump_textures() {
+    # Purge cache before operations
+    rm -rf "$TMPDIR/"*
+    
+    # Begin texture operations
+    dotnet "$TOOLDIR/utmt-cli/UndertaleModCli.dll" \
+        dump "$INSTALLDIR/assets/data.win" \
+        -e "$INSTALLDIR/assets/textures" "$INSTALLDIR/assets/game.droid"
+
+    if [ $? -ne 0 ]; then
+        echo "[DOTNET]: Patch failed to apply."
+        exit 1
+    else
+        rm -f "$INSTALLDIR/assets/data.win"
+        mkdir -p "$SAVEDIR/textures/$GAMEFILE/"
+        mv "$INSTALLDIR/assets/textures"/* "$SAVEDIR/textures/$GAMEFILE/"
+        rmdir "$INSTALLDIR/assets/textures"
+        [ -d "$TMPDIR" ] && rm -rf "$TMPDIR"/*
+    fi
 }
 
 # PROCESS GAME ASSETS
@@ -115,10 +160,13 @@ process_assets() {
 
     # Process data.win if it exists
     if [ -f "$INSTALLDIR/assets/data.win" ]; then
-        # DISABLE APPLYING XDELTA UNTIL NECESSARY
-        #echo "Applying xdelta patch for $GAMEFILE"
-        #apply_xdelta || { echo "Patching process failed."; exit 1; }
-        mv "$INSTALLDIR/assets/data.win" "$INSTALLDIR/assets/game.droid"
+        
+        # Skip dumping textures if Ch1
+        if [ $GAMEFILE == "chapter1_windows" ]; then
+            mv "$INSTALLDIR/assets/data.win" "$INSTALLDIR/assets/game.droid"
+        else
+            dump_textures
+        fi
         
         # Compress audio
         echo "Compressing audio for $GAMEFILE..."

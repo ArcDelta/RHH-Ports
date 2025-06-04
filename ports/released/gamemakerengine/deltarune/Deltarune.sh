@@ -25,9 +25,6 @@ cd $GAMEDIR
 
 # Exports
 export LD_LIBRARY_PATH="/usr/lib:$GAMEDIR/lib:$GAMEDIR/libs:$LD_LIBRARY_PATH"
-export PATCHER_FILE="$GAMEDIR/tools/patchscript"
-export PATCHER_GAME="$(basename "${0%.*}")" # This gets the current script filename without the extension
-export PATCHER_TIME="a while"
 
 export controlfolder
 
@@ -35,15 +32,31 @@ check_patch() {
     # Check for items in install folder (excluding base.port), data.win, or other subfolders
     install_items=$(find "$GAMEDIR/assets/install" -maxdepth 1 -mindepth 1 -not -name "base.port")
     has_data_win=$( [ -f "$GAMEDIR/assets/data.win" ] && echo true || echo false )
-    has_other_subdir=$(find "$GAMEDIR/assets" -mindepth 1 -maxdepth 1 -type d ! -name "install" | head -n 1)
+    has_other_subdir=$(find "$GAMEDIR/assets" -mindepth 1 -maxdepth 1 -type d ! -name "install" ! -iname "*texture*" | head -n 1)
 
     # If patchlog.txt is missing, or we have installable items, data.win, or other subdirs
     if [ ! -f "$GAMEDIR/patchlog.txt" ] || [ -n "$install_items" ] || [ "$has_data_win" = true ] || [ -n "$has_other_subdir" ]; then
         if [ -f "$controlfolder/utils/patcher.txt" ]; then
+            set -o pipefail
+            
+            # Setup mono environment variables
+            DOTNETDIR="$HOME/mono"
+            DOTNETFILE="$controlfolder/libs/dotnet-8.0.12.squashfs"
+            $ESUDO mkdir -p "$DOTNETDIR"
+            $ESUDO umount "$DOTNETFILE" || true
+            $ESUDO mount "$DOTNETFILE" "$DOTNETDIR"
+            export PATH="$DOTNETDIR":"$PATH"
+            
+            # Setup and execute the Portmaster Patcher utility with our patch file
+            export PATCHER_FILE="$GAMEDIR/tools/patchscript"
+            export PATCHER_GAME="$(basename "${0%.*}")"
+            export PATCHER_TIME="a while"
             source "$controlfolder/utils/patcher.txt"
-            $ESUDO kill -9 $(pidof gptokeyb)
+            $ESUDO umount "$DOTNETDIR"
         else
             pm_message "This port requires the latest version of PortMaster."
+            pm_finish
+            exit 1
         fi
     fi
 }
