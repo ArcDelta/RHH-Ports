@@ -12,8 +12,6 @@ else
   controlfolder="/roms/ports/PortMaster"
 fi
 
-export controlfolder
-
 source $controlfolder/control.txt
 [ -f "${controlfolder}/mod_${CFW_NAME}.txt" ] && source "${controlfolder}/mod_${CFW_NAME}.txt"
 get_controls
@@ -31,17 +29,32 @@ cd $GAMEDIR
 
 # Exports
 export LD_LIBRARY_PATH="/usr/lib:$GAMEDIR/lib:$GAMEDIR/libs:$LD_LIBRARY_PATH"
-export PATCHER_FILE="$GAMEDIR/tools/patchscript"
-export PATCHER_GAME="$(basename "${0%.*}")" # This gets the current script filename without the extension
-export PATCHER_TIME="10 to 15 minutes"
+export controlfolder
+export DEVICE_ARCH
 
 # Check if patchlog.txt to skip patching
-if [ ! -f patchlog.txt ] || [ -f "GAMEDIR/assets/data.win" ]; then
+if [ ! -f patchlog.txt ] || [ -f "$GAMEDIR/assets/data.win" ]; then
     if [ -f "$controlfolder/utils/patcher.txt" ]; then
+        set -o pipefail
+        
+        # Setup mono environment variables
+        DOTNETDIR="$HOME/mono"
+        DOTNETFILE="$controlfolder/libs/dotnet-8.0.12.squashfs"
+        $ESUDO mkdir -p "$DOTNETDIR"
+        $ESUDO umount "$DOTNETFILE" || true
+        $ESUDO mount "$DOTNETFILE" "$DOTNETDIR"
+        export PATH="$DOTNETDIR":"$PATH"
+            
+        # Setup and execute the Portmaster Patcher utility with our patch file
+        export PATCHER_FILE="$GAMEDIR/tools/patchscript"
+        export PATCHER_GAME="$(basename "${0%.*}")"
+        export PATCHER_TIME="a while"
         source "$controlfolder/utils/patcher.txt"
-        $ESUDO kill -9 $(pidof gptokeyb)
+        $ESUDO umount "$DOTNETDIR"
     else
         pm_message "This port requires the latest version of PortMaster."
+        pm_finish
+        exit 1
     fi
 fi
 
