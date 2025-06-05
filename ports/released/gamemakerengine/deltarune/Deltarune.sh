@@ -23,6 +23,12 @@ GAMEDIR="/$directory/ports/deltarune"
 cd $GAMEDIR
 > "$GAMEDIR/log.txt" && exec > >(tee "$GAMEDIR/log.txt") 2>&1
 
+# Permissions
+$ESUDO chmod 666 /dev/tty1
+$ESUDO chmod 666 /dev/uinput
+$ESUDO chmod +x $GAMEDIR/gmloadernext.aarch64
+$ESUDO chmod +x $GAMEDIR/tools/splash
+
 # Exports
 export LD_LIBRARY_PATH="/usr/lib:$GAMEDIR/lib:$GAMEDIR/libs:$LD_LIBRARY_PATH"
 
