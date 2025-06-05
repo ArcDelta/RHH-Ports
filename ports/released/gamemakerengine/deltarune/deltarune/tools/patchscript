@@ -12,19 +12,17 @@ exec > >(tee -a "$LOGFILE") 2>&1
 echo "GAMEDIR is set to: $GAMEDIR"
 
 # Exports
+export TOOLKIT="$controlfolder/utils/gmtoolkit"
+export PATH="$TOOLKIT/gmtools:$TOOLKIT/utmt-cli.${DEVICE_ARCH}:$PATH"
+export LD_LIBRARY_PATH="/usr/lib:$TOOLKIT/libs.${DEVICE_ARCH}:$LD_LIBRARY_PATH"
+export SDL_GAMECONTROLLERCONFIG="$sdl_controllerconfig"
 export INSTALLDIR="$GAMEDIR/assets/install"
 export ASSETDIR="$GAMEDIR/assets"
-export LD_LIBRARY_PATH="/usr/lib:$GAMEDIR/lib:$GAMEDIR/tools/libs:$LD_LIBRARY_PATH"
-export SDL_GAMECONTROLLERCONFIG="$sdl_controllerconfig"
-export TOOLDIR="$GAMEDIR/tools"
 export TMPDIR="$GAMEDIR/tmp"
-export PATH="$GAMEDIR/tools:$PATH"
 
 # Permissions
 chmod 666 /dev/uinput
-chmod 755 "$TOOLDIR/gmKtool.py" "$TOOLDIR/oggenc" "$TOOLDIR/oggdec"
-
-cd "$GAMEDIR" || exit
+chmod 755 "$TOOLKIT/gmtools/gmKtool.py" "$TOOLKIT/gmtools/oggenc.${DEVICE_ARCH}" "$TOOLKIT/gmtools/oggdec.${DEVICE_ARCH}"
 
 # Set up trap for cleaning TMPDIR on exit
 trap 'rm -rf "$TMPDIR"; echo "Cleaned up temporary files." >> "$LOGFILE"' 0
@@ -39,9 +37,28 @@ fi
 # Bail if the dotnet runtime is missing or wasn't mounted
 if ! command -v dotnet >/dev/null 2>&1; then
     echo "Dotnet is required but not installed. Please install the runtime."
+    patch_failure
+fi
+
+# Test for commands: python, zip
+PYTHON=$(which python3)
+if [ -z "$PYTHON" ]; then
+    echo "Missing Python!"
+    patch_failure
+fi
+
+ZIP=$(which zip)
+if [ -z "$ZIP" ]; then
+    echo "Missing zip!"
+    patch_failure
+fi
+
+# PATCHING FAILED
+patch_failure() {
+    mv "$LOGFILE" "$LOGERR"
     echo "Patching process failed."
     exit 1
-fi
+}
 
 # SANITIZE THE INSTALL DIRECTORIES
 sanitize() {
@@ -135,7 +152,7 @@ dump_textures() {
     rm -rf "$TMPDIR/"*
     
     # Begin texture operations
-    dotnet "$TOOLDIR/utmt-cli/UndertaleModCli.dll" \
+    dotnet "$TOOLKIT/utmt-cli.${DEVICE_ARCH}/UndertaleModCli.dll" \
         dump "$INSTALLDIR/assets/data.win" \
         -e "$INSTALLDIR/assets/textures" "$INSTALLDIR/assets/game.droid"
 
@@ -188,7 +205,7 @@ clean_assets() {
 # APPLY XDELTA PATCHES
 apply_xdelta() {
     if [ -f "$INSTALLDIR/assets/data.win" ]; then
-        output=$("$controlfolder"/xdelta3 -d -s "$INSTALLDIR/assets/data.win" -f "$TOOLDIR/patches/$GAMEFILE.xdelta" "$INSTALLDIR/assets/game.droid" 2>&1)
+        output=$("$controlfolder"/xdelta3 -d -s "$INSTALLDIR/assets/data.win" -f "$GAMEDIR/patches/$GAMEFILE.xdelta" "$INSTALLDIR/assets/game.droid" 2>&1)
         if [ $? -eq 0 ]; then
             echo "Patch applied successfully for $GAMEFILE"
             echo "$output"
@@ -210,7 +227,7 @@ compress_audio() {
 
     echo "Running GMTools on data and audiogroups for $GAMEFILE."
     
-    if $PYTHON "$TOOLDIR/gmKtool.py" -v -m 1000 -r -b 64 -d "$TMPDIR" "$INSTALLDIR/assets/game.droid"; then
+    if $PYTHON "$TOOLKIT/gmtools/gmKtool.py" -v -m 1000 -r -b 64 -d "$TMPDIR" "$INSTALLDIR/assets/game.droid"; then
         mv "$TMPDIR/"* "$INSTALLDIR/assets/" && rm -rf "$TMPDIR"
         echo "Audio compression applied successfully for $GAMEFILE."
     else
@@ -229,13 +246,6 @@ zip_archive() {
     cd "$GAMEDIR" || exit
     # Move it to $GAMEDIR/assets
     mv "$INSTALLDIR/$GAMEFILE.zip" "$GAMEDIR/assets/$GAMEFILE"
-}
-
-# PATCHING FAILED
-patch_failure() {
-    mv "$LOGFILE" "$LOGERR"
-    echo "Patching process failed."
-    exit 1
 }
 
 # MAIN LOOP
@@ -273,18 +283,5 @@ process_game() {
         done
     fi
 }
-
-# Test for commands: python, zip
-PYTHON=$(which python3)
-if [ -z "$PYTHON" ]; then
-    echo "Missing Python!"
-    patch_failure
-fi
-
-ZIP=$(which zip)
-if [ -z "$ZIP" ]; then
-    echo "Missing zip!"
-    patch_failure
-fi
 
 process_game

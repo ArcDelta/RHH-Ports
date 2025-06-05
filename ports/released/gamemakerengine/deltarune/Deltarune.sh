@@ -27,6 +27,7 @@ cd $GAMEDIR
 export LD_LIBRARY_PATH="/usr/lib:$GAMEDIR/lib:$GAMEDIR/libs:$LD_LIBRARY_PATH"
 
 export controlfolder
+export DEVICE_ARCH
 
 check_patch() {
     # Check for items in install folder (excluding base.port), data.win, or other subfolders
