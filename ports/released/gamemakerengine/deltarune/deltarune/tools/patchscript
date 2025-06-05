@@ -160,13 +160,8 @@ process_assets() {
 
     # Process data.win if it exists
     if [ -f "$INSTALLDIR/assets/data.win" ]; then
-        
-        # Skip dumping textures if Ch1
-        if [ $GAMEFILE == "chapter1_windows" ]; then
-            mv "$INSTALLDIR/assets/data.win" "$INSTALLDIR/assets/game.droid"
-        else
-            dump_textures
-        fi
+
+        dump_textures
         
         # Compress audio
         echo "Compressing audio for $GAMEFILE..."
