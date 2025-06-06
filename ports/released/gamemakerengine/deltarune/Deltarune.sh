@@ -39,7 +39,7 @@ check_patch() {
     # Check for items in install folder (excluding base.port), data.win, or other subfolders
     install_items=$(find "$GAMEDIR/assets/install" -maxdepth 1 -mindepth 1 -not -name "base.port")
     has_data_win=$( [ -f "$GAMEDIR/assets/data.win" ] && echo true || echo false )
-    has_other_subdir=$(find "$GAMEDIR/assets" -mindepth 1 -maxdepth 1 -type d ! -name "install" ! -iname "*texture*" | head -n 1)
+    has_other_subdir=$(find "$GAMEDIR/assets" -mindepth 1 -maxdepth 1 -type d ! -name "install" | head -n 1)
 
     # If patchlog.txt is missing, or we have installable items, data.win, or other subdirs
     if [ ! -f "$GAMEDIR/patchlog.txt" ] || [ -n "$install_items" ] || [ "$has_data_win" = true ] || [ -n "$has_other_subdir" ]; then
