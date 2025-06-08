@@ -195,6 +195,25 @@ process_assets() {
         echo "Compressing audio for $GAMEFILE..."
         compress_audio || { echo "Patching process failed."; exit 1; }
         
+        # Special case for Chapter 3
+        if [ -d "$INSTALLDIR/assets/vid" ]; then
+            # Move the vid folder to $SAVEDIR
+            mv "$INSTALLDIR/assets/vid" "$SAVEDIR"
+
+            # Ensure every file inside is lowercase
+            find "$SAVEDIR/vid" -depth -print | while IFS= read -r f; do
+                # Get directory name and lowercase base name
+                dir=$(dirname "$f")
+                base=$(basename "$f")
+                lowerbase=$(printf "%s" "$base" | tr '[:upper:]' '[:lower:]')
+
+                # Only rename if needed
+                if [ "$base" != "$lowerbase" ]; then
+                    mv "$f" "$dir/$lowerbase"
+                fi
+            done
+        fi
+        
         # Zip and finalize
         echo "Finishing up for $GAMEFILE..."
         zip_archive || { echo "Patching process failed."; exit 1; }
