@@ -41,6 +41,7 @@ export TMPDIR="$GAMEDIR/tmp"
 
 # Permissions
 chmod 666 /dev/uinput
+chmod 755 "$TOOLKIT/gmtools/gmKtool.py" "$TOOLKIT/gmtools/oggenc" "$TOOLKIT/gmtools/oggdec"
 
 # Set up trap for cleaning TMPDIR on exit
 trap 'rm -rf "$TMPDIR"; echo "Cleaned up temporary files." >> "$LOGFILE"' 0
