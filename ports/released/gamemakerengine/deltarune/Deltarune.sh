@@ -35,6 +35,9 @@ export LD_LIBRARY_PATH="/usr/lib:$GAMEDIR/lib:$GAMEDIR/libs:$LD_LIBRARY_PATH"
 export controlfolder
 export DEVICE_ARCH
 
+# Pretend we're on SteamDeck, some game code needs this
+export SteamDeck=1
+
 check_patch() {
     # Check for items in install folder (excluding base.port), data.win, or other subfolders
     install_items=$(find "$GAMEDIR/assets/install" -maxdepth 1 -mindepth 1 -not -name "base.port")
@@ -72,7 +75,7 @@ check_patch() {
 check_patch
 
 # Assign gptokeyb and load the game
-$GPTOKEYB "gmloadernext.aarch64" -c "deltarune.gptk" &
+$GPTOKEYB "gmloadernext.aarch64" xbox360 &
 pm_platform_helper "$GAMEDIR/gmloadernext.aarch64" >/dev/null
 ./gmloadernext.aarch64 -c gmloader.json
 

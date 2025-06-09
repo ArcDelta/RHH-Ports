@@ -2,7 +2,7 @@
     "save_dir" : "saves",
     "apk_path" : "assets/deltarune",
     "show_cursor" : false,
-    "disable_controller" : true,
+    "disable_controller" : false,
     "disable_depth" : false,
     "disable_extensions" : false,
     "disable_joystick" : false,
