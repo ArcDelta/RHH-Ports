@@ -1,0 +1,51 @@
+{
+  "version": 4,
+  "name": "valhalla.zip",
+  "items": [
+    "Valhalla.sh",
+    "valhalla"
+  ],
+  "items_opt": [],
+  "attr": {
+    "title": "VA-11 Hall-A: Cyberpunk Bartender Action",
+    "porter": [
+      "Tekkenfede"
+    ],
+    "desc": "VA-11 HALL-A: Cyberpunk Bartender Action is a booze em' up about waifus, technology, and post-dystopia life. In this world, corporations reign supreme, all human life is infected with nanomachines designed to oppress them, and the terrifying White Knights ensure that everyone obeys the laws..",
+    "desc_md": null,
+    "inst": "Copy all game assets from your windows install to `valhalla/assets`.",
+    "inst_md": null,
+    "genres": [
+      "visual novel"
+    ],
+    "image": null,
+    "rtr": false,
+    "exp": false,
+    "runtime": [
+      "gmtoolkit.squashfs"
+    ],
+    "store": [
+      {
+        "name": "Steam",
+        "gameurl": "https://store.steampowered.com/app/447530/VA11_HallA_Cyberpunk_Bartender_Action/",
+        "developerurl": ""
+      },
+      {
+        "name": "Itch.io",
+        "gameurl": "https://sukebangames.itch.io/valhalla-bar",
+        "developerurl": ""
+      },
+      {
+        "name": "GOG",
+        "gameurl": "https://www.gog.com/en/game/va11_halla",
+        "developerurl": ""
+      }
+    ],
+    "availability": "paid",
+    "reqs": [],
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": ""
+  }
+}

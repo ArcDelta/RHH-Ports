@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<gameList>
+    <game>
+        <path>./Valhalla.sh</path>
+        <name>VA-11 Hall-A: Cyberpunk Bartender Action</name>
+        <desc>VA-11 HALL-A: Cyberpunk Bartender Action is a booze em' up about waifus, technology, and post-dystopia life.</desc>
+        <image>./valhalla/cover.png</image>
+        <developer>Sukeban Games</developer>
+        <releasedate>20160621</releasedate>
+        <genre>Adventure, Indie, Simulation</genre>
+    </game>
+</gameList>
