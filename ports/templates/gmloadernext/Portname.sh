@@ -24,8 +24,6 @@ cd $GAMEDIR
 > "$GAMEDIR/log.txt" && exec > >(tee "$GAMEDIR/log.txt") 2>&1
 
 # Setup permissions
-$ESUDO chmod 666 /dev/tty1
-$ESUDO chmod 666 /dev/uinput
 $ESUDO chmod +x $GAMEDIR/gmloadernext.aarch64
 $ESUDO chmod +x $GAMEDIR/tools/splash
 
@@ -40,6 +38,7 @@ if [ ! -f patchlog.txt ] || [ -f "$GAMEDIR/assets/data.win" ]; then
         export PATCHER_FILE="$GAMEDIR/tools/patchscript"
         export PATCHER_GAME="$(basename "${0%.*}")"
         export PATCHER_TIME="2 to 5 minutes"
+        export controlfolder
         source "$controlfolder/utils/patcher.txt"
         $ESUDO kill -9 $(pidof gptokeyb)
     else
