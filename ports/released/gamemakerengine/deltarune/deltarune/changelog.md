@@ -1,4 +1,6 @@
-# Deltarune changelog 2025-06-10
+# 2025-06-10
+
+## Deltarune changelog:
 - Use gmtoolkit runtime for utmt-cli texture compression
 - Use gmtoolkit runtime for audio compression
 - Use gmloadernext.aarch64 build with video to enable mp4 playback
