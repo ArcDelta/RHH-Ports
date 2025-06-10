@@ -44,28 +44,19 @@ $ESUDO chmod +x "$GAMEDIR/tools/patchscript"
 
 # Check if we need to patch
 if [ ! -f patchlog.txt ] || [ -f "$GAMEDIR/assets/data.win" ]; then
-	if [ -f "$controlfolder/utils/patcher.txt" ]; then
-		set -o pipefail
-        
-        # Setup mono environment variables
-        DOTNETDIR="$HOME/mono"
-        DOTNETFILE="$controlfolder/libs/dotnet-8.0.12.squashfs"
-        $ESUDO mkdir -p "$DOTNETDIR"
-        $ESUDO umount "$DOTNETFILE" || true
-        $ESUDO mount "$DOTNETFILE" "$DOTNETDIR"
-        export PATH="$DOTNETDIR":"$PATH"
-        
+    if [ -f "$controlfolder/utils/patcher.txt" ]; then            
         # Setup and execute the Portmaster Patcher utility with our patch file
         export PATCHER_FILE="$GAMEDIR/tools/patchscript"
-        export PATCHER_GAME="Pizza Tower"
-		export PATCHER_TIME="5 to 10 minutes"
-		source "$controlfolder/utils/patcher.txt"
-        $ESUDO umount "$DOTNETDIR"
-	else
-		pm_message "This port requires the latest version of PortMaster."
-		pm_finish
-		exit 1
-	fi
+        export PATCHER_GAME="$(basename "${0%.*}")"
+        export PATCHER_TIME="a while"
+        export controlfolder
+        source "$controlfolder/utils/patcher.txt"
+        $ESUDO kill -9 $(pidof gptokeyb)
+    else
+        pm_message "This port requires the latest version of PortMaster."
+        pm_finish
+        exit 1
+    fi
 fi
 
 # Display loading splash
