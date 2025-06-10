@@ -8,10 +8,29 @@ LOGERR="$GAMEDIR/patchlog_error.txt"
 exec > >(tee -a "$LOGFILE") 2>&1
 echo "GAMEDIR is set to: $GAMEDIR"
 
+# Patch failure function
+patch_failure() {
+    mv "$LOGFILE" "$LOGERR"
+    echo "Patching process failed."
+    exit 1
+}
+
+# Mount the GMToolkit runtime
+TOOLKIT="$HOME/gmtoolkit"
+RUNTIME="$controlfolder/libs/gmtoolkit.squashfs"
+if [ -f "$RUNTIME" ]; then
+    $ESUDO mkdir -p "$TOOLKIT"
+    $ESUDO umount "$RUNTIME" || true
+    $ESUDO mount "$RUNTIME" "$TOOLKIT"
+else
+    echo "This port requires the GMToolkit runtime. Please download it."
+    sleep 2
+    patch_failure
+fi
+
 # Exports
-export TOOLKIT="$controlfolder/utils/gmtoolkit"
-export PATH="$TOOLKIT/gmtools:$TOOLKIT/utmt-cli.${DEVICE_ARCH}:$PATH"
-export LD_LIBRARY_PATH="/usr/lib:$TOOLKIT/libs.${DEVICE_ARCH}:$LD_LIBRARY_PATH"
+export PATH="$TOOLKIT/gmtools:$TOOLKIT/utmt-cli:$PATH"
+export LD_LIBRARY_PATH="/usr/lib:$TOOLKIT/libs:$LD_LIBRARY_PATH"
 export SDL_GAMECONTROLLERCONFIG="$sdl_controllerconfig"
 export DATADIR="$GAMEDIR/assets"
 export DATAFILE="dark_deity.port"
@@ -19,7 +38,6 @@ export TMPDIR="$GAMEDIR/tmp"
 
 # Permissions
 chmod 666 /dev/uinput
-chmod 755 "$TOOLKIT/gmtools/gmKtool.py" "$TOOLKIT/gmtools/oggenc.${DEVICE_ARCH}" "$TOOLKIT/gmtools/oggdec.${DEVICE_ARCH}"
 
 # Set up trap for cleaning TMPDIR on exit
 trap 'rm -rf "$TMPDIR"; echo "Cleaned up temporary files." >> "$LOGFILE"' 0
@@ -50,13 +68,6 @@ if [ -z "$ZIP" ]; then
     echo "Missing zip!"
     patch_failure
 fi
-
-# PATCHING FAILED
-patch_failure() {
-    mv "$LOGFILE" "$LOGERR"
-    echo "Patching process failed."
-    exit 1
-}
 
 prepare_files() {
     mkdir -p "$SAVEDIR"
@@ -128,7 +139,7 @@ dump_textures() {
     rm -rf "$TMPDIR/"*
     
     # Begin texture operations
-    dotnet "$TOOLKIT/utmt-cli.${DEVICE_ARCH}/UndertaleModCli.dll" \
+    dotnet "$TOOLKIT/utmt-cli/UndertaleModCli.dll" \
         dump "$DATADIR/data.win" \
         -e "$DATADIR/textures" "$DATADIR/game.droid"
 

@@ -30,8 +30,6 @@ $ESUDO chmod +x $GAMEDIR/tools/splash
 
 # Exports
 export LD_LIBRARY_PATH="/usr/lib:$GAMEDIR/lib:$GAMEDIR/libs:$LD_LIBRARY_PATH"
-export controlfolder
-export DEVICE_ARCH
 
 # Check if patchlog.txt to skip patching
 if [ ! -f patchlog.txt ] || [ -f "$GAMEDIR/assets/data.win" ]; then
@@ -50,6 +48,8 @@ if [ ! -f patchlog.txt ] || [ -f "$GAMEDIR/assets/data.win" ]; then
         export PATCHER_FILE="$GAMEDIR/tools/patchscript"
         export PATCHER_GAME="$(basename "${0%.*}")"
         export PATCHER_TIME="a while"
+        export controlfolder
+        export DEVICE_ARCH
         source "$controlfolder/utils/patcher.txt"
         $ESUDO umount "$DOTNETDIR"
     else
