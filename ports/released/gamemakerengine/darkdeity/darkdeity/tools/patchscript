@@ -28,8 +28,21 @@ else
     patch_failure
 fi
 
+# Mount the dotnet runtime
+DOTNETDIR="$HOME/mono"
+DOTNETFILE="$controlfolder/libs/dotnet-8.0.12.squashfs"
+if [ -f "$DOTNETFILE" ]; then
+    $ESUDO mkdir -p "$DOTNETDIR"
+    $ESUDO umount "$DOTNETFILE" || true
+    $ESUDO mount "$DOTNETFILE" "$DOTNETDIR"
+else
+    echo "This port requires the Dotnet runtime. Please download it."
+    sleep 2
+    patch_failure
+fi
+
 # Exports
-export PATH="$TOOLKIT/gmtools:$TOOLKIT/utmt-cli:$PATH"
+export PATH="$DOTNETDIR:$TOOLKIT/gmtools:$TOOLKIT/utmt-cli:$PATH"
 export LD_LIBRARY_PATH="/usr/lib:$TOOLKIT/libs:$LD_LIBRARY_PATH"
 export SDL_GAMECONTROLLERCONFIG="$sdl_controllerconfig"
 export DATADIR="$GAMEDIR/assets"
@@ -47,13 +60,6 @@ if command -v jq >/dev/null 2>&1; then
     SAVEDIR=$(jq -r '.save_dir // empty' "$GAMEDIR/gmloader.json" 2>/dev/null)
 else
     SAVEDIR="$GAMEDIR/saves"
-fi
-
-# Bail if the dotnet runtime is missing or wasn't mounted
-if ! command -v dotnet >/dev/null 2>&1; then
-    echo "Dotnet is required but not installed. Please install the runtime."
-    echo "Patching process failed."
-    exit 1
 fi
 
 # Test for commands: python, zip
@@ -81,7 +87,7 @@ prepare_files() {
     find "$DATADIR" -type f \( \
         -name "*.exe" -o -name "*.dll" -o -name "*.hashdb" -o \
         -name "*.ico" -o -name "*.lnk" -o -name "*.msg" -o -name "*.zip" \
-    \) -exec rm -f {} \; 2>>"$LOGERR"
+    \) -exec rm -f {} \;
 
     # Move splash file if it exists
     if [ -f "$DATADIR/splash.png" ]; then
@@ -166,7 +172,6 @@ compress_audio() {
 }
 
 zip_archive() {
-        mv "$DATADIR/splash.png" .
         zip -r -0 "$DATAFILE" ./assets/
         echo "Zipped contents to $DATAFILE"
         rm -rf "$GAMEDIR/assets/"*
@@ -185,6 +190,10 @@ process_game() {
     echo "Finishing up..."
     zip_archive || patch_failure
     sleep 1
+    
+    # Unmount runtimes
+    $ESUDO umount "$DOTNETDIR"
+    $ESUDO umount "$TOOLKIT"
 	
     # Final completion message
     echo "Patching process complete!"

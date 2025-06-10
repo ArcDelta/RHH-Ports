@@ -33,25 +33,14 @@ export LD_LIBRARY_PATH="/usr/lib:$GAMEDIR/lib:$GAMEDIR/libs:$LD_LIBRARY_PATH"
 
 # Check if patchlog.txt to skip patching
 if [ ! -f patchlog.txt ] || [ -f "$GAMEDIR/assets/data.win" ]; then
-    if [ -f "$controlfolder/utils/patcher.txt" ]; then
-        set -o pipefail
-        
-        # Setup mono environment variables
-        DOTNETDIR="$HOME/mono"
-        DOTNETFILE="$controlfolder/libs/dotnet-8.0.12.squashfs"
-        $ESUDO mkdir -p "$DOTNETDIR"
-        $ESUDO umount "$DOTNETFILE" || true
-        $ESUDO mount "$DOTNETFILE" "$DOTNETDIR"
-        export PATH="$DOTNETDIR":"$PATH"
-            
+    if [ -f "$controlfolder/utils/patcher.txt" ]; then            
         # Setup and execute the Portmaster Patcher utility with our patch file
         export PATCHER_FILE="$GAMEDIR/tools/patchscript"
         export PATCHER_GAME="$(basename "${0%.*}")"
         export PATCHER_TIME="a while"
         export controlfolder
-        export DEVICE_ARCH
         source "$controlfolder/utils/patcher.txt"
-        $ESUDO umount "$DOTNETDIR"
+        $ESUDO kill -9 $(pidof gptokeyb)
     else
         pm_message "This port requires the latest version of PortMaster."
         pm_finish
@@ -61,10 +50,9 @@ fi
 
 # Display loading splash
 if [ -f "$GAMEDIR/patchlog.txt" ]; then
-    $ESUDO "$GAMEDIR/tools/splash" "$GAMEDIR/splash.png" 1 
+    [ "$CFW_NAME" == "muOS" ] && $ESUDO "$GAMEDIR/tools/splash" "$GAMEDIR/splash.png" 1
     $ESUDO "$GAMEDIR/tools/splash" "$GAMEDIR/splash.png" 4000 &
 fi
-
 # Run the game
 $GPTOKEYB "gmloadernext.aarch64" -c "./darkdeity.gptk" & 
 pm_platform_helper "gmloadernext.aarch64" >/dev/null
