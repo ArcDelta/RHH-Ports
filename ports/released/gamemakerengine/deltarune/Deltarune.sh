@@ -24,8 +24,6 @@ cd $GAMEDIR
 > "$GAMEDIR/log.txt" && exec > >(tee "$GAMEDIR/log.txt") 2>&1
 
 # Permissions
-$ESUDO chmod 666 /dev/tty1
-$ESUDO chmod 666 /dev/uinput
 $ESUDO chmod +x $GAMEDIR/gmloadernext.aarch64
 
 # Exports
@@ -74,7 +72,7 @@ check_patch() {
 check_patch
 
 # Assign gptokeyb and load the game
-$GPTOKEYB "gmloadernext.aarch64" xbox360 &
+$GPTOKEYB "gmloadernext.aarch64" -k &
 pm_platform_helper "$GAMEDIR/gmloadernext.aarch64" >/dev/null
 ./gmloadernext.aarch64 -c gmloader.json
 
