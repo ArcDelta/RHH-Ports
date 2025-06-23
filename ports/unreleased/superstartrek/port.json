@@ -1,0 +1,39 @@
+{
+  "version": 4,
+  "name": "superstartrek.zip",
+  "items": [
+    "Super Star Trek.sh",
+    "superstartrek"
+  ],
+  "items_opt": [],
+  "attr": {
+    "title": "Super Star Trek",
+    "porter": [
+      "Jeod"
+    ],
+    "desc": "Super Star Trek (1978) with 25th Anniversary pixel art! Find and destroy all enemies before time runs out! Manage your shields and energy well, or you will be stranded as the enemies destroy the Federation...",
+    "desc_md": null,
+    "inst": "Ready to run!",
+    "inst_md": null,
+    "genres": [
+      "strategy"
+    ],
+    "image": null,
+    "rtr": true,
+    "exp": false,
+    "runtime": [],
+    "store": [
+      {
+        "name": "GitHub Source",
+        "gameurl": "https://github.com/JeodC/SuperStarTrek25thGMS/tree/main",
+        "developerurl": ""
+      }
+    ],
+    "availability": "full",
+    "reqs": [],
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": ""
+  }
+}

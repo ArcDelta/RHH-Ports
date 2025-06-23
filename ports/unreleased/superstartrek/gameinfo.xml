@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <gamelist>
 	<game>
-		<path>./Super Star Trek 25th.sh</path>
-		<name>Super Star Trek 25th</name>
-		<desc>A remake/conversion of the 1978 strategy game Super Star Trek reimagined with the UI of Star Trek 25th Anniversary. Includes voice lines from the show!</desc>
+		<path>./Super Star Trek.sh</path>
+		<name>Super Star Trek</name>
+		<desc>Super Star Trek (1978) with 25th Anniversary pixel art! Find and destroy all enemies before time runs out! Manage your shields and energy well, or you will be stranded as the enemies destroy the Federation...</desc>
 		<image>./superstartrek/cover.png</image>
-		<releasedate>20240414</releasedate>
-		<developer>emabolo</developer>
+		<releasedate>06232025</releasedate>
+		<developer>Mike Mayfield, Bom Leedom, Emabolo, Jeod</developer>
 		<genre>Strategy</genre>
 	</game>
 </gamelist>
