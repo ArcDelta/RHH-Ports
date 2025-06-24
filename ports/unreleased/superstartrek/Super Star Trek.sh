@@ -24,7 +24,7 @@ cd $GAMEDIR
 > "$GAMEDIR/log.txt" && exec > >(tee "$GAMEDIR/log.txt") 2>&1
 
 # Setup permissions
-$ESUDO chmod +x $GAMEDIR/gmloadernext.aarch64
+$ESUDO chmod +xwr "$GAMEDIR/gmloadernext.aarch64"
 
 # Exports
 export SDL_GAMECONTROLLERCONFIG="$sdl_controllerconfig"
