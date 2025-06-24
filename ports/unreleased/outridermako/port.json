@@ -1,0 +1,42 @@
+{
+  "version": 4,
+  "name": "outridermako.zip",
+  "items": [
+    "Outrider Mako.sh",
+    "outridermako"
+  ],
+  "items_opt": [],
+  "attr": {
+    "title": "Outrider Mako",
+    "porter": [
+      "Jeod"
+    ],
+    "desc": "Take on the role of Mako on her quest to seek out and subsequently deliver her, uh, deliverables in this top-down view 2D action game. Jump on top of your enemies and slime them with goo to stop them in their tracks! Get those deliverables delivered!",
+    "desc_md": null,
+    "inst": "Copy all game data to `outridermako/assets`. Requires GMToolkit runtime.",
+    "inst_md": null,
+    "genres": [
+      "action",
+      "adventure"
+    ],
+    "image": null,
+    "rtr": false,
+    "exp": false,
+    "runtime": [
+      "gmtoolkit.squashfs"
+    ],
+    "store": [
+      {
+        "name": "Steam",
+        "gameurl": "https://store.steampowered.com/app/1072400/Outrider_Mako/",
+        "developerurl": ""
+      }
+    ],
+    "availability": "paid",
+    "reqs": [],
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": ""
+  }
+}

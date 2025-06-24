@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<gamelist>
+	<game>
+		<path>./Outrider Mako.sh</path>
+		<name>Outrider Mako</name>
+		<desc>Take on the role of Mako on her quest to seek out and subsequently deliver her, uh, deliverables in this top-down view 2D action game. Jump on top of your enemies and slime them with goo to stop them in their tracks! Get those deliverables delivered!</desc>
+		<image>./outridermako/cover.png</image>
+		<releasedate>20250623</releasedate>
+		<developer>Asamado Games</developer>
+		<genre>Action, Adventure, Indie</genre>
+	</game>
+</gamelist>
