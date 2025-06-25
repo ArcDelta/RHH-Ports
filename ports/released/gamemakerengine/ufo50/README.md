@@ -21,6 +21,23 @@ For the more technically inclined, here are specific modifications made in order
     - Remove/hide the scaling feature since the game always scales to the display on targeted devices, and enforce 1x scaling
     - Change the video settings menu to use `Stretch to Fit`, `Maintain Aspect Ratio`, and `Integer Scale` for display options
     - Remove/hide the scale options and the CRT shader options, since CRT shaders do not work on 1x scale
+    
+## Modding
+The UFO50 community has a number of mods that can work with the game. Most of them can be found on the [UFO50 Community Discord](https://50games.fans).
+
+To use them, you will want to do the following:
+
+#### ON A DESKTOP COMPUTER:
+- Download [GMLoader](https://github.com/phil-macrocheira/GMLoader-UFO50) and extract it. Not to be confused with the GMLoader that runs GMS games.
+- Download the mods you want and put them in the `my mods` folder.
+- Download the `UFO50 v1.7.6 for PortMaster.zip` from this repository and extract it to the `my mods` folder.
+- Start `UFO 50 Mod Installer.exe` and UNCHECK the `UFO50 Modding Framework` mod.
+- Check the boxes for `UFO50 v1.7.6 for PortMaster` as well as other mods you want to merge into your game.
+- Click the `Install Mods` button. Wait for confirmation your mods were installed.
+
+#### ON YOUR PORTMASTER DEVICE
+- Copy all the game data to `ufo50/assets`.
+- Run the port. The patcher gui will appear and begin processing your modifications.
 
 ## Thanks
 Mossmouth -- The absolutely amazing game  
