@@ -27,7 +27,7 @@ cd $GAMEDIR
 # Exports
 export LD_LIBRARY_PATH="/usr/lib:$GAMEDIR/lib:$GAMEDIR/lib:$LD_LIBRARY_PATH"
 export SDL_GAMECONTROLLERCONFIG="$sdl_controllerconfig"
-$ESUDO chmod +x $GAMEDIR/gmloadernext.aarch64
+$ESUDO chmod +xwr $GAMEDIR/gmloadernext.aarch64
 
 add_mod() {
     # Apply PS4 borders mod if 1920x1080 resolution

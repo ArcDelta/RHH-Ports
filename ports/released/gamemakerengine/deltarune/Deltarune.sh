@@ -24,13 +24,10 @@ cd $GAMEDIR
 > "$GAMEDIR/log.txt" && exec > >(tee "$GAMEDIR/log.txt") 2>&1
 
 # Permissions
-$ESUDO chmod +x $GAMEDIR/gmloadernext.aarch64
+$ESUDO chmod +xwr "$GAMEDIR/gmloadernext.aarch64"
 
 # Exports
 export LD_LIBRARY_PATH="/usr/lib:$GAMEDIR/lib:$GAMEDIR/libs:$LD_LIBRARY_PATH"
-
-export controlfolder
-export DEVICE_ARCH
 
 # Pretend we're on SteamDeck, some game code needs this
 export SteamDeck=1
@@ -58,6 +55,8 @@ check_patch() {
             export PATCHER_FILE="$GAMEDIR/tools/patchscript"
             export PATCHER_GAME="$(basename "${0%.*}")"
             export PATCHER_TIME="a while"
+            export controlfolder
+            export ESUDO
             source "$controlfolder/utils/patcher.txt"
             $ESUDO umount "$DOTNETDIR"
         else
@@ -72,7 +71,7 @@ check_patch() {
 check_patch
 
 # Assign gptokeyb and load the game
-$GPTOKEYB "gmloadernext.aarch64" -k &
+$GPTOKEYB "gmloadernext.aarch64" &
 pm_platform_helper "$GAMEDIR/gmloadernext.aarch64" >/dev/null
 ./gmloadernext.aarch64 -c gmloader.json
 
