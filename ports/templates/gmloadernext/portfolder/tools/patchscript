@@ -113,7 +113,13 @@ dump_textures() {
     fi
 }
 
-compress_audio() {  
+compress_audio() {
+    # Test for data.win
+    if [ -f "$DATADIR/data.win" ]; then
+        mv "$DATADIR/data.win" "$DATADIR/game.droid"
+    fi
+    
+    # Do audio compression
     if $PYTHON "$TOOLKIT/gmtools/gmKtool.py" -vv -m 1000 -r -b 64 -d "$TMPDIR" "$DATADIR/game.droid"; then
         mv "$TMPDIR/"* "$DATADIR" && rmdir "$TMPDIR"
         echo "Audio compression applied successfully."
