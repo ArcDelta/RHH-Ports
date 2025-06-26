@@ -1,19 +1,19 @@
 #!/bin/bash
 # Set GAMEDIR to the current directory and set logfile
 GAMEDIR="$PWD"
-LOGFILE="$GAMEDIR/patchlog.txt"
+LOGFILE="patchlog.txt"
+LOGERR="patcherr.txt"
 
 # Redirect output and error to the log file
-exec > >(tee -a "$LOGFILE") 2>&1
+> "$GAMEDIR/$LOGFILE" && exec > >(tee "$GAMEDIR/$LOGFILE") 2>&1
 echo "GAMEDIR is set to: $GAMEDIR"
 
 # Patch failure function
 patch_failure() {
-    mv "$LOGFILE" "$LOGERR"
-    $ESUDO umount "$DOTNETDIR"
-    $ESUDO umount "$TOOLKIT"
-    echo "Patching process failed."
-    exit 1
+    $ESUDO umount "$DOTNETDIR" 2>/dev/null || true
+    $ESUDO umount "$TOOLKIT" 2>/dev/null || true
+    # Exit script, or return if sourced
+    return 1 2>/dev/null || exit 1
 }
 
 # Mount the GMToolkit runtime
@@ -21,7 +21,7 @@ TOOLKIT="$HOME/gmtoolkit"
 RUNTIME="$controlfolder/libs/gmtoolkit.squashfs"
 if [ -f "$RUNTIME" ]; then
     $ESUDO mkdir -p "$TOOLKIT"
-    $ESUDO umount "$TOOLKIT" || true
+    $ESUDO umount "$TOOLKIT" 2>/dev/null || true
     $ESUDO mount "$RUNTIME" "$TOOLKIT"
 else
     echo "This port requires the GMToolkit runtime. Please download it."
@@ -34,7 +34,7 @@ DOTNETDIR="$HOME/mono"
 DOTNETFILE="$controlfolder/libs/dotnet-8.0.12.squashfs"
 if [ -f "$DOTNETFILE" ]; then
     $ESUDO mkdir -p "$DOTNETDIR"
-    $ESUDO umount "$DOTNETFILE" || true
+    $ESUDO umount "$DOTNETDIR" 2>/dev/null || true
     $ESUDO mount "$DOTNETFILE" "$DOTNETDIR"
 else
     echo "This port requires the Dotnet runtime. Please download it."
@@ -44,10 +44,10 @@ fi
 
 # Exports
 export PATH="$DOTNETDIR:$TOOLKIT/gmtools:$TOOLKIT/utmt-cli:$PATH"
-export LD_LIBRARY_PATH="/usr/lib:$TOOLKIT/libs:$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH="$TOOLKIT/libs:$LD_LIBRARY_PATH"
 export SDL_GAMECONTROLLERCONFIG="$sdl_controllerconfig"
 export DATADIR="$GAMEDIR/assets"
-export DATAFILE="utyellow.port"
+export DATAFILE="PORTFILE.port"
 export TMPDIR="$GAMEDIR/tmp"
 
 # Permissions
@@ -56,7 +56,7 @@ chmod 666 /dev/uinput
 cd "$GAMEDIR"
 
 # Set up trap for cleaning TMPDIR on exit
-trap 'rm -rf "$TMPDIR"; echo "Cleaned up temporary files." >> "$LOGFILE"' 0
+trap 'rm -rf "$TMPDIR"' 0
 
 # Attempt to get SAVEDIR from gmloader.json using jq
 if command -v jq >/dev/null 2>&1; then
@@ -93,57 +93,13 @@ prepare_files() {
     fi
 }
 
-# Apply a patch
-apply_xdelta() {
-    GOG_MD5=""
-    STEAM_MD5=""
-
-    if [ -f "$DATADIR/data.win" ]; then
-        checksum=$(md5sum "$DATADIR/data.win" | awk '{print $1}')
-        case "$checksum" in
-            "$GOG_MD5")
-                PATCH="gog.xdelta"
-                ;;
-            "$STEAM_MD5")
-                PATCH="steam.xdelta"
-                ;;
-            *)
-                echo "Unknown data.win checksum: $checksum"
-                echo "Cannot determine appropriate patch"
-                patch_failure
-                return
-                ;;
-        esac
-
-        if [ -f "$GAMEDIR/tools/$PATCH" ]; then
-            output=$($controlfolder/xdelta3 -d -s "$DATADIR/data.win" -f "$GAMEDIR/tools/$PATCH" "$DATADIR/data2.win" 2>&1)
-            if [ $? -eq 0 ]; then
-                echo "Patch applied successfully"
-                echo "$output"
-                rm "$DATADIR/data.win" && mv "$DATADIR/data2.win" "$DATADIR/data.win"
-                sleep 1
-            else
-                echo "Failed to apply patch"
-                echo "$output"
-                patch_failure
-            fi
-        else
-            echo "Patch file not found: $GAMEDIR/tools/$PATCH"
-            patch_failure
-        fi
-    else
-        echo "data.win not found in $DATADIR"
-        patch_failure
-    fi
-}
-
 # Externalize game textures with compression
 dump_textures() {
     # Purge cache before operations
     rm -rf "$TMPDIR/"*
     
     # Begin texture operations
-    dotnet "$TOOLKIT/utmt-cli/UndertaleModCli.dll" \
+    strace -o dotnet_trace.log dotnet "$TOOLKIT/utmt-cli/UndertaleModCli.dll" \
         dump "$DATADIR/data.win" \
         -e "$DATADIR/textures" "$DATADIR/game.droid"
 
@@ -172,30 +128,32 @@ compress_audio() {
 zip_archive() {
         zip -r -0 "$DATAFILE" ./assets/
         echo "Zipped contents to $DATAFILE"
-        rm -rf "$DATADIR"*
+        rm -rf "$DATADIR/"*
 }
 
-process_game() { 
+process_game() {
     echo "Preparing game..."
-    prepare_files || patch_failure 
-    echo "Applying xdelta patch..."
-    apply_xdelta || patch_failure
+    prepare_files || { patch_failure; return 1; }
+
     echo "Externalizing textures..."
-    dump_textures || patch_failure
+    dump_textures || { patch_failure; return 1; }
+
     echo "Compressing audio..."
-    compress_audio || patch_failure
+    compress_audio || { patch_failure; return 1; }
+
     sleep 1
     echo "Finishing up..."
-    zip_archive || patch_failure
-    sleep 1
-    
-    # Unmount runtimes
-    $ESUDO umount "$DOTNETDIR"
-    $ESUDO umount "$TOOLKIT"
-	
-    # Final completion message
-    echo "Patching process complete!"
+    zip_archive || { patch_failure; return 1; }
 }
 
 # Call the function
-process_game
+if ! process_game; then
+    echo "Patching process failed!"
+    mv "$LOGFILE" "$LOGERR"
+else
+    echo "Patching process complete!"
+fi
+
+# Unmount runtimes
+$ESUDO umount "$DOTNETDIR" 2>/dev/null || true
+$ESUDO umount "$TOOLKIT" 2>/dev/null || true
