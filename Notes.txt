@@ -1,0 +1,7 @@
+The following games have issues with externalized textures via utmt-cli:
+
+- Pizza Tower (pissino)
+  - Peppino's shirt color is determined via color index and defaults to yellow if the index isn't found. Need to research what sprite index gets looked up and exclude it from astc compression.
+
+- Undertale Yellow (bloody clover)
+  - In specific zones Clover gets a palette swap which uses a lookup from sprite index 758. Need to exclude this sprite from astc compression.

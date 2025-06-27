@@ -10,7 +10,6 @@ echo "GAMEDIR is set to: $GAMEDIR"
 
 # Patch failure function
 patch_failure() {
-    $ESUDO umount "$DOTNETDIR" 2>/dev/null || true
     $ESUDO umount "$TOOLKIT" 2>/dev/null || true
     # Exit script, or return if sourced
     return 1 2>/dev/null || exit 1
@@ -29,21 +28,8 @@ else
     patch_failure
 fi
 
-# Mount the dotnet runtime
-DOTNETDIR="$HOME/mono"
-DOTNETFILE="$controlfolder/libs/dotnet-8.0.12.squashfs"
-if [ -f "$DOTNETFILE" ]; then
-    $ESUDO mkdir -p "$DOTNETDIR"
-    $ESUDO umount "$DOTNETDIR" 2>/dev/null || true
-    $ESUDO mount "$DOTNETFILE" "$DOTNETDIR"
-else
-    echo "This port requires the Dotnet runtime. Please download it."
-    sleep 2
-    patch_failure
-fi
-
 # Exports
-export PATH="$DOTNETDIR:$TOOLKIT/gmtools:$TOOLKIT/utmt-cli:$PATH"
+export PATH="$TOOLKIT/gmtools:$TOOLKIT/utmt-cli:$PATH"
 export LD_LIBRARY_PATH="$TOOLKIT/libs:$LD_LIBRARY_PATH"
 export SDL_GAMECONTROLLERCONFIG="$sdl_controllerconfig"
 export DATADIR="$GAMEDIR/assets"
@@ -93,26 +79,6 @@ prepare_files() {
     fi
 }
 
-# Externalize game textures with compression
-dump_textures() {
-    # Purge cache before operations
-    rm -rf "$TMPDIR/"*
-    
-    # Begin texture operations
-    strace -o dotnet_trace.log dotnet "$TOOLKIT/utmt-cli/UndertaleModCli.dll" \
-        dump "$DATADIR/data.win" \
-        -e "$DATADIR/textures" "$DATADIR/game.droid"
-
-    if [ $? -ne 0 ]; then
-        echo "[DOTNET]: Texture dumping failed to apply."
-        patch_failure
-    else
-        rm -f "$DATADIR/data.win"
-        mv "$DATADIR/textures" "$SAVEDIR/textures"
-        [ -d "$TMPDIR" ] && rm -rf "$TMPDIR"/*
-    fi
-}
-
 compress_audio() {
     # Test for data.win
     if [ -f "$DATADIR/data.win" ]; then
@@ -141,9 +107,6 @@ process_game() {
     echo "Preparing game..."
     prepare_files || { patch_failure; return 1; }
 
-    echo "Externalizing textures..."
-    dump_textures || { patch_failure; return 1; }
-
     echo "Compressing audio..."
     compress_audio || { patch_failure; return 1; }
 
@@ -161,5 +124,4 @@ else
 fi
 
 # Unmount runtimes
-$ESUDO umount "$DOTNETDIR" 2>/dev/null || true
 $ESUDO umount "$TOOLKIT" 2>/dev/null || true
