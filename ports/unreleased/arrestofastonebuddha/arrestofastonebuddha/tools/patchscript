@@ -132,7 +132,6 @@ apply_xdelta() {
                 ;;
             *)
                 echo "Unknown data.win checksum: $checksum"
-                return 1
                 ;;
         esac
 
