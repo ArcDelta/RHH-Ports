@@ -29,7 +29,8 @@ Some of the ports in this repository have minimum requirements. Be sure to check
 ## Runtimes
 Some of my ports require runtimes--mounted squashfs files that contain common scripts, programs, etc. These are found in the `runtimes` folder of this repository and should be placed in `PortMaster/libs` on your device. For large runtimes (like GMToolkit), the squashfs file may be split into multiple parts. You’ll need to recombine the parts before transferring to your device. Download all the parts and, in the same folder, do one of the following:
 
-On Linux:
+On Linux and MacOS:
+
 `cat gmtoolkit.aarch64.squashfs.part.* > gmtoolkit.aarch64.squashfs`
 
 On Windows:
