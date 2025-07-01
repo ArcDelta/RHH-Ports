@@ -12,7 +12,7 @@
 
 ## :bulb: Asking Questions
 
-For questions and help with running ports, please join the [PortMaster Discord](https://discord.gg/JxYBp9HTAY). Questions about ports are welcome, however simple questions should not be made into GitHub Issues.
+For questions and help with running these ports, you can find me on [Reddit](https://www.reddit.com/user/JeodPM). Questions about ports are welcome, however simple questions should not be made into GitHub Issues.
 
 ## :inbox_tray: Opening an Issue
 
@@ -24,7 +24,7 @@ Bear in mind the systems these ports use are generally rooted. The root user is 
 
 ### :beetle: Bug Reports and Other Issues
 
-A great way to contribute to PortMaster is to send a detailed issue when you encounter a problem. We always appreciate a well-written, thorough bug report.
+A great way to contribute is to send a detailed issue when you encounter a problem. Everyone appreciates a well-written, thorough bug report.
 
 - ** Do not open issues for ports outside of this repository!** This repository is for my own ports, that I authored. I am happy to help with other ports, but for the sake of organization please ask for help in the [PortMaster Discord](https://discord.gg/JxYBp9HTAY).
 
@@ -34,7 +34,7 @@ A great way to contribute to PortMaster is to send a detailed issue when you enc
 
 - **Fully complete the provided issue template.** The bug report template requests all the information we need to quickly and efficiently address your issue. Be clear, concise, and descriptive. Provide as much information as you can, including steps to reproduce, stack traces, compiler errors, library versions, OS versions, and screenshots (if applicable).
 
-- **Use [GitHub-flavored Markdown](https://help.github.com/en/github/writing-on-github/basic-writing-and-formatting-syntax).** Especially put code blocks and console outputs in backticks (```). This improves readability.
+- **Use [GitHub-flavored Markdown](https://help.github.com/en/github/writing-on-github/basic-writing-and-formatting-syntax).** Especially put code blocks and console outputs in backticks. This improves readability.
 
 ## :repeat: Submitting Pull Requests
 

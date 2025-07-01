@@ -16,8 +16,33 @@ Whether you're new to retro handhelds, a developer who came across this reposito
   </table>
 </div>
 
+## Port Capability Requirements
+Some of the ports in this repository have minimum requirements. Be sure to check the `port.json` file for a port to see if it lists any of the following requirements:
+
+- `hires`: The port will work best with a screen resolution greater than `640x480`.
+- `!lowres`: The port will work best with a screen resolution that is at minimum `640x480`.
+- `power`: The port will perform best with a device with more power than the `rk3326` cpu.
+- `opengl`: The port requires OpenGL (not OpenGLES). This means a mainline custom firmware.
+- `wide`: The port demands an aspect ratio above 4:3.
+- `analog_#`: The port requires analog sticks.
+
+## Runtimes
+Some of my ports require runtimes--mounted squashfs files that contain common scripts, programs, etc. These are found in the `runtimes` folder of this repository and should be placed in `PortMaster/libs` on your device. For large runtimes (like GMToolkit), the squashfs file may be split into multiple parts. You’ll need to recombine the parts before transferring to your device. Download all the parts and, in the same folder, do one of the following:
+
+On Linux:
+`cat gmtoolkit.aarch64.squashfs.part.* > gmtoolkit.aarch64.squashfs`
+
+On Windows:
+
+cmd: `copy /b gmtoolkit.aarch64.squashfs.part.001 + gmtoolkit.aarch64.squashfs.part.002 + gmtoolkit.aarch64.squashfs.part.003 gmtoolkit.aarch64.squashfs`
+
+powershell: `Get-ChildItem -Filter "gmtoolkit.aarch64.squashfs.part.*" | Sort-Object Name | Get-Content -Encoding Byte -ReadCount 0 | Set-Content gmtoolkit.aarch64.squashfs -Encoding Byte`
+
+## Keeping up
+You can keep up with ports that I consider "complete" by checking the [commit history](https://github.com/JeodC/PortMaster-Games/commits/main) for the format `[PORTNAME] Move to released folder`. You can also browse the [unreleased](https://github.com/JeodC/PortMaster-Games/tree/main/ports/unreleased) folder to see what I'm working on. If you star and watch this repository, you'll get GitHub notifications when I make changes.
+
 ## Contributing
-If you see potential for improvements to my ports, I'm open to suggestions and pull requests--especially for unreleased ports, which are either in testing with the PortMaster Discord server or in limbo for one reason or another. Please do not open issues to suggest new ports unless you're certain they can be ported. Although, if you're certain a game can be ported, why not do it yourself?
+If you see potential for improvements to my ports, I'm open to suggestions and pull requests--especially for unreleased ports, which are either in progress or in limbo for one reason or another. Please do not open issues to suggest new ports unless you're certain they can be ported. Although, if you're certain a game can be ported, why not do it yourself?
 
 Please review the [Contribution Guidelines](.github/CONTRIBUTING.md) before proceeding with contributions.
 
