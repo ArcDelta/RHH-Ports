@@ -7,7 +7,7 @@ The supported ROMs are:
 - US 1.1
 - JP 1.0 (JP Voices only)
 - EU 1.0 (Lylat Voices only)
-- CN 1.1
+- CN 1.1 (Unknown, maybe voices only?)
 
  You can verify you have dumped a supported copy of the game by using the SHA-1 File Checksum Online at https://www.romhacking.net/hash/. The hash for a US 1.1 ROM is SHA-1: 09F0D105F476B00EFA5303A3EBC42E60A7753B7A.
 
