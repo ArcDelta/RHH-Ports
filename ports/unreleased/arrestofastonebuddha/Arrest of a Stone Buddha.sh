@@ -48,12 +48,6 @@ if [ ! -f patchlog.txt ] || [ -f "$GAMEDIR/assets/data.win" ]; then
     fi
 fi
 
-# Display loading splash
-if [ -f "$GAMEDIR/patchlog.txt" ]; then
-    [ "$CFW_NAME" == "muOS" ] && $ESUDO "$GAMEDIR/tools/splash" "$GAMEDIR/splash.png" 1
-    $ESUDO "$GAMEDIR/tools/splash" "$GAMEDIR/splash.png" 8000 & 
-fi
-
 # Assign gptokeyb and load the game
 $GPTOKEYB "gmloadernext.aarch64" -c "buddha.gptk" &
 pm_platform_helper "$GAMEDIR/gmloadernext.aarch64" >/dev/null
