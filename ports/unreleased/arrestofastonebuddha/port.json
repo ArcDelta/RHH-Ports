@@ -1,0 +1,42 @@
+{
+  "version": 4,
+  "name": "arrestofastonebuddha.zip",
+  "items": [
+    "Arrest of a Stone Buddha.sh",
+    "arrestofastonebuddha"
+  ],
+  "items_opt": [],
+  "attr": {
+    "title": "Arrest of a Stone Buddha",
+    "porter": [
+      "Jeod"
+    ],
+    "desc": "You are a hitman in France, 1976. Kill your target, fight your way through mobs to your getaway vehicle, and then...enjoy life while waiting for the next job. Is life as a hitman fulfilling?",
+    "desc_md": null,
+    "inst": "Copy your \"arrest of a stone buddha.exe\" file to the assets folder.",
+    "inst_md": null,
+    "genres": [
+      "action",
+      "adventure"
+    ],
+    "image": null,
+    "rtr": false,
+    "exp": false,
+    "runtime": [
+      "gmtoolkit.squashfs"
+    ],
+    "store": [
+      {
+        "name": "Steam",
+        "gameurl": "https://store.steampowered.com/app/1151120/Arrest_of_a_stone_Buddha/",
+        "developerurl": ""
+      }
+    ],
+    "availability": "paid",
+    "reqs": [],
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": ""
+  }
+}

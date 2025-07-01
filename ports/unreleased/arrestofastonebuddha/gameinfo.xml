@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<gamelist>
+	<game>
+		<path>./Arrest of a Stone Buddha.sh</path>
+		<name>Arrest of a Stone Buddha</name>
+		<desc>You are a hitman in France, 1976. Kill your target, fight your way through mobs to your getaway vehicle, and then...enjoy life while waiting for the next job. Is life as a hitman fulfilling?</desc>
+		<image>./arrestofastonebuddha/cover.png</image>
+		<releasedate>20200227</releasedate>
+		<developer>Yeo</developer>
+		<genre>Action, Adventure, Indie</genre>
+	</game>
+</gamelist>
