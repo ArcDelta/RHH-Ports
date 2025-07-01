@@ -10,6 +10,7 @@ echo "GAMEDIR is set to: $GAMEDIR"
 
 # Patch failure function
 patch_failure() {
+    $ESUDO umount "$DOTNETDIR" 2>/dev/null || true
     $ESUDO umount "$TOOLKIT" 2>/dev/null || true
     # Exit script, or return if sourced
     return 1 2>/dev/null || exit 1
@@ -33,7 +34,7 @@ export PATH="$TOOLKIT/gmtools:$TOOLKIT/utmt-cli:$PATH"
 export LD_LIBRARY_PATH="/usr/lib:$TOOLKIT/libs:$LD_LIBRARY_PATH"
 export SDL_GAMECONTROLLERCONFIG="$sdl_controllerconfig"
 export DATADIR="$GAMEDIR/assets"
-export DATAFILE="utyellow.port"
+export DATAFILE="undertalery.port"
 export TMPDIR="$GAMEDIR/tmp"
 
 # Permissions
@@ -64,47 +65,140 @@ if [ -z "$ZIP" ]; then
     patch_failure
 fi
 
-prepare_files() {
-    mkdir -p "$SAVEDIR"
-    
-    # Delete excess files
-    find "$DATADIR" -type f \( \
-        -name "*.exe" -o -name "*.dll" -o -name "*.hashdb" -o \
-        -name "*.ico" -o -name "*.lnk" -o -name "*.msg" -o -name "*.zip" \
-    \) -exec rm -f {} \;
+# First we need to verify the user placed everything correctly.
+prepare_assets() {
 
-    # Move splash file if it exists
-    if [ -f "$DATADIR/splash.png" ]; then
-        mv "$DATADIR/splash.png" "$GAMEDIR/splash.png"
+    # Identify ut-red-yellow.zip
+    echo "Looking for Undertale Red & Yellow zip file..."
+    sleep 1
+    for zipfile in "$DATADIR"/*.zip; do
+        if unzip -l "$zipfile" 2>/dev/null | grep -q "UNDERTALE\.exe"; then
+            MOD_ZIP="$zipfile"
+            break
+        fi
+    done
+
+    if [ -z "$MOD_ZIP" ]; then
+        echo "Error: Could not find Undertale Red & Yellow zip file. Checking for unzipped assets."
+        if [ ! -f "$DATADIR/utry/UNDERTALE.exe" ]; then
+            echo "Couldn't find unzipped assets! Please copy the ut-red-yellow-zip file to the assets folder."
+            mv "$LOGFILE" "$LOGERR"
+            exit 1
+        fi
+    else
+        echo "Found ${MOD_ZIP}!"
     fi
+
+    mkdir -p "$DATADIR/utry"
+    unzip "$MOD_ZIP" -d "$DATADIR/utry" || { echo "Failed to unzip $MOD_ZIP"; exit 1; }
+    rm -rf "$MOD_ZIP"
+
+    # Move .ogg files if any exist
+    ogg=false
+    for f in "$DATADIR/utry/"*.ogg; do
+        if [ -f "$f" ]; then
+            mv "$f" "$DATADIR"
+            ogg=true
+        fi
+    done
+
+    if ! $ogg; then
+        echo "No .ogg files to move."
+    fi
+
+    if [ -f "$DATADIR/utry/splash.png" ]; then
+        mv "$DATADIR/utry/splash.png" "$GAMEDIR" || { echo "Failed to move splash.png"; }
+    fi
+
+    mkdir -p "$TOOLDIR/patches"
+    FOUND=0
+
+    for f in "$DATADIR/utry/"*.xdelta; do
+        case "$f" in
+            *Undertalev1.0.8*)
+                dest="$TOOLDIR/patches/utry_steam.xdelta"
+                ;;
+            *v1.08_Windows_C*)
+                dest="$TOOLDIR/patches/utry_gog.xdelta"
+                ;;
+            *)
+                continue
+                ;;
+        esac
+
+        mv "$f" "$dest" || {
+            echo "Failed to move patch file: $f"
+            exit 1
+        }
+        FOUND=1
+    done
+
+    if [ $FOUND -eq 0 ]; then
+        echo "Could not find any base patch files!"
+        exit 1
+    fi
+
+    # Clean up
+    rm -f "$DATADIR"/*.dll "$DATADIR"/*.exe "$DATADIR"/.gitkeep
+    rm -rf "$DATADIR/utry"
+    echo "Finished preparing files..."
 }
 
+# Hopefully the stage is set. Now ensure they copied their Undertale game data and apply the patch.
 apply_xdelta() {
-    # Check if the data.win file exists and apply xdelta
+    # Check if the data.win file exists
     if [ -f "$DATADIR/data.win" ]; then
-        if [ "$(md5sum "$DATADIR/data.win" | awk '{print $1}')" == "db15b9fb5662207e3d4b329d1c00bc70" ]; then
-            # English v1.1.0
-            output=$($controlfolder/xdelta3 -d -s "$DATADIR/data.win" -f "./tools/patches/utyellow-en.xdelta" "$DATADIR/game.droid" 2>&1)
-        elif [ "$(md5sum "$DATADIR/data.win" | awk '{print $1}')" == "328e499caf024644a9399b49afd4c8b7" ]; then
-            # Espanol
-            output=$($controlfolder/xdelta3 -d -s "$DATADIR/data.win" -f "./tools/patches/utyellow-es.xdelta" "$DATADIR/game.droid" 2>&1)
-        fi
-        
-        # Success / Failure
+        # Compute md5sum
+        FILESUM=`md5sum "$DATADIR/data.win" | awk '{ print $1 }'`
+        STEAMSUM="5903fc5cb042a728d4ad8ee9e949c6eb"
+
+        if [ "$FILESUM" != "$STEAMSUM" ]; then
+            echo "MD5 doesn't match Steam! Trying to apply the GOG patch..."
+            sleep 1
+            output=`"$controlfolder/xdelta3" -d -s "$DATADIR/data.win" -f "./tools/patches/utry_gog.xdelta" "$DATADIR/data2.win" 2>&1`
+            if [ $? -eq 0 ]; then
+                echo "Patch applied successfully"
+                echo "$output"
+                rm "$DATADIR/data.win" && mv "$DATADIR/data2.win" "$DATADIR/data.win"
+            else
+                echo "Failed to apply gog patch! Probably not GOG v1.08 Windows."
+                echo "$output"
+                mv "$LOGFILE" "$LOGERR"
+                exit 1
+            fi
+        fi    
+
+        # Apply the Steam patch
+        echo "Applying xdelta patch..."
+        output=`"$controlfolder/xdelta3" -d -s "$DATADIR/data.win" -f "./tools/patches/utry_steam.xdelta" "$DATADIR/game.droid" 2>&1`
         if [ $? -eq 0 ]; then
             echo "Patch applied successfully"
             echo "$output"
             rm "$DATADIR/data.win"
+            output=`"$controlfolder/xdelta3" -d -s "$DATADIR/game.droid" -f "./tools/patches/pm-fix.xdelta" "$DATADIR/game2.droid" 2>&1`
+            if [ $? -eq 0 ]; then
+                echo "Second patch applied successfully"
+                echo "$output"
+                rm "$DATADIR/game.droid" && mv "$DATADIR/game2.droid" "$DATADIR/game.droid"
+            else
+                echo "Failed to apply secondary patch"
+                echo "$output"
+                mv "$LOGFILE" "$LOGERR"
+                exit 1
+            fi
         else
             echo "Failed to apply patch"
             echo "$output"
-            patch_failure
+            mv "$LOGFILE" "$LOGERR"
+            exit 1
         fi
+    else
+        echo "No data.win file found to patch! Did you copy your Undertale Steam data to the assets folder?"
     fi
 }
 
 compress_audio() {  
-    if $PYTHON "$TOOLKIT/gmtools/gmKtool.py" -v -m 1000 -r -b 64 -d "$TMPDIR" "$DATADIR/game.droid"; then
+    if $PYTHON "$TOOLKIT/gmtools/gmKtool.py" -vv -m 1000 -r -b 64 -d "$TMPDIR" "$DATADIR/game.droid"; then
         mv "$TMPDIR/"* "$DATADIR" && rmdir "$TMPDIR"
         echo "Audio compression applied successfully."
     else
@@ -117,19 +211,17 @@ compress_audio() {
 
 zip_archive() {
         zip -r -0 "$DATAFILE" ./assets/
-        echo "Zipped contents to $DATAFILE"
-        rm -rf "$DATADIR/"*
+        mkdir -p saves
+        rm -rf "${DATADIR:?}"/*
 }
 
-process_game() { 
-    echo "Preparing game..."
-    prepare_files || { patch_failure; return 1; }
-    echo "Applying xdelta patch..."
+process_game() {
+    prepare_assets || { patch_failure; return 1; }
+    sleep 2
     apply_xdelta || { patch_failure; return 1; }
-    echo "Compressing audio..."
+    sleep 2
     compress_audio || { patch_failure; return 1; }
-    sleep 1
-    echo "Finishing up..."
+    sleep 2
     zip_archive || { patch_failure; return 1; }
 }
 
@@ -142,4 +234,5 @@ else
 fi
 
 # Unmount runtimes
+$ESUDO umount "$DOTNETDIR" 2>/dev/null || true
 $ESUDO umount "$TOOLKIT" 2>/dev/null || true
