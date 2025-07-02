@@ -12,14 +12,6 @@ else
   controlfolder="/roms/ports/PortMaster"
 fi
 
-#
-# THIS WAS TESTED WITH VERSION v1.1.271:
-#
-# Pizza Tower$ sha256sum data.win
-# 698373e57a64a46d9857ba6dce9f6a300fce989d16c51cec6d58613fbd5ea599  data.win
-# Download using the Steam Console: download_depot 2231450 2231451 2814056822728886841 
-#
-
 source $controlfolder/control.txt
 source $controlfolder/tasksetter
 [ -f "${controlfolder}/mod_${CFW_NAME}.txt" ] && source "${controlfolder}/mod_${CFW_NAME}.txt"
