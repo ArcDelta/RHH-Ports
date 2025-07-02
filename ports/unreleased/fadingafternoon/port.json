@@ -1,0 +1,42 @@
+{
+  "version": 4,
+  "name": "fadingafternoon.zip",
+  "items": [
+    "Fading Afternoon.sh",
+    "fadingafternoon"
+  ],
+  "items_opt": [],
+  "attr": {
+    "title": "Fading Afternoon",
+    "porter": [
+      "Jeod"
+    ],
+    "desc": "Seiji Maruyama is a middle-aged yakuza recently released from prison. Known as \"Gozuki\" (one of the demon generals from Buddhist mythology) he is the power that his oyabun counts on. But there is one thing his aniki is not taking into account: Maruyama is getting old.",
+    "desc_md": null,
+    "inst": "Copy your game files to the assets folder.",
+    "inst_md": null,
+    "genres": [
+      "action",
+      "adventure"
+    ],
+    "image": null,
+    "rtr": false,
+    "exp": false,
+    "runtime": [
+      "gmtoolkit.squashfs"
+    ],
+    "store": [
+      {
+        "name": "Steam",
+        "gameurl": "https://store.steampowered.com/app/1687000/Fading_Afternoon",
+        "developerurl": ""
+      }
+    ],
+    "availability": "paid",
+    "reqs": [],
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": ""
+  }
+}
