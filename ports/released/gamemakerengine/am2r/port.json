@@ -16,7 +16,8 @@
             "platformer"
         ],
         "porter": [
-            "Johnny on Flame"
+            "Johnny on Flame",
+			"Jeod"
         ],
         "image": {
             "screenshot": "screenshot.jpg",
@@ -27,24 +28,14 @@
             "video": null
         },
         "rtr": false,
-        "runtime": null,
+        "runtime": [],
         "reqs": [],
         "arch": [
-            "armhf"
+            "aarch64"
         ],
         "desc_md": null,
         "inst_md": null,
         "exp": false,
         "min_glibc": ""
     },
-    "status": {
-        "source": "PortMaster Multiverse",
-        "md5": "eaa6fb4d7c26742d0776a393a19232b7",
-        "status": "Installed"
-    },
-    "files": {
-        "port.json": "am2r/port.json",
-        "AM2R.sh": "AM2R.sh",
-        "am2r/": "am2r/"
-    }
 }
