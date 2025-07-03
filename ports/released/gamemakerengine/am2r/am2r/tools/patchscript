@@ -118,7 +118,7 @@ prepare_files() {
     # AM2RPATCH: Move files
     if [ -n "$AUTOPATCHER_ZIP" ]; then
         echo "Moving patch files to $DATADIR/am2r"
-        rsync -a "$DATADIR/am2rpatch/AM2R-Autopatcher-Windows-master/data/files_to_copy/"* "$DATADIR/am2r/"
+        cp -rf "$DATADIR/am2rpatch/AM2R-Autopatcher-Windows-master/data/files_to_copy/"* "$DATADIR/am2r/"
     fi
     
     # Unzip the 1.6b archive
@@ -126,9 +126,9 @@ prepare_files() {
     
     # Copy files
     echo "Moving 1.6b2 files..."
-    rsync -a "$DATADIR/am2r16b/files_to_copy/"* "$DATADIR/am2r/"
+    cp -rf "$DATADIR/am2r16b/files_to_copy/"* "$DATADIR/am2r/"
     if [ -n "$AUTOPATCHER_ZIP" ]; then
-        rsync -a "$DATADIR/am2rpatch/AM2R-Autopatcher-Windows-master/data/HDR_HQ_in-game_music/"* "$DATADIR/am2r/"
+        cp -rf "$DATADIR/am2rpatch/AM2R-Autopatcher-Windows-master/data/HDR_HQ_in-game_music/"* "$DATADIR/am2r/"
     fi
     DATA="$DATADIR/am2r/data.win"
     PATCH="$DATADIR/am2r16b/data.xdelta"
