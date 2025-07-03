@@ -104,7 +104,9 @@ unzip_archives() {
     $UNZIP "$AM2R_ZIP" -d "$DATADIR/am2r" 2>/dev/null
 
     # Unzip autopatcher zip to its folder
-    $UNZIP "$AUTOPATCHER_ZIP" -d "$DATADIR/am2rpatch" 2>/dev/null
+    if [ -n "$AUTOPATCHER_ZIP" ]; then
+        $UNZIP "$AUTOPATCHER_ZIP" -d "$DATADIR/am2rpatch" 2>/dev/null
+    fi
 }
 
 prepare_files() {
