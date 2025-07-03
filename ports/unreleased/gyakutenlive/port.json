@@ -1,0 +1,39 @@
+{
+  "version": 4,
+  "name": "gyakutenlive.zip",
+  "items": [
+    "Gyakuten Live!.sh",
+    "gyakutenlive"
+  ],
+  "items_opt": [],
+  "attr": {
+    "title": "Gyakuten Live!",
+    "porter": [
+      "Jeod"
+    ],
+    "desc": "Gyakuten Live! is a Love Live fangame with Ace Attorney-style gameplay. Travel through the adventures of your favourite school idols as you solve mysteries and prove the innocence of your clients. Currently has: 3 episodes, with more on the way!",
+    "desc_md": null,
+    "inst": "Compatible with v3.1.3! Download the game from itch.io and unzip it to `gyakutenlive/assets`.",
+    "inst_md": null,
+    "genres": [
+      "visual novel"
+    ],
+    "image": null,
+    "rtr": false,
+    "exp": false,
+    "runtime": [],
+    "store": [
+      {
+        "name": "Itch.io",
+        "gameurl": "https://krakelak.itch.io/gyakuten-live",
+        "developerurl": ""
+      }
+    ],
+    "availability": "free",
+    "reqs": [],
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": ""
+  }
+}

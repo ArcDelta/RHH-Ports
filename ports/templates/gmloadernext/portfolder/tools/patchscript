@@ -99,7 +99,7 @@ dump_textures() {
     rm -rf "$TMPDIR/"*
     
     # Begin texture operations
-    dotnet_trace.log dotnet "$TOOLKIT/utmt-cli/UndertaleModCli.dll" \
+    dotnet "$TOOLKIT/utmt-cli/UndertaleModCli.dll" \
         dump "$DATADIR/data.win" \
         -e "$DATADIR/textures" "$DATADIR/game.droid"
 

@@ -17,6 +17,5 @@
 | R2                | |
 
 ## Thanks
-    
+
 JohnnyOnFlame -- GMLoader-Next  
-PortMaster -- Testers & Devs  
