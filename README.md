@@ -31,13 +31,13 @@ Some of my ports require runtimes--mounted squashfs files that contain common sc
 
 On Linux and MacOS:
 
-`cat gmtoolkit.aarch64.squashfs.part.* > gmtoolkit.aarch64.squashfs`
+`cat gmtoolkit.squashfs.part.* > gmtoolkit.squashfs`
 
 On Windows:
 
-cmd: `copy /b gmtoolkit.aarch64.squashfs.part.001 + gmtoolkit.aarch64.squashfs.part.002 + gmtoolkit.aarch64.squashfs.part.003 gmtoolkit.aarch64.squashfs`
+cmd: `copy /b gmtoolkit.squashfs.part.001 + gmtoolkit.squashfs.part.002 + gmtoolkit.squashfs.part.003 gmtoolkit.squashfs`
 
-powershell: `Get-ChildItem -Filter "gmtoolkit.aarch64.squashfs.part.*" | Sort-Object Name | Get-Content -Encoding Byte -ReadCount 0 | Set-Content gmtoolkit.aarch64.squashfs -Encoding Byte`
+powershell: `Get-ChildItem -Filter "gmtoolkit.squashfs.part.*" | Sort-Object Name | Get-Content -Encoding Byte -ReadCount 0 | Set-Content gmtoolkit.squashfs -Encoding Byte`
 
 ## Keeping up
 You can keep up with ports that I consider "complete" by checking the [commit history](https://github.com/JeodC/PortMaster-Games/commits/main) for the format `[PORTNAME] Move to released folder`. You can also browse the [unreleased](https://github.com/JeodC/PortMaster-Games/tree/main/ports/unreleased) folder to see what I'm working on. If you star and watch this repository, you'll get GitHub notifications when I make changes.
