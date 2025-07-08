@@ -27,6 +27,7 @@
             "thumbnail": null,
             "video": null
         },
+		"availability": "free",
         "rtr": false,
         "runtime": [],
         "reqs": [],

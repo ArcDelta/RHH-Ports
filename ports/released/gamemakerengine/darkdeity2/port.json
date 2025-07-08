@@ -18,6 +18,7 @@
     "genres": [
       "strategy"
     ],
+	"availability": "paid",
     "image": null,
     "rtr": false,
     "exp": false,

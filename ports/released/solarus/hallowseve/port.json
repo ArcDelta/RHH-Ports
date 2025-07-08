@@ -17,6 +17,7 @@
             "action",
             "adventure"
         ],
+		"availability": "paid",
         "image": "screenshot.png",
         "rtr": false,
         "exp": false,

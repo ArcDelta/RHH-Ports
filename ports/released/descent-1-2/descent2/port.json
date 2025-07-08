@@ -19,6 +19,7 @@
     "genres": [
       "fps"
     ],
+	"availability": "paid",
     "image": "descent2.screenshot.png",
     "rtr": true,
     "exp": false,

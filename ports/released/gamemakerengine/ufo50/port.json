@@ -18,6 +18,7 @@
     "genres": [
       "arcade"
     ],
+	"availability": "paid",
     "image": null,
     "rtr": false,
     "exp": false,

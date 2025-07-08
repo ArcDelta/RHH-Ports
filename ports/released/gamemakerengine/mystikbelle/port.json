@@ -19,6 +19,7 @@
             "action",
             "platformer"
         ],
+		"availability": "paid",
         "image": null,
         "rtr": false,
         "exp": false,

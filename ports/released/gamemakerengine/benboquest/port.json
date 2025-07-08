@@ -16,6 +16,7 @@
         "porter": [
             "Jeod"
         ],
+		"availability": "full",
         "image": null,
         "rtr": true,
         "runtime": null,

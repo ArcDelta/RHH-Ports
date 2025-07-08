@@ -19,6 +19,7 @@
     "genres": [
       "fps"
     ],
+	"availability": "full",
     "image": null,
     "rtr": true,
     "exp": false,

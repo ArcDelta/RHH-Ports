@@ -20,13 +20,14 @@
       "arcade",
       "platformer"
     ],
+	"availability": "free",
     "image": "screenshot.png",
     "rtr": false,
     "exp": false,
     "runtime": [
       "gmtoolkit.squashfs"
 	],
-    "reqs": ["!arkos"],
+    "reqs": [],
     "arch": ["aarch64"]
   }
 }

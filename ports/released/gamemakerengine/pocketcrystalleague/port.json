@@ -18,6 +18,7 @@
     "genres": [
       "casino/card"
     ],
+	"availability": "full",
     "image": null,
     "rtr": true,
     "exp": false,

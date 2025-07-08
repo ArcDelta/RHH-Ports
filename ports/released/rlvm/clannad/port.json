@@ -17,6 +17,7 @@
     "genres": [
       "visual-novel"
     ],
+	"availability": "paid",
     "image": "screenshot.png",
     "rtr": false,
     "exp": false,

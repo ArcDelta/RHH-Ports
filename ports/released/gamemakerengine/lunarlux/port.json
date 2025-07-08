@@ -20,6 +20,7 @@
 	  "adventure",
 	  "rpg"
     ],
+	"availability": "paid",
     "image": null,
     "rtr": true,
     "exp": false,

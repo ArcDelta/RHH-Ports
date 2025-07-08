@@ -17,10 +17,11 @@
       "action",
 	  "adventure"
     ],
+	"availability": "demo",
     "image": "screenshot.png",
     "rtr": false,
     "exp": false,
-    "runtime": "solarus-run",
+    "runtime": "solarus-1.6.5.squashfs",
     "reqs": []
   }
 }

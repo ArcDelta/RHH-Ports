@@ -17,6 +17,7 @@
             "action",
             "adventure"
         ],
+		"availability": "free",
         "image": "screenshot.png",
         "rtr": false,
         "exp": false,

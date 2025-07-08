@@ -2,6 +2,7 @@ async function loadPorts() {
     const container = document.getElementById('ports-container');
     const countDisplay = document.getElementById('port-count');
     const filterDropdown = document.getElementById('genre-filter');
+    const availabilityDropdown = document.getElementById('availability-filter');
     const sortDropdown = document.getElementById('sort-select');
 
     try {
@@ -23,15 +24,45 @@ async function loadPorts() {
         for (const genre of allGenres) {
             const option = document.createElement('option');
             option.value = genre;
-            option.textContent = genre;
+            option.textContent = genre.charAt(0).toUpperCase() + genre.slice(1);;
             filterDropdown.appendChild(option);
+        }
+
+        // Collect all availability statuses
+        const availabilitySet = new Set();
+        ports.forEach(port => {
+            if (port.availability) {
+                availabilitySet.add(port.availability);
+            }
+        });
+        const allAvailability = Array.from(availabilitySet).sort();
+
+        // Populate availability dropdown
+        for (const avail of allAvailability) {
+            const option = document.createElement('option');
+            option.value = avail;
+
+            // Customize display text
+            let displayText;
+            switch (avail.toLowerCase()) {
+                case 'full':
+                    displayText = 'Ready to run';
+                    break;
+                case 'free':
+                    displayText = 'Free, files needed';
+                    break;
+                default:
+                    displayText = avail.charAt(0).toUpperCase() + avail.slice(1);
+            }
+
+            option.textContent = displayText;
+            availabilityDropdown.appendChild(option);
         }
 
         // Sort function
         function sortPorts(list, method) {
             if (method === 'most_recent') {
                 return list.slice().sort((a, b) => {
-                    // Safely parse dates, fallback to 0 if missing or invalid
                     const dateA = new Date(a.last_modified || 0);
                     const dateB = new Date(b.last_modified || 0);
                     return dateB - dateA;
@@ -41,17 +72,27 @@ async function loadPorts() {
             }
         }
 
-        // Render cards
+        // Render function
         function render(filteredPorts) {
             container.innerHTML = '';
-            
-            if (filterDropdown.value === 'all') {
-                countDisplay.textContent = `${filteredPorts.length} released ports`;
-            } else {
-                const selectedGenre = filterDropdown.options[filterDropdown.selectedIndex].text;
-                countDisplay.textContent = `${filteredPorts.length} released ports in genre "${selectedGenre}"`;
+
+            const genreVal = filterDropdown.value;
+            const availabilityVal = availabilityDropdown.value;
+
+            // Compose count display text
+            let countText = `${filteredPorts.length} released ports`;
+            if (genreVal !== 'all') {
+                const genreText = filterDropdown.options[filterDropdown.selectedIndex].text;
+                countText += ` in genre "${genreText}"`;
+            }
+            if (availabilityVal !== 'all') {
+                const availText = availabilityDropdown.options[availabilityDropdown.selectedIndex].text;
+                countText += ` with availability "${availText}"`;
             }
 
+            countDisplay.textContent = countText;
+
+            // Build port cards
             for (const port of filteredPorts) {
                 const card = document.createElement('div');
                 card.className = 'port-card';
@@ -111,12 +152,20 @@ async function loadPorts() {
             }
         }
 
-        // Function to filter and sort then render
+        // Filter + sort + render
         function updateDisplay() {
             const selectedGenre = filterDropdown.value;
-            let filtered = selectedGenre === 'all' ? ports : ports.filter(port => port.genres?.includes(selectedGenre));
+            const selectedAvailability = availabilityDropdown.value;
 
-            // Apply sorting
+            let filtered = ports;
+
+            if (selectedGenre !== 'all') {
+                filtered = filtered.filter(port => port.genres?.includes(selectedGenre));
+            }
+            if (selectedAvailability !== 'all') {
+                filtered = filtered.filter(port => port.availability === selectedAvailability);
+            }
+
             const sortMethod = sortDropdown.value;
             filtered = sortPorts(filtered, sortMethod);
 
@@ -126,8 +175,9 @@ async function loadPorts() {
         // Initial render
         updateDisplay();
 
-        // Event listeners
+        // Event listeners for all filters and sort
         filterDropdown.addEventListener('change', updateDisplay);
+        availabilityDropdown.addEventListener('change', updateDisplay);
         sortDropdown.addEventListener('change', updateDisplay);
 
     } catch (err) {

@@ -17,6 +17,7 @@
     "genres": [
       "action"
     ],
+	"availability": "free",
     "image": null,
     "rtr": false,
     "exp": false,

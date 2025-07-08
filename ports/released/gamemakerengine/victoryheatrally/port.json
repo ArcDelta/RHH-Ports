@@ -16,8 +16,10 @@
     "inst": "Purchase the game on Steam and add the game data to `ports/vhr/assets`.",
     "inst_md": null,
     "genres": [
+	  "arcade",
       "racing"
     ],
+	"availability": "paid",
     "image": null,
     "rtr": false,
     "exp": false,

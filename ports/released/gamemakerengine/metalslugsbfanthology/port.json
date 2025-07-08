@@ -20,6 +20,7 @@
       "arcade",
       "platformer"
     ],
+	"availability": "free",
     "image": null,
     "rtr": false,
     "exp": false,
