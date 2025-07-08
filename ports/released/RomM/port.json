@@ -16,7 +16,7 @@
     "inst": "Ready to run with demo server. Follow the readme and edit the `.env` file to use your own server instance.",
     "inst_md": null,
     "genres": [
-      "other"
+      "app"
     ],
     "image": null,
     "rtr": true,

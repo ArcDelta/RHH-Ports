@@ -1,0 +1,1817 @@
+[
+  {
+    "title": "Air",
+    "description": "'AIR' follows Yukito Kunisaki, a traveling puppeteer searching for a winged girl from a childhood legend, who arrives in a small seaside town. There, he meets various girls, each with their own unique stories and supernatural abilities. As Yukito unravels their pasts and the town's mysteries, he discovers connections that transcend time and space, leading to poignant revelations about love, loss, and the human spirit.",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/rlvm/air",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rlvm/air/screenshot.png",
+    "porter": [
+      "Jeod",
+      "kloptops"
+    ],
+    "genres": [
+      "visual-novel"
+    ],
+    "availability": "unknown",
+    "store": [],
+    "instructions": "Add your game assets to `ports/air/gamedata`.",
+    "runtime": "rlvm.squashfs",
+    "exp": true,
+    "rtr": false,
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-05-18T11:11:03.378Z"
+  },
+  {
+    "title": "AM2R",
+    "description": "Another Metroid 2 Remake.  An action-adventure game developed by Argentinian programmer Milton Guasti (also known as DoctorM64).",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/am2r",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/am2r/screenshot.jpg",
+    "porter": [
+      "Johnny on Flame",
+      "Jeod"
+    ],
+    "genres": [
+      "action",
+      "adventure",
+      "platformer"
+    ],
+    "availability": "unknown",
+    "store": [],
+    "instructions": "You'll need to provide your own am2r android apk into the ports/am2r/gamedata folder.  Make sure it is named am2r.apk.  The name is case sensitive.",
+    "runtime": [],
+    "exp": false,
+    "rtr": false,
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-07-08T16:24:53.358Z"
+  },
+  {
+    "title": "Arrest of a Stone Buddha",
+    "description": "You are a hitman in France, 1976. Kill your target, fight your way through mobs to your getaway vehicle, and then...enjoy life while waiting for the next job. Is life as a hitman fulfilling?",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/yeotrilogy/arrestofastonebuddha",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/yeotrilogy/arrestofastonebuddha/screenshot.png",
+    "porter": [
+      "Jeod"
+    ],
+    "genres": [
+      "action",
+      "adventure"
+    ],
+    "availability": "paid",
+    "store": [
+      {
+        "name": "Steam",
+        "gameurl": "https://store.steampowered.com/app/1151120/Arrest_of_a_stone_Buddha/",
+        "developerurl": ""
+      }
+    ],
+    "instructions": "Copy your \"arrest of a stone buddha.exe\" file to the assets folder.",
+    "runtime": [
+      "gmtoolkit.squashfs"
+    ],
+    "exp": false,
+    "rtr": false,
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-07-01T16:14:32.484Z"
+  },
+  {
+    "title": "Aurascope Demo",
+    "description": "Aurascope is a 2D action-adventure collectathon platformer with light puzzle and RPG elements. Join our friends Trace and Aurora to uncover the secrets surrounding the Aurascope, a mysterious drive from beyond the stars!",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/aurascope",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/aurascope/screenshot.png",
+    "porter": [
+      "Jeod"
+    ],
+    "genres": [
+      "action",
+      "adventure"
+    ],
+    "availability": "full",
+    "store": [
+      {
+        "name": "Steam",
+        "gameurl": "https://store.steampowered.com/app/1547880/Aurascope",
+        "developerurl": "https://aurascope.net"
+      },
+      {
+        "name": "Itch.io",
+        "gameurl": "https://nick64.itch.io/aurascope",
+        "developerurl": "https://aurascope.net"
+      }
+    ],
+    "instructions": "This is a port for the DEMO!! Download the DEMO at https://store.steampowered.com/app/1547880/Aurascope/ or https://nick64.itch.io/aurascope and add all the data to `ports/aurascope/assets`.\n\nIf you enjoy the demo, visit the [Kickstarter Page](https://www.kickstarter.com/projects/aurascope/aurascope) to follow the game and back the developer!",
+    "runtime": [
+      "gmtoolkit.squashfs"
+    ],
+    "exp": false,
+    "rtr": false,
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-06-28T00:28:16.688Z"
+  },
+  {
+    "title": "Benbo Quest",
+    "description": "🔥THE GATES OF HELL🔥 have opened, the Infinite Skeleton Hell Army from Hell has began the Ultimate InvasionWorld leaders come together to combat the Skeleton Menacehot new indie retro anime pixel platformer that all the cool kids are talking about. Smash your way through a handful of levels and defeat all of the bad dudes, THE GAME SUPER BENBO QUEST TURBO DELUX/SUPER BENBO QUERST CLASSIC",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/benboquest",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/benboquest/screenshot.png",
+    "porter": [
+      "Jeod"
+    ],
+    "genres": [
+      "platformer"
+    ],
+    "availability": "unknown",
+    "store": [],
+    "instructions": "Ready to run!",
+    "runtime": [],
+    "exp": false,
+    "rtr": true,
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-05-13T12:06:29.788Z"
+  },
+  {
+    "title": "Clannad",
+    "description": "The story follows the life of Tomoya Okazaki, a high school delinquent who meets many people in his last year at school, including five girls, and helps resolve their individual problems. Follows a branching plot line which offers pre-determined scenarios with courses of interaction, and focuses on the appeal of the five female main characters by the player character.",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/rlvm/clannad",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rlvm/clannad/screenshot.png",
+    "porter": [
+      "Jeod",
+      "kloptops"
+    ],
+    "genres": [
+      "visual-novel"
+    ],
+    "availability": "unknown",
+    "store": [],
+    "instructions": "Add your game assets to `ports/clannad/gamedata`.",
+    "runtime": "rlvm.squashfs",
+    "exp": false,
+    "rtr": false,
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-05-18T11:11:03.385Z"
+  },
+  {
+    "title": "Clannad: Tomoyo After - It's A Wonderful Life",
+    "description": "Tomoyo After continues the story of Tomoyo Sakagami after the events of Clannad, focusing on her relationship with Tomoya Okazaki and the challenges they face together. It explores themes of love, loss, and redemption against a backdrop of personal growth and emotional healing.",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/rlvm/tomoyo_after",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rlvm/tomoyo_after/screenshot.png",
+    "porter": [
+      "Jeod"
+    ],
+    "genres": [
+      "visual-novel"
+    ],
+    "availability": "unknown",
+    "store": [],
+    "instructions": "Add your game assets to `ports/tomoyo_after/gamedata`.",
+    "runtime": "rlvm.squashfs",
+    "exp": false,
+    "rtr": false,
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-05-18T11:11:03.543Z"
+  },
+  {
+    "title": "Dark Deity",
+    "description": "Step into the world of Terrazael and lead soon-to-be legendary heroes in a quest to restore a land fractured by broken oaths, reckless wars, and untamed magic. Fight back in turn-based battles, manage character relationships, collect dangerous artifacts, and hopefully restore the world...",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/darkdeity",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/darkdeity/screenshot.jpg",
+    "porter": [
+      "Jeod"
+    ],
+    "genres": [
+      "strategy"
+    ],
+    "availability": "unknown",
+    "store": [],
+    "instructions": "Buy the game on gog or steam. Copy all game assets to `darkdeity/assets`.",
+    "runtime": [
+      "dotnet-8.0.12.squashfs",
+      "gmtoolkit.squashfs"
+    ],
+    "exp": false,
+    "rtr": false,
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-07-08T19:57:38.578Z"
+  },
+  {
+    "title": "Dark Deity II",
+    "description": "Verroa is a peaceful continent on the brink of war as the Asverellian Empire seeks to expand - at your homeland’s expense. Command unlikely heroes, fight challenging turn-based battles, and watch hardship forge iron into steel. Dark Deity is back, bigger and better than before!",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/darkdeity2",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/darkdeity2/screenshot.png",
+    "porter": [
+      "Jeod"
+    ],
+    "genres": [
+      "strategy"
+    ],
+    "availability": "unknown",
+    "store": [],
+    "instructions": "Buy the game on steam. Copy all game assets to `darkdeity2/assets`.",
+    "runtime": [
+      "dotnet-8.0.12.squashfs",
+      "gmtoolkit.squashfs"
+    ],
+    "exp": false,
+    "rtr": false,
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-07-08T19:57:47.739Z"
+  },
+  {
+    "title": "Deltarune",
+    "description": "Dive into the parallel story to UNDERTALE! Fight or spare your way through action-packed battles as you explore a mysterious world alongside an endearing cast of new and familiar characters. Chapters 1-4 will be available on launch, with more planned as free updates!",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/deltarune",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/deltarune/screenshot.png",
+    "porter": [
+      "Jeod",
+      "JohnnyOnFlame",
+      "BinaryCounter"
+    ],
+    "genres": [
+      "action",
+      "adventure",
+      "rpg"
+    ],
+    "availability": "paid",
+    "store": [
+      {
+        "name": "Steam",
+        "gameurl": "https://store.steampowered.com/app/1671210/DELTARUNE/",
+        "developerurl": ""
+      },
+      {
+        "name": "Itch.io",
+        "gameurl": "https://tobyfox.itch.io/deltarune",
+        "developerurl": ""
+      }
+    ],
+    "instructions": "Choose where to download the game from and add all files to `ports/deltarune/assets/install`.",
+    "runtime": [
+      "dotnet-8.0.12.squashfs",
+      "gmtoolkit.squashfs"
+    ],
+    "exp": false,
+    "rtr": false,
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-06-25T12:49:08.991Z"
+  },
+  {
+    "title": "Descent",
+    "description": "Play as a mercenary sent into planetary mines to destroy them before a computer virus spreads! You'll fly through 3D mazes in search of keycards to gain access to each level's reactor--which, once destroyed, will begin a self-destruct! Make sure you know where the exit hatch is! It will only open when the reactor is destroyed. Oh, and watch out for those virus-infected robots. They'll shoot at you.\n\nIncludes shareware/demo files. See instructions to use full version.",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/descent-1-2/descent",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/descent-1-2/descent/screenshot.png",
+    "porter": [
+      "Jeod",
+      "Cebion",
+      "Tekkenfede",
+      "krishenriksen"
+    ],
+    "genres": [
+      "fps"
+    ],
+    "availability": "unknown",
+    "store": [],
+    "instructions": "Ready to play with shareware and demo files. To upgrade to full game, purchase on Steam/GOG and then add .hog and .pig files to ports/descent/data.",
+    "runtime": [],
+    "exp": false,
+    "rtr": true,
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-05-18T10:57:24.969Z"
+  },
+  {
+    "title": "Descent II",
+    "description": "Return as a mercenary sent into deep space mines to destroy them before a computer virus spreads! You'll fly through 3D mazes in search of keycards to gain access to each level's reactor--which, once destroyed, will begin a self-destruct! Make sure you know where the exit hatch is! It will only open when the reactor is destroyed. Oh, and watch out for those virus-infected robots. They'll shoot at you.\n\nIncludes shareware/demo files. See instructions to use full version.",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/descent-1-2/descent2",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/descent-1-2/descent2/screenshot.png",
+    "porter": [
+      "Jeod",
+      "Cebion",
+      "Tekkenfede",
+      "krishenriksen"
+    ],
+    "genres": [
+      "fps"
+    ],
+    "availability": "unknown",
+    "store": [],
+    "instructions": "Ready to play with shareware and demo files. To upgrade to full game, purchase on Steam/GOG and then add .hog and .pig files to ports/descent2/data. Fully compatible with Descent 2: Vertigo and Descent Maximum levels!",
+    "runtime": [],
+    "exp": false,
+    "rtr": true,
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-05-18T10:57:25.091Z"
+  },
+  {
+    "title": "Descent III",
+    "description": "Play the exciting final installment in the Descent trilogy! Saved by amateur do-gooders, the Material Defender sets out to stop the robot virus and Dravis' evil plans once and for all! Pilot through 3D space, navigating through familiar indoor mines and outdoor open space terrain. It's a big universe, but fortunately they threw in a guidebot.",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/descent3",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/descent3/screenshot.png",
+    "porter": [
+      "Jeod",
+      "fpasteau"
+    ],
+    "genres": [
+      "fps"
+    ],
+    "availability": "unknown",
+    "store": [],
+    "instructions": "Purchase the full game from GOG or Steam, or use CD game data patched to v1.4. Then, add data files to `descent3/gamedata`. See the readme for specific files needed.",
+    "runtime": [],
+    "exp": false,
+    "rtr": false,
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-05-18T11:11:02.622Z"
+  },
+  {
+    "title": "DigitalTamers Reborn",
+    "description": "Train, fight, evolve! Digital Tamers: ReBorn is a casual fighting game for all Digimon fans. Your mission is to take care of your partner, keep it strong, healthy in order to evolve and win battles and several prizes! Excel and win the 12 Championships that will take place throughout the year in order to become a true Digimon Tamer! Live this experience and welcome, to the Digital World!",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/digitaltamersreborn",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/digitaltamersreborn/screenshot.png",
+    "porter": [
+      "Jeod"
+    ],
+    "genres": [
+      "action"
+    ],
+    "availability": "unknown",
+    "store": [],
+    "instructions": "Download the Windows executable from https://dragonrod342.itch.io/digital-tamers-reborn and put in the `ports/digitamersreborn/assets` folder..",
+    "runtime": [
+      "gmtoolkit.squashfs"
+    ],
+    "exp": false,
+    "rtr": false,
+    "arch": [
+      "armhf"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-06-28T00:28:16.736Z"
+  },
+  {
+    "title": "Dokimon: Quest",
+    "description": "Dokimon: Quest is a game where you capture monsters to battle alongside and push through the dangerous open world. In advances to uncover the the mystery about your missing friend, you must become stronger, allowing you to venture on into increasingly dangerous areas. Battle against fellow Dokimon battlers who are also on the quest to get stronger, and take down evil corporations that stand in your way and disrupt the peace.",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/dokimonquest",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/dokimonquest/screenshot.png",
+    "porter": [
+      "Jeod",
+      "Yano"
+    ],
+    "genres": [
+      "rpg"
+    ],
+    "availability": "paid",
+    "store": [
+      {
+        "name": "Steam",
+        "url": "https://store.steampowered.com/app/2019300"
+      },
+      {
+        "name": "Itch.io",
+        "url": "https://yanako-rpgs.itch.io/dokimon-quest"
+      }
+    ],
+    "instructions": "Includes the demo! To use the full game, buy it on Steam or Itch.io and copy all the data to `ports/dokimon/assets`. The patcher will run whenever it finds new files in the assets folder.",
+    "runtime": [],
+    "exp": false,
+    "rtr": true,
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-06-25T11:28:42.005Z"
+  },
+  {
+    "title": "Doom Engines",
+    "description": "Doom engines! A Love2D launcher makes selecting games and mods easy. See the readme for instructions and details.\n\nIncludes shareware demo files and freedoom.",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/doomengines",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/doomengines/screenshot.jpg",
+    "porter": [
+      "Slayer366",
+      "DDRSoul",
+      "Jeod",
+      "Speedrun"
+    ],
+    "genres": [
+      "fps"
+    ],
+    "availability": "unknown",
+    "store": [],
+    "instructions": "Comes with shareware files for Doom and freedoom bundle for mod use. Add your full game files to their respective folders to play.",
+    "runtime": [],
+    "exp": false,
+    "rtr": true,
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-05-30T13:07:23.238Z"
+  },
+  {
+    "title": "F-Zero Pocket",
+    "description": "Select one of the 30 most skillful drivers of all-time and boost your way to the top in F-Zero Pocket, a racing fan-game made as a tribute to both the GameBoy Color and the F-Zero series.",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/fzeropocket",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/fzeropocket/screenshot.png",
+    "porter": [
+      "Tekkenfede",
+      "MadShmupper",
+      "Jeod"
+    ],
+    "genres": [
+      "arcade",
+      "racing"
+    ],
+    "availability": "unknown",
+    "store": [],
+    "instructions": "Ready to Run",
+    "runtime": [],
+    "exp": false,
+    "rtr": true,
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-05-13T12:06:30.186Z"
+  },
+  {
+    "title": "Fading Afternoon",
+    "description": "Seiji Maruyama is a middle-aged yakuza recently released from prison. Known as \"Gozuki\" (one of the demon generals from Buddhist mythology) he is the power that his oyabun counts on. But there is one thing his aniki is not taking into account: Maruyama is getting old.",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/yeotrilogy/fadingafternoon",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/yeotrilogy/fadingafternoon/screenshot.png",
+    "porter": [
+      "Jeod"
+    ],
+    "genres": [
+      "action",
+      "adventure"
+    ],
+    "availability": "paid",
+    "store": [
+      {
+        "name": "Steam",
+        "gameurl": "https://store.steampowered.com/app/1687000/Fading_Afternoon",
+        "developerurl": ""
+      }
+    ],
+    "instructions": "Copy your game files to the assets folder.",
+    "runtime": [
+      "gmtoolkit.squashfs"
+    ],
+    "exp": false,
+    "rtr": false,
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-07-02T13:18:46.052Z"
+  },
+  {
+    "title": "Guns of Fury",
+    "description": "Guns of Fury is a retro-inspired action platformer that combines the run & gun and Metroidvania genres. Explore a vast interconnected world, gain new abilities and weapons, battle epic bosses and stop the plans of an evil corporation before it’s too late!",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/gunsoffury",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/gunsoffury/screenshot.png",
+    "porter": [
+      "Jeod"
+    ],
+    "genres": [
+      "action",
+      "adventure"
+    ],
+    "availability": "paid",
+    "store": [
+      {
+        "name": "Steam",
+        "gameurl": "https://store.steampowered.com/app/3099000/Guns_of_Fury/",
+        "developerurl": "http://www.gelatogames.com/p/guns-of-fury.html"
+      }
+    ],
+    "instructions": "Buy the game on Steam and add the data to gunsoffury/assets",
+    "runtime": [
+      "gmtoolkit.squashfs"
+    ],
+    "exp": false,
+    "rtr": false,
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-06-28T00:28:16.767Z"
+  },
+  {
+    "title": "Hallow's Eve",
+    "description": "On Halloween, the barrier between human world and the spirit world thins. The spirits play tricks, the dead can be seen, and monsters can run their human world errands.\n\nSet in the 90s, play as Ichabod, a pumpkin man who uses his chance to enter the human world to try and rent Jurassic Park from the video store. Unfortunately, the only copy has been rented by a teen who’s brought a witch’s curse upon the town.\n\nGameplay is inspired by the classics and the modern classics — a Zeldalike sense of exploration, with the tight, fast combat of Hyper Light Drifter. All soaked in a charming pixel art atmosphere and a dumb sense of humor. Playtime is around 1-2 hours.",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/solarus/hallowseve",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/hallowseve/screenshot.png",
+    "porter": [
+      "Jeod"
+    ],
+    "genres": [
+      "action",
+      "adventure"
+    ],
+    "availability": "unknown",
+    "store": [],
+    "instructions": "Buy the game from https://maxatrillionator.itch.io/hallows-eve and place the .solarus file in the ports/hallowseve folder.",
+    "runtime": "solarus-1.6.5.squashfs",
+    "exp": false,
+    "rtr": false,
+    "arch": [],
+    "min_glibc": "",
+    "last_modified": "2025-05-18T10:57:38.641Z"
+  },
+  {
+    "title": "Haque",
+    "description": "Haque is a glitch fantasy roguelike adventure about cute monsters, low-bit hauntings, and a suspiciously talkative narrator. Choose your character and battle through forests, deserts and dungeons to defeat a mysterious evil. Die often. Try again!",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/haque",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/haque/screenshot.png",
+    "porter": [
+      "Jeod",
+      "Troidem"
+    ],
+    "genres": [
+      "rpg",
+      "strategy"
+    ],
+    "availability": "paid",
+    "store": [
+      {
+        "name": "Steam",
+        "gameurl": "https://store.steampowered.com/app/662540/Haque/",
+        "developerurl": "https://store.steampowered.com/search/?developer=SuperTry%20Studios"
+      },
+      {
+        "name": "Itch.io",
+        "gameurl": "https://supertry.itch.io/haque",
+        "developerurl": "https://supertry.itch.io/"
+      }
+    ],
+    "instructions": "Buy the game on Steam or Itch.io and copy all the data to `haque/assets`.",
+    "runtime": [
+      "gmtoolkit.squashfs"
+    ],
+    "exp": false,
+    "rtr": false,
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-06-28T00:28:16.798Z"
+  },
+  {
+    "title": "Isles of Sea and Sky",
+    "description": "A fantastic, oceanic, open world puzzle adventure. Solve innovative block puzzles while unearthing a mystifying story and unlock powers that provide more options for how you choose to progress through the enigmatic Isles of Sea and Sky!",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/islesofseaandsky",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/islesofseaandsky/screenshot.png",
+    "porter": [
+      "Jeod",
+      "kotzebuedog"
+    ],
+    "genres": [
+      "adventure",
+      "puzzle"
+    ],
+    "availability": "paid",
+    "store": [
+      {
+        "name": "Steam",
+        "gameurl": "https://store.steampowered.com/app/1233070/Isles_of_Sea_and_Sky/",
+        "developerurl": "https://www.cicadasoft.com/"
+      },
+      {
+        "name": "Itch.io",
+        "gameurl": "https://cicada-games-official.itch.io/isles-of-sea-and-sky",
+        "developerurl": "https://www.cicadasoft.com/"
+      }
+    ],
+    "instructions": "Copy the game data from your Steam or Itch.io installation to ports/iosas/assets",
+    "runtime": [
+      "gmtoolkit.squashfs"
+    ],
+    "exp": false,
+    "rtr": false,
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-06-28T00:28:16.831Z"
+  },
+  {
+    "title": "Kanon",
+    "description": "Kanon is a visual novel that follows Yuichi Aizawa's return to a town where he reconnects with childhood friends and encounters new ones, each with hidden pasts and supernatural ties. As Yuichi unravels their stories, themes of love, forgiveness, and second chances intertwine in this emotionally charged narrative.",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/rlvm/kanon",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rlvm/kanon/screenshot.png",
+    "porter": [
+      "Jeod",
+      "kloptops"
+    ],
+    "genres": [
+      "visual-novel"
+    ],
+    "availability": "unknown",
+    "store": [],
+    "instructions": "Add your game assets to `ports/kanon/gamedata`.",
+    "runtime": "rlvm.squashfs",
+    "exp": true,
+    "rtr": false,
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-05-18T11:11:03.391Z"
+  },
+  {
+    "title": "Little Busters!",
+    "description": "'Little Busters!' follows Riki Naoe and his group of childhood friends, the titular Little Busters, as they form a baseball team and navigate through various personal struggles and mysteries. As the story unfolds, Riki uncovers deeper secrets about his friends and the world around him, leading to poignant revelations and emotional growth for the characters. It was originally released in Japan on July 27, 2007.",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/rlvm/littlebusters",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rlvm/littlebusters/screenshot.png",
+    "porter": [
+      "Jeod",
+      "kloptops"
+    ],
+    "genres": [
+      "visual-novel"
+    ],
+    "availability": "unknown",
+    "store": [],
+    "instructions": "Add your game assets to `ports/littlebusters/gamedata`.",
+    "runtime": "rlvm.squashfs",
+    "exp": false,
+    "rtr": false,
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-05-18T11:11:03.400Z"
+  },
+  {
+    "title": "Lunar Lux",
+    "description": "Experience a sci-fi action-adventure RPG on the Moon in the year 30XX! Join Bella in a story of science, truth, justice, and trust, as she travels the silver globe to find a way to save humanity from Comet Coda! It's time to unleash your Lux!",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/lunarlux",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/lunarlux/screenshot.jpg",
+    "porter": [
+      "Jeod"
+    ],
+    "genres": [
+      "action",
+      "adventure",
+      "rpg"
+    ],
+    "availability": "unknown",
+    "store": [],
+    "instructions": "Use `download_depot 1932680 1932681 4860005663388923912` with Steam Console to download the game and add the data to `lunarlux/assets`",
+    "runtime": [
+      "gmtoolkit.squashfs"
+    ],
+    "exp": false,
+    "rtr": true,
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-06-28T00:28:16.869Z"
+  },
+  {
+    "title": "Madhouse",
+    "description": "MADHOUSE is a horror action RPG where chibi characters slash and blast enemies in blood-soaked combat. Explore a dreary open world in the story campaign, or fight friends in the chaotic local 4-player versus mode. With retro pixel art and punk horror grit, it delivers macabre, thrilling action. WARNING! This game contains depictions of violence and foul language!",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/madhouse",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/madhouse/screenshot.png",
+    "porter": [
+      "Jeod"
+    ],
+    "genres": [
+      "action",
+      "rpg"
+    ],
+    "availability": "free",
+    "store": [
+      {
+        "name": "Steam",
+        "gameurl": "https://store.steampowered.com/app/3727130/MADHOUSE/",
+        "developerurl": ""
+      }
+    ],
+    "instructions": "Download the DEMO from Steam and add the game files to `madhouse/assets`. Wishlist the game!",
+    "runtime": [
+      "gmtoolkit.squashfs"
+    ],
+    "exp": false,
+    "rtr": false,
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-06-28T00:28:16.888Z"
+  },
+  {
+    "title": "Metal Slug FB Fanthology",
+    "description": "Metal Slug SB Fanthology is a fan game developed by SuperBlinky, which has been in development since 2020. The latest version of the project is 0.7.2 The main goal of the project is to create 8 new Metal Slug experiences based on the 8 mainline games.",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/metalslugsbfanthology",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/metalslugsbfanthology/screenshot.png",
+    "porter": [
+      "Jeod"
+    ],
+    "genres": [
+      "action",
+      "arcade",
+      "platformer"
+    ],
+    "availability": "unknown",
+    "store": [],
+    "instructions": "Download the game from  [GameJolt](https://gamejolt.com/games/MslugSBFan/478697) and put all the files from the `Files` folder (the one with all the audiogroups) into the `ports/mslugsbf/assets` folder.",
+    "runtime": [],
+    "exp": false,
+    "rtr": false,
+    "arch": [
+      "armhf"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-05-10T10:56:15.281Z"
+  },
+  {
+    "title": "Mimi's Delivery Dash",
+    "description": "Originally created in 10 days for Movie Game Jam 2018 as a tribute to Kiki's Delivery Service.\n\nMeet Mimi! A young witch in-training who has just recently decided what her special skill is: delivering mail - by broomstick!\n\nThe town is a bustling place so she'll need to be on the look out for potential customers, and they always tip well for a speedy delivery.\n\nBut watch out, Mimi! Angry crows are one thing, but flying a broom around town can be just as dangerous! ",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/mimisdeliverydash",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/mimisdeliverydash/screenshot.png",
+    "porter": [
+      "MadShmupper",
+      "tekkenfede",
+      "Jeod"
+    ],
+    "genres": [
+      "arcade",
+      "platformer",
+      "puzzle"
+    ],
+    "availability": "unknown",
+    "store": [],
+    "instructions": "Download from:https://caffinate.itch.io/mimis-delivery-dash and extract data.win and both .ogg files to /ports/mimisdeliverydash/gamedata/",
+    "runtime": [],
+    "exp": false,
+    "rtr": false,
+    "arch": [],
+    "min_glibc": "",
+    "last_modified": "2025-07-08T16:25:26.831Z"
+  },
+  {
+    "title": "Mystik Belle",
+    "description": "A Metroidvania with Point and Click style elements like Psychonauts.\nHelp Belle fix the mystic Walpurgisnacht Brew by finding three rare magical ingredients in order to clear her name.",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/mystikbelle",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/mystikbelle/screenshot.jpg",
+    "porter": [
+      "Pridetoons",
+      "Jeod",
+      "Cebion"
+    ],
+    "genres": [
+      "action",
+      "platformer"
+    ],
+    "availability": "unknown",
+    "store": [],
+    "instructions": "Download the Linux version through Steam with `download_depot 332610 332613 3942707501747355559` and add the contents of the `assets` folder to `mystikbelle/assets`.",
+    "runtime": [
+      "gmtoolkit.squashfs"
+    ],
+    "exp": false,
+    "rtr": false,
+    "arch": [
+      "armhf"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-06-28T00:28:16.950Z"
+  },
+  {
+    "title": "Nubby's Number Factory",
+    "description": "A plinko-style roguelike where you work at a number factory. Launch your spherical friend, Nubby, down a pegboard to make bigger and bigger numbers! But beware, if you fail to meet your number quota, the sun will explode.",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/nubbysnumberfactory",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/nubbysnumberfactory/screenshot.png",
+    "porter": [
+      "Jeod"
+    ],
+    "genres": [
+      "rpg"
+    ],
+    "availability": "free",
+    "store": [
+      {
+        "name": "Steam",
+        "url": "https://store.steampowered.com/app/3191030"
+      }
+    ],
+    "instructions": "Ready to run!.",
+    "runtime": [],
+    "exp": false,
+    "rtr": true,
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-05-18T11:11:05.531Z"
+  },
+  {
+    "title": "Ocean's Heart",
+    "description": "When pirates attacked Limestone Island, it fell to Tilia’s father to go after them and rescue the young woman they kidnapped. When he hasn’t returned six months later, Tilia decides it’s up to her to track down her dad and find out what went wrong.\n\nPlay as Tilia as she travels across an archipelago full of pirate forts, forgotten magic, abominable beasts, and a diverse cast of people trying to find their place in it all. As Tilia follows her dad’s trail, she becomes entrangled in the pirates’ plot to use an old magic to control the ocean. And maybe along the way, she’ll play in a tick-tack-toe championship, prevent an art heist, or impresonate a piano tuner. It’s a large world full of secrets, dangers, and quirky wierdos for you to explore.",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/solarus/oceansheart",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/oceansheart/screenshot.png",
+    "porter": [
+      "Jeod"
+    ],
+    "genres": [
+      "action",
+      "adventure"
+    ],
+    "availability": "unknown",
+    "store": [],
+    "instructions": "Buy the game from GOG or Steam and place the data.solarus file in the ports/oceansheart folder.",
+    "runtime": "solarus-1.6.5.squashfs",
+    "exp": false,
+    "rtr": false,
+    "arch": [],
+    "min_glibc": "",
+    "last_modified": "2025-05-18T10:57:38.662Z"
+  },
+  {
+    "title": "Osana's Revenge",
+    "description": "Osana's Revenge is a top down shooter filled with memes and private jokes arisen from Yandere Simulator drama and development setbacks, in particular, its first rival (Osana Najimi) being delayed for multiple years. However, you don't have to be familiar with all of this in order to play and enjoy it. ",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/solarus/osanasrevenge",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/osanasrevenge/screenshot.png",
+    "porter": [
+      "Consumerism",
+      "Jeod"
+    ],
+    "genres": [
+      "action",
+      "adventure"
+    ],
+    "availability": "unknown",
+    "store": [],
+    "instructions": "Add the .solarus file from here: https://metaquarius.itch.io/osanas-revenge to the ports/osanasrevenge folder.",
+    "runtime": "solarus-run",
+    "exp": false,
+    "rtr": false,
+    "arch": [],
+    "min_glibc": "",
+    "last_modified": "2025-05-18T10:57:38.669Z"
+  },
+  {
+    "title": "Outrider Mako",
+    "description": "Take on the role of Mako on her quest to seek out and subsequently deliver her, uh, deliverables in this top-down view 2D action game. Jump on top of your enemies and slime them with goo to stop them in their tracks! Get those deliverables delivered!",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/outridermako",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/outridermako/screenshot.png",
+    "porter": [
+      "Jeod"
+    ],
+    "genres": [
+      "action",
+      "adventure"
+    ],
+    "availability": "paid",
+    "store": [
+      {
+        "name": "Steam",
+        "gameurl": "https://store.steampowered.com/app/1072400/Outrider_Mako/",
+        "developerurl": ""
+      }
+    ],
+    "instructions": "Copy all game data to `outridermako/assets`. Requires GMToolkit runtime.",
+    "runtime": [
+      "gmtoolkit.squashfs"
+    ],
+    "exp": false,
+    "rtr": false,
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-07-01T16:14:32.835Z"
+  },
+  {
+    "title": "Pizza Tower",
+    "description": "Pizza Tower is a fast paced 2D platformer, with an emphasis on movement, exploration and score attack. Featuring highly stylized pixel art inspired by the cartoons from the '90s, and a highly energetic soundtrack.",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/pizzatower",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/pizzatower/screenshot.png",
+    "porter": [
+      "Regular Character",
+      "Johnny on Flame",
+      "Jeod",
+      "kotzebuedog"
+    ],
+    "genres": [
+      "action"
+    ],
+    "availability": "paid",
+    "store": [
+      {
+        "name": "Steam",
+        "gameurl": "https://store.steampowered.com/app/2231450/Pizza_Tower/",
+        "developerurl": "https://store.steampowered.com/developer/tourdepizza"
+      }
+    ],
+    "instructions": "Purchase the game on Steam and copy all game data to `pizzatower/assets`.",
+    "runtime": [
+      "dotnet-8.0.12.squashfs"
+    ],
+    "exp": false,
+    "rtr": false,
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-07-02T17:01:31.065Z"
+  },
+  {
+    "title": "Planetarian",
+    "description": "Planetarian is a visual novel set in a post-apocalyptic world where a lone survivor encounters a malfunctioning robot attendant named Yumemi Hoshino in an abandoned planetarium. Through their interactions, themes of hope, humanity, and the enduring power of memories are explored.",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/rlvm/planetarian",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rlvm/planetarian/screenshot.png",
+    "porter": [
+      "Jeod"
+    ],
+    "genres": [
+      "visual-novel"
+    ],
+    "availability": "unknown",
+    "store": [],
+    "instructions": "Add your game assets to `ports/planetarian/gamedata`.",
+    "runtime": "rlvm.squashfs",
+    "exp": false,
+    "rtr": false,
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-05-18T11:11:03.406Z"
+  },
+  {
+    "title": "Pocket Crystal League",
+    "description": "Pocket Crystal League (PCL) is a Poke-card game, although completely different to the Official TCG. The gameplay mechanics were partially inspired by Inscryption, being pretty straightforward and easy to learn.",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/pocketcrystalleague",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/pocketcrystalleague/screenshot.png",
+    "porter": [
+      "Jeod"
+    ],
+    "genres": [
+      "casino/card"
+    ],
+    "availability": "unknown",
+    "store": [],
+    "instructions": "Game is ready to run!",
+    "runtime": [],
+    "exp": false,
+    "rtr": true,
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-05-21T12:33:59.636Z"
+  },
+  {
+    "title": "Pokéwilds",
+    "description": "PokéWilds is an open-world Pokémon fan game with survival and exploration elements. Built on Gen 2-style graphics, it features procedurally generated worlds, base-building, and freeform gameplay. Catch, train, and battle Pokémon while exploring diverse biomes, crafting shelters, and uncovering hidden secrets.",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/pokewilds",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/pokewilds/screenshot.png",
+    "porter": [
+      "Jeod",
+      "JanTrueno"
+    ],
+    "genres": [
+      "rpg"
+    ],
+    "availability": "unknown",
+    "store": [],
+    "instructions": "After installing the port, download the Windows game from https://github.com/SheerSt/pokewilds/releases and extract the `mods` and `app` folders, as well as `settings.txt`, into `ports/pokewilds/bin`.",
+    "runtime": "zulu17.54.21-ca-jre17.0.13-linux.aarch64.squashfs",
+    "exp": false,
+    "rtr": false,
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-05-18T11:11:03.370Z"
+  },
+  {
+    "title": "RomM App",
+    "description": "An app for custom firmwares that connects to your RomM instance and allows you to fetch games wirelessly from your handheld device.",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/RomM",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/RomM/screenshot.png",
+    "porter": [
+      "Jeod"
+    ],
+    "genres": [
+      "app"
+    ],
+    "availability": "demo",
+    "store": [],
+    "instructions": "Ready to run with demo server. Follow the readme and edit the `.env` file to use your own server instance.",
+    "runtime": [
+      "python_3.11.squashfs"
+    ],
+    "exp": false,
+    "rtr": true,
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-07-08T19:57:25.124Z"
+  },
+  {
+    "title": "Ship of Harkinian",
+    "description": "A source port of Ocarina of Time &amp; Master Quest. Ship of Harkinian features extensive and significant enhancements over the original game, such as improved performance, increased frame-rate, native ultra-widescreen support, and extensive mod support (especially compared to emulated versions of the original), among other features.",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/shipofharkinian",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/shipofharkinian/screenshot.png",
+    "porter": [
+      "Jeod",
+      "beniamino"
+    ],
+    "genres": [
+      "action",
+      "adventure"
+    ],
+    "availability": "unknown",
+    "store": [],
+    "instructions": "Follow the guide at https://www.shipofharkinian.com/setup-guide for your desired platform to create your oot.otr and/or oot-mq.otr files. Once created put in the ports/soh folder.",
+    "runtime": [],
+    "exp": false,
+    "rtr": false,
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-05-18T10:57:42.460Z"
+  },
+  {
+    "title": "Ship of Harkinian 2",
+    "description": "A source port of Majora's Mask. 2Ship2Harkinian (aka SoH2) features extensive and significant enhancements over the original game, such as improved performance, increased frame-rate, native ultra-widescreen support, and extensive mod support (especially compared to emulated versions of the original), among other features.",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/shipofharkinian2",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/shipofharkinian2/screenshot.png",
+    "porter": [
+      "Jeod",
+      "beniamino"
+    ],
+    "genres": [
+      "action",
+      "adventure"
+    ],
+    "availability": "unknown",
+    "store": [],
+    "instructions": "Follow the guide in the readme to generate your mm.o2r file.",
+    "runtime": [],
+    "exp": false,
+    "rtr": false,
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-05-18T10:57:42.477Z"
+  },
+  {
+    "title": "Sonic 1",
+    "description": "Sonic the Hedgehog 1 decompilation by Rubberduckycooly.",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/sonic-collection/sonic.1",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.1/screenshot.jpg",
+    "porter": [
+      "Christian_Haitian",
+      "Jeod"
+    ],
+    "genres": [
+      "platformer"
+    ],
+    "availability": "unknown",
+    "store": [],
+    "instructions": "Add your own Data.rsdk file to the ports/sonic1 folder.",
+    "runtime": [],
+    "exp": false,
+    "rtr": false,
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-05-29T16:11:20.153Z"
+  },
+  {
+    "title": "Sonic 2",
+    "description": "Sonic the Hedgehog 2 decompilation by Rubberduckycooly.",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/sonic-collection/sonic.2",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.2/screenshot.jpg",
+    "porter": [
+      "Christian_Haitian",
+      "Jeod"
+    ],
+    "genres": [
+      "platformer"
+    ],
+    "availability": "unknown",
+    "store": [],
+    "instructions": "Add your own Data.rsdk file to the ports/sonic2 folder.",
+    "runtime": [],
+    "exp": false,
+    "rtr": false,
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-05-29T16:11:42.708Z"
+  },
+  {
+    "title": "Sonic 3 AIR",
+    "description": "A fan-made widescreen remaster of Sonic 3 & Knuckles.",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/sonic-collection/sonic3air",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic3air/screenshot.png",
+    "porter": [
+      "spec58"
+    ],
+    "genres": [
+      "platformer"
+    ],
+    "availability": "unknown",
+    "store": [],
+    "instructions": "Copy a rom of Sonic 3 & Knuckles to ports/sonic3air and rename it to `Sonic_Knuckles_wSonic3.bin`.",
+    "runtime": [],
+    "exp": false,
+    "rtr": false,
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-05-18T11:33:11.471Z"
+  },
+  {
+    "title": "Sonic CD",
+    "description": "Sonic CD decompilation by Rubberduckycooly.",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/sonic-collection/sonic.cd",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.cd/screenshot.jpg",
+    "porter": [
+      "Christian_Haitian",
+      "Jeod"
+    ],
+    "genres": [
+      "platformer"
+    ],
+    "availability": "unknown",
+    "store": [],
+    "instructions": "Add your own Data.rsdk file to the ports/soniccd folder.",
+    "runtime": [],
+    "exp": false,
+    "rtr": false,
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-06-04T15:49:26.725Z"
+  },
+  {
+    "title": "Sonic Mania",
+    "description": "Sonic Mania decompilation by Rubberduckycooly.",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/sonic-collection/sonic.mania",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.mania/screenshot.jpg",
+    "porter": [
+      "TheGammaSqueeze",
+      "Jeod"
+    ],
+    "genres": [
+      "platformer"
+    ],
+    "availability": "unknown",
+    "store": [],
+    "instructions": "Add your own Data.rsdk file to the ports/sonicmania folder.",
+    "runtime": [],
+    "exp": false,
+    "rtr": false,
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-05-28T12:47:48.948Z"
+  },
+  {
+    "title": "Sonic Time Twisted",
+    "description": "Sonic Time Twisted is a fan-made game where Sonic must stop Dr. Eggman's plan to use time travel to resurrect Metal Sonic and conquer the world. Sonic travels through past, present, and future versions of levels, collecting Time Stones to thwart Eggman's scheme.",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/sonictimetwisted",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/sonictimetwisted/screenshot.png",
+    "porter": [
+      "Jeod",
+      "tekkenfede"
+    ],
+    "genres": [
+      "platformer"
+    ],
+    "availability": "unknown",
+    "store": [],
+    "instructions": "Ready to run!",
+    "runtime": [],
+    "exp": false,
+    "rtr": true,
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-06-24T19:54:21.562Z"
+  },
+  {
+    "title": "Sonic Triple Trouble - 16-Bit",
+    "description": "What if Sonic Triple Trouble had been originally released on the Sega Genesis / MegaDrive, after Sonic 3 & Knuckles?",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/sonictt16b",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/sonictt16b/screenshot.png",
+    "porter": [
+      "Jeod",
+      "JanTrueno"
+    ],
+    "genres": [
+      "action",
+      "adventure",
+      "arcade",
+      "platformer"
+    ],
+    "availability": "unknown",
+    "store": [],
+    "instructions": "Download the 64-bit android apk from Gamejolt and put it in `ports/sonictt16b`.",
+    "runtime": [
+      "gmtoolkit.squashfs"
+    ],
+    "exp": false,
+    "rtr": false,
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-07-02T16:00:42.432Z"
+  },
+  {
+    "title": "Starship",
+    "description": "A source port of Star Fox 64. Starship features extensive and significant enhancements over the original game, such as improved performance, increased frame-rate, native ultra-widescreen support, and extensive mod support (especially compared to emulated versions of the original), among other features.",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/starship",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/starship/screenshot.png",
+    "porter": [
+      "Jeod"
+    ],
+    "genres": [
+      "action",
+      "simulation"
+    ],
+    "availability": "free",
+    "store": [],
+    "instructions": "Follow the guide in the readme to generate your sf64.o2r file.",
+    "runtime": [],
+    "exp": false,
+    "rtr": false,
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-07-01T18:50:09.157Z"
+  },
+  {
+    "title": "SteamLink",
+    "description": "Steam Link is a hardware and software product developed by Valve Corporation for streaming Steam content from a personal computer or Steam Machine wirelessly to a mobile device or other monitor.",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/steamlink",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/steamlink/screenshot.png",
+    "porter": [
+      "Noxwell",
+      "Jeod"
+    ],
+    "genres": [
+      "app"
+    ],
+    "availability": "full",
+    "store": [],
+    "instructions": "This SteamLink wrapper automatically checks for a SteamLink binary and, if one is found, it checks a `version.txt` file and compares the contents to the latest available. If there is no `version.txt` file or there is a new version, SteamLink is downloaded automatically with wget.\n\nDon't have wget or curl? See the README.md file for manual installation steps.",
+    "runtime": [],
+    "exp": false,
+    "rtr": true,
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-07-08T20:02:13.341Z"
+  },
+  {
+    "title": "Super Star Trek",
+    "description": "Super Star Trek (1978) with 25th Anniversary pixel art! Find and destroy all enemies before time runs out! Manage your shields and energy well, or you will be stranded as the enemies destroy the Federation...",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/superstartrek",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/superstartrek/screenshot.png",
+    "porter": [
+      "Jeod"
+    ],
+    "genres": [
+      "strategy"
+    ],
+    "availability": "full",
+    "store": [
+      {
+        "name": "GitHub Source",
+        "gameurl": "https://github.com/JeodC/SuperStarTrek25thGMS/tree/main",
+        "developerurl": ""
+      }
+    ],
+    "instructions": "Ready to run!",
+    "runtime": [],
+    "exp": false,
+    "rtr": true,
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-07-01T14:17:31.654Z"
+  },
+  {
+    "title": "Tenjutsu",
+    "description": "Your dojo has been attacked by mysterious armed men in black. You have to take it back! Fight enemies, collect DEATH MARKS (ie. skulls) and tag enemies with these marks. Every 10 seconds, marked enemies will die. Some stronger enemies will require more marks to get rid of.",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/tenjutsu48h",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/tenjutsu48h/screenshot.png",
+    "porter": [
+      "Jeod"
+    ],
+    "genres": [
+      "action"
+    ],
+    "availability": "full",
+    "store": [],
+    "instructions": "Ready to run!",
+    "runtime": [],
+    "exp": false,
+    "rtr": true,
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-05-22T12:24:12.578Z"
+  },
+  {
+    "title": "The Friends of Ringo Ishikawa",
+    "description": "The Friends of Ringo Ishikawa is a blend of a beat-em up and a slice of life take on mid 80's Japan. Take control of Ringo as he lives his final season of Autumn before high school graduation.",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/yeotrilogy/friendsofringo",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/yeotrilogy/friendsofringo/screenshot.png",
+    "porter": [
+      "Jeod"
+    ],
+    "genres": [
+      "action",
+      "adventure"
+    ],
+    "availability": "paid",
+    "store": [
+      {
+        "name": "Steam",
+        "gameurl": "https://store.steampowered.com/app/846110/The_friends_of_Ringo_Ishikawa",
+        "developerurl": ""
+      },
+      {
+        "name": "GOG",
+        "gameurl": "https://www.gog.com/en/game/the_friends_of_ringo_ishikawa",
+        "developerurl": ""
+      }
+    ],
+    "instructions": "Add all files to `ports/friendsofringo/assets/install`.",
+    "runtime": [
+      "gmtoolkit.squashfs"
+    ],
+    "exp": false,
+    "rtr": false,
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-06-27T12:06:00.974Z"
+  },
+  {
+    "title": "The Legend of Zelda: Mercuris Chess",
+    "description": "The sequel to Mystery of Solarus XD. While Link and Zelda were away, a rich businessman bought Hyrule! There begins your next adventure, in a world where everything has a price and where truth and lies become undistinguishable.",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/solarus/zeldaxd-mercurischess",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zeldaxd-mercurischess/screenshot.png",
+    "porter": [
+      "Jeod"
+    ],
+    "genres": [
+      "action",
+      "adventure"
+    ],
+    "availability": "unknown",
+    "store": [],
+    "instructions": "Download the game from https://solarus-games.org/games/the-legend-of-zelda-xd2-mercuris-chess/ and put in the ports/zeldaxd-mercurischess folder.",
+    "runtime": "solarus-1.6.5",
+    "exp": false,
+    "rtr": false,
+    "arch": [],
+    "min_glibc": "",
+    "last_modified": "2025-05-18T10:57:38.732Z"
+  },
+  {
+    "title": "The Legend of Zelda: Mercuris' Chest (DEMO)",
+    "description": "Link is kidnapped and brought to an unknown region! A priest explains that Link's heroic skills are needed to combat a birdlike foe and defend a legendary chest, which contains a dangerous weapon. Who is this foe, and what's in the chest? And why does this region feel so...familiar?",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/solarus/zelda-mercurischest",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zelda-mercurischest/screenshot.png",
+    "porter": [
+      "Jeod"
+    ],
+    "genres": [
+      "action",
+      "adventure"
+    ],
+    "availability": "unknown",
+    "store": [],
+    "instructions": "This game is currently in development with a demo available. Download the demo from https://solarus-games.org/games/the-legend-of-zelda-mercuris-chest/ and place in the `ports/zelda-mercurischest` folder.",
+    "runtime": "solarus-run",
+    "exp": false,
+    "rtr": false,
+    "arch": [],
+    "min_glibc": "",
+    "last_modified": "2025-05-18T10:57:38.705Z"
+  },
+  {
+    "title": "The Legend of Zelda: Mystery of Solarus DX",
+    "description": "The Legend of Zelda: Mystery of Solarus DX is set to be a direct sequel to The Legend of Zelda: A Link to the Past on SNES, using the same graphics and game mechanisms. Mystery of Solarus DX was the first game made with the Solarus engine and in fact, Solarus was primarily designed for this game.",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/solarus/zelda-mysteryofsolarusdx",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zelda-mysteryofsolarusdx/screenshot.png",
+    "porter": [
+      "Jeod"
+    ],
+    "genres": [
+      "action",
+      "adventure"
+    ],
+    "availability": "unknown",
+    "store": [],
+    "instructions": "Download the game from https://solarus-games.org/games/the-legend-of-zelda-mystery-of-solarus-dx/ and put in the ports/zelda-mysteryofsolarus folder.",
+    "runtime": "solarus-1.6.5",
+    "exp": false,
+    "rtr": false,
+    "arch": [],
+    "min_glibc": "",
+    "last_modified": "2025-05-18T10:57:38.713Z"
+  },
+  {
+    "title": "The Legend of Zelda: Mystery of Solarus XD",
+    "description": "The Legend of Zelda: Mystery of Solarus XD is a parodic game that we released on April 1st, 2011. Though it’s a big April 1st joke, it’s a real, full game with two huge dungeons and 5-10 hours of playing.\n\nIt was developed in a very short period of time, thanks to coffee, beer and pizzas. Though the development has been rushed to ship on time, the game is complete, with lots of jokes, references and quirky NPCs.",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/solarus/zelda-mysteryofsolarusxd",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zelda-mysteryofsolarusxd/screenshot.png",
+    "porter": [
+      "Jeod"
+    ],
+    "genres": [
+      "action",
+      "adventure"
+    ],
+    "availability": "unknown",
+    "store": [],
+    "instructions": "Download the game from https://solarus-games.org/games/the-legend-of-zelda-mystery-of-solarus-xd/ and put in the ports/zelda-mysteryofsolarusxd folder.",
+    "runtime": "solarus-1.6.5",
+    "exp": false,
+    "rtr": false,
+    "arch": [],
+    "min_glibc": "",
+    "last_modified": "2025-05-18T10:57:38.719Z"
+  },
+  {
+    "title": "The Legend of Zelda: Return of the Hylain SE",
+    "description": "After Link’s victory over Ganon in A Link to the Past, no one knows what Link’s wish to the Triforce was. But this wish reunified the Light World and the Dark World and brought the Seven Wise Men’s descendants back to life. Peace was back in Hyrule. But unfortunately, this wish also ressurected Ganon and his henchmen. He was preparing his revenge, but he couldn’t do anything without the Triforce.\n\nOne night, a familiar voice speaks to Link in his sleep…",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/solarus/zelda-roth-se",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zelda-roth-se/screenshot.png",
+    "porter": [
+      "Jeod"
+    ],
+    "genres": [
+      "action",
+      "adventure"
+    ],
+    "availability": "unknown",
+    "store": [],
+    "instructions": "Download the game from https://solarus-games.org/games/the-legend-of-zelda-return-of-the-hylian-se/ and put in the ports/zelda-roth-sefolder.",
+    "runtime": "solarus-1.6.5",
+    "exp": false,
+    "rtr": false,
+    "arch": [],
+    "min_glibc": "",
+    "last_modified": "2025-05-18T10:57:38.726Z"
+  },
+  {
+    "title": "The Legend of Zelda: The Book of Mudora",
+    "description": "Link’s newest quest is set a few generations after Twilight Princess and spans two different continents of Hyrule. Explore eight unique temples and defeat enemies and bosses in order to gain powerful items to assist you in your goal. Explore many areas of Hyrule and assist different races in their conflicts.",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/solarus/zelda-bookofmudora",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zelda-bookofmudora/screenshot.png",
+    "porter": [
+      "Jeod"
+    ],
+    "genres": [
+      "action",
+      "adventure"
+    ],
+    "availability": "unknown",
+    "store": [],
+    "instructions": "Download the game from https://solarus-games.org/games/the-legend-of-zelda-book-of-mudora/ and put in the ports/zelda-bookofmudora folder.",
+    "runtime": "solarus-1.6.5",
+    "exp": false,
+    "rtr": false,
+    "arch": [],
+    "min_glibc": "",
+    "last_modified": "2025-05-18T10:57:38.698Z"
+  },
+  {
+    "title": "The Legend of Zelda: Zeldo's Challenge",
+    "description": "This game is then the first entry in ZeldoRetro’s series Le Défi de Zeldo (Zeldo’s Challenge). This first chapter is named La Revanche du Bingo (Bingo’s Revenge), and is much less ambitious than its sequel. It contains only one dungeon, and no overworld to explore, which makes the game rather short. You may beat it under an hour.",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/solarus/zeldoschallenge",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zeldoschallenge/screenshot.png",
+    "porter": [
+      "Jeod"
+    ],
+    "genres": [
+      "action",
+      "adventure"
+    ],
+    "availability": "unknown",
+    "store": [],
+    "instructions": "Download the game from https://solarus-games.org/games/defi-de-zeldo-ch-1/ and put in the ports/zeldoschallenge folder.",
+    "runtime": "solarus-1.6.5",
+    "exp": false,
+    "rtr": false,
+    "arch": [],
+    "min_glibc": "",
+    "last_modified": "2025-05-18T10:57:38.739Z"
+  },
+  {
+    "title": "The Legend of Zelda: Zeldo's Challenge 2",
+    "description": "After having touched the Trophy of Victory won at the end of the first chapter’s dungeon, Link is teleported in High-rule, a parallel world where multiple video games universes are mixed up. Link must go to the Tower of Memories where Zeldo is waiting for him to get his revenge!",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/solarus/zeldoschallenge2",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zeldoschallenge2/screenshot.png",
+    "porter": [
+      "Jeod"
+    ],
+    "genres": [
+      "action",
+      "adventure"
+    ],
+    "availability": "unknown",
+    "store": [],
+    "instructions": "Download the game from https://solarus-games.org/games/defi-de-zeldo-ch-2/ and put in the ports/zeldoschallenge2 folder.",
+    "runtime": "solarus-1.6.5",
+    "exp": false,
+    "rtr": false,
+    "arch": [],
+    "min_glibc": "",
+    "last_modified": "2025-05-18T10:57:38.748Z"
+  },
+  {
+    "title": "Tunics!",
+    "description": "Tunics! is a Rogue-like Legend of Zelda quest. It means it’s only dungeons, and they are randomly generated. Moreover, once you’re dead, you’ll have to restart from the beginning, losing all your improvements (weapons, health, etc). It should be considered a well-polished proof-of-concept.",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/solarus/tunics",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/tunics/screenshot.png",
+    "porter": [
+      "Jeod"
+    ],
+    "genres": [
+      "action",
+      "adventure"
+    ],
+    "availability": "unknown",
+    "store": [],
+    "instructions": "Download game from https://solarus-games.org/games/tunics/ and put the .solarus file in the ports/tunics folder.",
+    "runtime": "solarus-1.6.5.squashfs",
+    "exp": false,
+    "rtr": false,
+    "arch": [],
+    "min_glibc": "",
+    "last_modified": "2025-05-18T10:57:38.684Z"
+  },
+  {
+    "title": "UFO 50",
+    "description": "From the developer, Mossmouth: \"UFO 50 is a collection of 50 single and multiplayer games that span a variety of genres, from platformers and shoot 'em ups to puzzle games, roguelites, and RPGs. Our goal is to combine a familiar 8-bit aesthetic with new ideas and modern game design.\"",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/ufo50",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/ufo50/screenshot.png",
+    "porter": [
+      "Jeod"
+    ],
+    "genres": [
+      "arcade"
+    ],
+    "availability": "unknown",
+    "store": [],
+    "instructions": "Purchase the game on Steam and add the game data to `ports/ufo50/assets`.",
+    "runtime": [
+      "gmtoolkit.squashfs"
+    ],
+    "exp": false,
+    "rtr": false,
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-07-08T19:58:02.079Z"
+  },
+  {
+    "title": "Undertale",
+    "description": "UNDERTALE! The RPG game where you don't have to destroy anyone.",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/undertale",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/undertale/screenshot.png",
+    "porter": [
+      "krishenriksen",
+      "Jeod",
+      "Ganimoth",
+      "curious_idiot"
+    ],
+    "genres": [
+      "rpg"
+    ],
+    "availability": "paid",
+    "store": [
+      {
+        "name": "Steam",
+        "url": "https://store.steampowered.com/app/391540/Undertale/"
+      }
+    ],
+    "instructions": "Copy the contents of your Steam or GOG installation to ports/undertale/assets.",
+    "runtime": [],
+    "exp": false,
+    "rtr": false,
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-06-25T11:53:18.480Z"
+  },
+  {
+    "title": "Undertale Red & Yellow",
+    "description": "Undertale Red & Yellow is a mod for the game Undertale that incorporates elements from Undertale Yellow. It features Frisk, accompanied by two ghosts Chara and Clover, as they navigate through the Underground. The mod includes additional content such as new interactions, minigames, and mini-bosses, which significantly extend the gameplay experience.",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/undertaleredyellow",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/undertaleredyellow/screenshot.png",
+    "porter": [
+      "Jeod"
+    ],
+    "genres": [
+      "rpg"
+    ],
+    "availability": "paid",
+    "store": [
+      {
+        "name": "Steam",
+        "url": "https://store.steampowered.com/app/391540/Undertale/"
+      }
+    ],
+    "instructions": "Copy the contents of your Steam or GOG Windows Undertale install and the ut-red-and-yellow.zip file to ports/undertale/assets.",
+    "runtime": [
+      "gmtoolkit.squashfs"
+    ],
+    "exp": false,
+    "rtr": false,
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-06-25T12:08:08.261Z"
+  },
+  {
+    "title": "Undertale Yellow",
+    "description": "When a child named Clover sets out on a mission, they find themself deep within the Underground. In this foreign land, monsters lurk around every corner, but are they friend or foe?",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/undertaleyellow",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/undertaleyellow/screenshot.png",
+    "porter": [
+      "Jeod"
+    ],
+    "genres": [
+      "rpg"
+    ],
+    "availability": "unknown",
+    "store": [],
+    "instructions": "Download the game from Gamejolt and add the contents to ports/utyellow/assets. Game is ready to play after a brief first-time setup.",
+    "runtime": [
+      "dotnet-8.0.12.squashfs",
+      "gmtoolkit.squashfs"
+    ],
+    "exp": false,
+    "rtr": false,
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-06-28T13:35:20.480Z"
+  },
+  {
+    "title": "Victory Heat Rally",
+    "description": "Welcome to VHR! Unlock the secrets of speed in this turbocharged neo super scaler arcade racing experience. Dominate the track & drift your way to the finish line on the road to becoming the VHRC champion.",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/victoryheatrally",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/victoryheatrally/screenshot.png",
+    "porter": [
+      "Jeod"
+    ],
+    "genres": [
+      "racing"
+    ],
+    "availability": "unknown",
+    "store": [],
+    "instructions": "Purchase the game on Steam and add the game data to `ports/vhr/assets`.",
+    "runtime": [
+      "gmtoolkit.squashfs"
+    ],
+    "exp": false,
+    "rtr": false,
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-06-28T00:28:17.154Z"
+  },
+  {
+    "title": "Wolfenstein 3D",
+    "description": "LZ Wolf and EZ Wolf come to PortMaster! A Love2D launcher makes selecting games and mods easy. See the readme for instructions and details.\n\nIncludes shareware demo files.",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/wolfenstein3d",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/wolfenstein3d/screenshot.png",
+    "porter": [
+      "Slayer366",
+      "Jeod"
+    ],
+    "genres": [
+      "fps"
+    ],
+    "availability": "unknown",
+    "store": [],
+    "instructions": "Comes with shareware files for Wolfenstein 3D and Spear of Destiny. Add your full game files to their respective folders to play.",
+    "runtime": [],
+    "exp": false,
+    "rtr": true,
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-05-26T18:36:32.730Z"
+  },
+  {
+    "title": "Yarntown",
+    "description": "You’ve come on the night of the hunt. The streets of this cursed, gothic town are overrun with beasts, and what has become of the men who tried to hunt them before. Explore the twisting roads, go toe to toe with powerful foes, and uncover Yarntown’s dark secrets.",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/solarus/yarntown",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/yarntown/screenshot.png",
+    "porter": [
+      "Jeod"
+    ],
+    "genres": [
+      "action"
+    ],
+    "availability": "unknown",
+    "store": [],
+    "instructions": "Download game from https://solarus-games.org/games/yarntown/ and put the .solarus file in ports/yarntown.",
+    "runtime": "solarus-1.6.5",
+    "exp": false,
+    "rtr": false,
+    "arch": [],
+    "min_glibc": "",
+    "last_modified": "2025-07-08T16:26:27.574Z"
+  },
+  {
+    "title": "Zelda II: Enhanced",
+    "description": "Zelda II Enhanced adds a ton of QoL improvements, widescreen, new areas, and new collectibles. The game is arguably much easier to play through.",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/zelda2enhanced",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/zelda2enhanced/screenshot.png",
+    "porter": [
+      "Jeod"
+    ],
+    "genres": [
+      "action",
+      "adventure",
+      "platformer"
+    ],
+    "availability": "unknown",
+    "store": [],
+    "instructions": "Download the .zip from https://hoverbat.itch.io/ziiaol and put in the gamedata folder.",
+    "runtime": [
+      "gmtoolkit.squashfs"
+    ],
+    "exp": false,
+    "rtr": false,
+    "arch": [
+      "armhf"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-06-25T12:09:10.862Z"
+  }
+]

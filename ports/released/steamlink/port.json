@@ -17,7 +17,7 @@
     "inst": "This SteamLink wrapper automatically checks for a SteamLink binary and, if one is found, it checks a `version.txt` file and compares the contents to the latest available. If there is no `version.txt` file or there is a new version, SteamLink is downloaded automatically with wget.\n\nDon't have wget or curl? See the README.md file for manual installation steps.",
     "inst_md": null,
     "genres": [
-      "other"
+      "app"
     ],
     "image": null,
     "rtr": true,
