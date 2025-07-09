@@ -51,6 +51,7 @@ async function loadPorts() {
                     break;
                 case 'demo':
                     displayText = "Demo files included";
+                    break;
                 case 'free':
                     displayText = 'Free, files needed';
                     break;
