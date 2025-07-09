@@ -21,7 +21,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-07-08T20:19:54.633Z"
+    "last_modified": "2025-07-09T01:26:48.487Z"
   },
   {
     "title": "AM2R",
@@ -47,7 +47,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-07-08T20:21:09.393Z"
+    "last_modified": "2025-07-09T01:26:44.213Z"
   },
   {
     "title": "Arrest of a Stone Buddha",
@@ -79,7 +79,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-07-01T16:14:32.484Z"
+    "last_modified": "2025-07-09T01:26:48.324Z"
   },
   {
     "title": "Aurascope Demo",
@@ -116,7 +116,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-07-08T21:06:39.739Z"
+    "last_modified": "2025-07-09T01:26:44.267Z"
   },
   {
     "title": "Benbo Quest",
@@ -139,7 +139,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-07-08T20:21:33.273Z"
+    "last_modified": "2025-07-09T01:26:44.441Z"
   },
   {
     "title": "Clannad",
@@ -163,7 +163,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-07-08T20:20:06.210Z"
+    "last_modified": "2025-07-09T01:26:48.488Z"
   },
   {
     "title": "Clannad: Tomoyo After - It's A Wonderful Life",
@@ -186,7 +186,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-07-08T20:20:43.934Z"
+    "last_modified": "2025-07-09T01:26:48.595Z"
   },
   {
     "title": "Dark Deity",
@@ -212,7 +212,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-07-08T20:21:53.308Z"
+    "last_modified": "2025-07-09T01:26:44.524Z"
   },
   {
     "title": "Dark Deity II",
@@ -238,7 +238,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-07-08T20:22:04.677Z"
+    "last_modified": "2025-07-09T01:26:44.640Z"
   },
   {
     "title": "Deltarune",
@@ -279,7 +279,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-06-25T12:49:08.991Z"
+    "last_modified": "2025-07-09T01:26:44.745Z"
   },
   {
     "title": "Descent",
@@ -295,7 +295,7 @@
     "genres": [
       "fps"
     ],
-    "availability": "paid",
+    "availability": "demo",
     "store": [],
     "instructions": "Ready to play with shareware and demo files. To upgrade to full game, purchase on Steam/GOG and then add .hog and .pig files to ports/descent/data.",
     "runtime": [],
@@ -305,7 +305,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-07-08T20:22:21.120Z"
+    "last_modified": "2025-07-09T01:26:43.404Z"
   },
   {
     "title": "Descent II",
@@ -321,7 +321,7 @@
     "genres": [
       "fps"
     ],
-    "availability": "paid",
+    "availability": "demo",
     "store": [],
     "instructions": "Ready to play with shareware and demo files. To upgrade to full game, purchase on Steam/GOG and then add .hog and .pig files to ports/descent2/data. Fully compatible with Descent 2: Vertigo and Descent Maximum levels!",
     "runtime": [],
@@ -331,7 +331,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-07-08T20:22:28.385Z"
+    "last_modified": "2025-07-09T01:26:43.501Z"
   },
   {
     "title": "Descent III",
@@ -355,7 +355,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-07-08T20:22:44.250Z"
+    "last_modified": "2025-07-09T01:26:43.580Z"
   },
   {
     "title": "DigitalTamers Reborn",
@@ -380,7 +380,7 @@
       "armhf"
     ],
     "min_glibc": "",
-    "last_modified": "2025-07-08T20:23:00.892Z"
+    "last_modified": "2025-07-09T01:26:45.126Z"
   },
   {
     "title": "Dokimon: Quest",
@@ -413,7 +413,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-06-25T11:28:42.005Z"
+    "last_modified": "2025-07-09T01:26:45.698Z"
   },
   {
     "title": "Doom Engines",
@@ -429,7 +429,7 @@
     "genres": [
       "fps"
     ],
-    "availability": "full",
+    "availability": "demo",
     "store": [],
     "instructions": "Comes with shareware files for Doom and freedoom bundle for mod use. Add your full game files to their respective folders to play.",
     "runtime": [],
@@ -439,7 +439,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-07-08T20:23:20.722Z"
+    "last_modified": "2025-07-09T01:26:44.152Z"
   },
   {
     "title": "F-Zero Pocket",
@@ -465,7 +465,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-07-08T20:23:37.309Z"
+    "last_modified": "2025-07-09T01:26:46.008Z"
   },
   {
     "title": "Fading Afternoon",
@@ -497,7 +497,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-07-02T13:18:46.052Z"
+    "last_modified": "2025-07-09T01:26:48.367Z"
   },
   {
     "title": "Guns of Fury",
@@ -529,7 +529,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-06-28T00:28:16.767Z"
+    "last_modified": "2025-07-09T01:26:46.047Z"
   },
   {
     "title": "Hallow's Eve",
@@ -551,7 +551,7 @@
     "rtr": false,
     "arch": [],
     "min_glibc": "",
-    "last_modified": "2025-07-08T20:23:52.584Z"
+    "last_modified": "2025-07-09T01:26:48.945Z"
   },
   {
     "title": "Haque",
@@ -589,7 +589,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-06-28T00:28:16.798Z"
+    "last_modified": "2025-07-09T01:26:46.080Z"
   },
   {
     "title": "Isles of Sea and Sky",
@@ -627,7 +627,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-06-28T00:28:16.831Z"
+    "last_modified": "2025-07-09T01:26:46.162Z"
   },
   {
     "title": "Kanon",
@@ -651,7 +651,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-07-08T20:20:14.901Z"
+    "last_modified": "2025-07-09T01:26:48.489Z"
   },
   {
     "title": "Little Busters!",
@@ -675,7 +675,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-07-08T20:20:22.792Z"
+    "last_modified": "2025-07-09T01:26:48.492Z"
   },
   {
     "title": "Lunar Lux",
@@ -702,7 +702,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-07-08T20:24:12.128Z"
+    "last_modified": "2025-07-09T01:26:46.390Z"
   },
   {
     "title": "Madhouse",
@@ -734,7 +734,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-06-28T00:28:16.888Z"
+    "last_modified": "2025-07-09T01:26:46.513Z"
   },
   {
     "title": "Metal Slug FB Fanthology",
@@ -759,7 +759,7 @@
       "armhf"
     ],
     "min_glibc": "",
-    "last_modified": "2025-07-08T20:24:28.421Z"
+    "last_modified": "2025-07-09T01:26:46.565Z"
   },
   {
     "title": "Mimi's Delivery Dash",
@@ -784,7 +784,7 @@
     "rtr": false,
     "arch": [],
     "min_glibc": "",
-    "last_modified": "2025-07-08T20:24:41.367Z"
+    "last_modified": "2025-07-09T01:26:46.620Z"
   },
   {
     "title": "Mystik Belle",
@@ -812,7 +812,7 @@
       "armhf"
     ],
     "min_glibc": "",
-    "last_modified": "2025-07-08T20:24:53.146Z"
+    "last_modified": "2025-07-09T01:26:46.662Z"
   },
   {
     "title": "Nubby's Number Factory",
@@ -840,7 +840,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-05-18T11:11:05.531Z"
+    "last_modified": "2025-07-09T01:26:46.780Z"
   },
   {
     "title": "Ocean's Heart",
@@ -862,7 +862,7 @@
     "rtr": false,
     "arch": [],
     "min_glibc": "",
-    "last_modified": "2025-07-08T20:25:07.501Z"
+    "last_modified": "2025-07-09T01:26:48.952Z"
   },
   {
     "title": "Osana's Revenge",
@@ -885,7 +885,7 @@
     "rtr": false,
     "arch": [],
     "min_glibc": "",
-    "last_modified": "2025-07-08T20:25:19.077Z"
+    "last_modified": "2025-07-09T01:26:48.956Z"
   },
   {
     "title": "Outrider Mako",
@@ -917,7 +917,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-07-01T16:14:32.835Z"
+    "last_modified": "2025-07-09T01:26:46.884Z"
   },
   {
     "title": "Pizza Tower",
@@ -951,7 +951,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-07-02T17:01:31.065Z"
+    "last_modified": "2025-07-09T01:26:46.947Z"
   },
   {
     "title": "Planetarian",
@@ -974,7 +974,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-07-08T20:20:30.163Z"
+    "last_modified": "2025-07-09T01:26:48.493Z"
   },
   {
     "title": "Pocket Crystal League",
@@ -997,7 +997,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-07-08T20:25:42.351Z"
+    "last_modified": "2025-07-09T01:26:46.998Z"
   },
   {
     "title": "Pokéwilds",
@@ -1021,7 +1021,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-07-08T20:25:57.333Z"
+    "last_modified": "2025-07-09T01:26:48.485Z"
   },
   {
     "title": "RomM App",
@@ -1046,7 +1046,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-07-08T20:51:25.422Z"
+    "last_modified": "2025-07-09T01:26:37.679Z"
   },
   {
     "title": "Ship of Harkinian",
@@ -1071,7 +1071,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-07-08T20:26:11.258Z"
+    "last_modified": "2025-07-09T01:26:48.841Z"
   },
   {
     "title": "Ship of Harkinian 2",
@@ -1096,7 +1096,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-07-08T20:26:19.710Z"
+    "last_modified": "2025-07-09T01:26:48.941Z"
   },
   {
     "title": "Sonic 1",
@@ -1120,7 +1120,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-07-08T20:26:32.830Z"
+    "last_modified": "2025-07-09T01:26:49.005Z"
   },
   {
     "title": "Sonic 2",
@@ -1144,7 +1144,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-07-08T20:26:39.778Z"
+    "last_modified": "2025-07-09T01:26:49.013Z"
   },
   {
     "title": "Sonic 3 AIR",
@@ -1167,7 +1167,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-07-08T20:27:05.481Z"
+    "last_modified": "2025-07-09T01:26:49.661Z"
   },
   {
     "title": "Sonic CD",
@@ -1191,7 +1191,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-07-08T20:26:51.162Z"
+    "last_modified": "2025-07-09T01:26:49.018Z"
   },
   {
     "title": "Sonic Mania",
@@ -1215,7 +1215,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-07-08T20:26:58.452Z"
+    "last_modified": "2025-07-09T01:26:49.045Z"
   },
   {
     "title": "Sonic Time Twisted",
@@ -1239,7 +1239,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-07-08T20:27:21.889Z"
+    "last_modified": "2025-07-09T01:26:47.569Z"
   },
   {
     "title": "Sonic Triple Trouble - 16-Bit",
@@ -1268,7 +1268,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-07-08T20:33:10.434Z"
+    "last_modified": "2025-07-09T01:26:47.637Z"
   },
   {
     "title": "Starship",
@@ -1292,7 +1292,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-07-01T18:50:09.157Z"
+    "last_modified": "2025-07-09T01:26:50.047Z"
   },
   {
     "title": "SteamLink",
@@ -1316,7 +1316,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-07-08T20:02:49.901Z"
+    "last_modified": "2025-07-09T01:26:50.259Z"
   },
   {
     "title": "Super Star Trek",
@@ -1345,7 +1345,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-07-01T14:17:31.654Z"
+    "last_modified": "2025-07-09T01:26:47.722Z"
   },
   {
     "title": "Tenjutsu",
@@ -1368,7 +1368,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-05-22T12:24:12.578Z"
+    "last_modified": "2025-07-09T01:26:50.582Z"
   },
   {
     "title": "The Friends of Ringo Ishikawa",
@@ -1405,7 +1405,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-06-27T12:06:00.974Z"
+    "last_modified": "2025-07-09T01:26:48.415Z"
   },
   {
     "title": "The Legend of Zelda: Mercuris Chess",
@@ -1427,7 +1427,7 @@
     "rtr": false,
     "arch": [],
     "min_glibc": "",
-    "last_modified": "2025-07-08T20:33:00.199Z"
+    "last_modified": "2025-07-09T01:26:48.988Z"
   },
   {
     "title": "The Legend of Zelda: Mercuris' Chest (DEMO)",
@@ -1449,7 +1449,7 @@
     "rtr": false,
     "arch": [],
     "min_glibc": "",
-    "last_modified": "2025-07-08T20:32:55.000Z"
+    "last_modified": "2025-07-09T01:26:48.974Z"
   },
   {
     "title": "The Legend of Zelda: Mystery of Solarus DX",
@@ -1471,7 +1471,7 @@
     "rtr": false,
     "arch": [],
     "min_glibc": "",
-    "last_modified": "2025-07-08T20:32:51.185Z"
+    "last_modified": "2025-07-09T01:26:48.978Z"
   },
   {
     "title": "The Legend of Zelda: Mystery of Solarus XD",
@@ -1493,7 +1493,7 @@
     "rtr": false,
     "arch": [],
     "min_glibc": "",
-    "last_modified": "2025-07-08T20:32:46.411Z"
+    "last_modified": "2025-07-09T01:26:48.981Z"
   },
   {
     "title": "The Legend of Zelda: Return of the Hylain SE",
@@ -1515,7 +1515,7 @@
     "rtr": false,
     "arch": [],
     "min_glibc": "",
-    "last_modified": "2025-07-08T20:32:41.167Z"
+    "last_modified": "2025-07-09T01:26:48.984Z"
   },
   {
     "title": "The Legend of Zelda: The Book of Mudora",
@@ -1537,7 +1537,7 @@
     "rtr": false,
     "arch": [],
     "min_glibc": "",
-    "last_modified": "2025-07-08T20:32:35.684Z"
+    "last_modified": "2025-07-09T01:26:48.971Z"
   },
   {
     "title": "The Legend of Zelda: Zeldo's Challenge",
@@ -1559,7 +1559,7 @@
     "rtr": false,
     "arch": [],
     "min_glibc": "",
-    "last_modified": "2025-07-08T20:32:21.137Z"
+    "last_modified": "2025-07-09T01:26:48.991Z"
   },
   {
     "title": "The Legend of Zelda: Zeldo's Challenge 2",
@@ -1581,7 +1581,7 @@
     "rtr": false,
     "arch": [],
     "min_glibc": "",
-    "last_modified": "2025-07-08T20:32:16.366Z"
+    "last_modified": "2025-07-09T01:26:48.997Z"
   },
   {
     "title": "Tunics!",
@@ -1603,7 +1603,7 @@
     "rtr": false,
     "arch": [],
     "min_glibc": "",
-    "last_modified": "2025-07-08T20:29:36.109Z"
+    "last_modified": "2025-07-09T01:26:48.964Z"
   },
   {
     "title": "UFO 50",
@@ -1628,7 +1628,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-07-08T20:30:34.387Z"
+    "last_modified": "2025-07-09T01:26:47.827Z"
   },
   {
     "title": "Undertale",
@@ -1659,7 +1659,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-06-25T11:53:18.480Z"
+    "last_modified": "2025-07-09T01:26:47.900Z"
   },
   {
     "title": "Undertale Red & Yellow",
@@ -1689,7 +1689,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-06-25T12:08:08.261Z"
+    "last_modified": "2025-07-09T01:26:47.941Z"
   },
   {
     "title": "Undertale Yellow",
@@ -1715,7 +1715,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-07-08T20:30:48.600Z"
+    "last_modified": "2025-07-09T01:26:48.176Z"
   },
   {
     "title": "Victory Heat Rally",
@@ -1741,7 +1741,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-07-08T20:31:09.725Z"
+    "last_modified": "2025-07-09T01:26:48.276Z"
   },
   {
     "title": "Wolfenstein 3D",
@@ -1755,7 +1755,7 @@
     "genres": [
       "fps"
     ],
-    "availability": "full",
+    "availability": "demo",
     "store": [],
     "instructions": "Comes with shareware files for Wolfenstein 3D and Spear of Destiny. Add your full game files to their respective folders to play.",
     "runtime": [],
@@ -1765,7 +1765,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-07-08T20:31:26.376Z"
+    "last_modified": "2025-07-09T01:26:50.651Z"
   },
   {
     "title": "Yarntown",
@@ -1786,7 +1786,7 @@
     "rtr": false,
     "arch": [],
     "min_glibc": "",
-    "last_modified": "2025-07-08T20:32:26.390Z"
+    "last_modified": "2025-07-09T01:26:48.968Z"
   },
   {
     "title": "Zelda II: Enhanced",
@@ -1813,6 +1813,6 @@
       "armhf"
     ],
     "min_glibc": "",
-    "last_modified": "2025-07-08T20:31:43.720Z"
+    "last_modified": "2025-07-09T01:26:48.472Z"
   }
 ]
