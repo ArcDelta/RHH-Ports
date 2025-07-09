@@ -1,3 +1,6 @@
+## Installation
+This game is currently in development with a demo available. Download the demo from https://solarus-games.org/games/the-legend-of-zelda-mercuris-chest/ and place in the `ports/zelda-mercurischest` folder.
+
 ## Default Gameplay Controls
 | Button | Action |
 |--|--|
