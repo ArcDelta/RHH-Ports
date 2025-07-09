@@ -1,6 +1,7 @@
 async function loadPorts() {
     const container = document.getElementById('ports-container');
     const countDisplay = document.getElementById('port-count');
+    const searchBar = document.getElementById('search-bar');
     const filterDropdown = document.getElementById('genre-filter');
     const availabilityDropdown = document.getElementById('availability-filter');
     const sortDropdown = document.getElementById('sort-select');
@@ -158,6 +159,7 @@ async function loadPorts() {
         function updateDisplay() {
             const selectedGenre = filterDropdown.value;
             const selectedAvailability = availabilityDropdown.value;
+            const searchQuery = searchBar.value.trim().toLowerCase();
 
             let filtered = ports;
 
@@ -166,6 +168,9 @@ async function loadPorts() {
             }
             if (selectedAvailability !== 'all') {
                 filtered = filtered.filter(port => port.availability === selectedAvailability);
+            }
+            if (searchQuery) {
+                filtered = filtered.filter(port => port.title.toLowerCase().includes(searchQuery));
             }
 
             const sortMethod = sortDropdown.value;
@@ -178,6 +183,7 @@ async function loadPorts() {
         updateDisplay();
 
         // Event listeners for all filters and sort
+        searchBar.addEventListener('input', updateDisplay);
         filterDropdown.addEventListener('change', updateDisplay);
         availabilityDropdown.addEventListener('change', updateDisplay);
         sortDropdown.addEventListener('change', updateDisplay);
