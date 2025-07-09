@@ -1,0 +1,44 @@
+{
+  "version": 4,
+  "name": "triga.zip",
+  "items": [
+    "Triga.sh",
+    "triga"
+  ],
+  "items_opt": [],
+  "attr": {
+    "title": "Triga",
+    "porter": [
+      "Jeod"
+    ],
+    "desc": "Slap triangular tiles down in this cause and effect, chain reactive, radically funky puzzle experience! Collect as many golden triangles as you can to unlock new levels, but don't sweat it if you aren't a triangle-brained genius: Each stage has 3 goals ranging from casual fun, to extreme puzzling!",
+    "desc_md": null,
+    "inst": "Copy your Triga game files to `triga/assets`. If using Steam data, the game will be patched to stretch to fit.",
+    "inst_md": null,
+    "genres": [
+      "puzzle"
+    ],
+    "image": null,
+    "rtr": false,
+    "exp": false,
+    "runtime": [],
+    "store": [
+      {
+        "name": "Steam",
+        "gameurl": "https://store.steampowered.com/app/1890550/Triga/",
+        "developerurl": ""
+      },
+      {
+        "name": "Itch.io",
+        "gameurl": "https://cicada-games-official.itch.io/triga",
+        "developerurl": ""
+      }
+    ],
+    "availability": "paid",
+    "reqs": [],
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": ""
+  }
+}
