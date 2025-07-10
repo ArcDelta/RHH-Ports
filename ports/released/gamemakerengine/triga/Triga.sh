@@ -33,8 +33,6 @@ $ESUDO chmod +xr "$GAMEDIR/tools/splash"
 
 # Exports
 export SDL_GAMECONTROLLERCONFIG="$sdl_controllerconfig"
-export controlfolder
-export ESUDO
 
 # Check if we need to patch the game
 if [ ! -f patchlog.txt ] || [ -f "$GAMEDIR/assets/data.win" ]; then
