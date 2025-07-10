@@ -1,5 +1,5 @@
 # Jeod's Ports
-You can use [Downgit](https://downgit.github.io/#/home) to download specific folders in this repository without having to clone the whole thing. Downgit will download a zip archive of your desired port, which you can then copy to `PortMaster/autoinstall` folder. Once copied, running the PortMaster application will install the port for you.
+You can use [Download-Directory](https://download-directory.github.io/) to download specific folders in this repository without having to clone the whole thing. Downgit will download a zip archive of your desired port, which you can then copy to `PortMaster/autoinstall` folder. Once copied, running the PortMaster application will install the port for you.
 
 Whether you're new to retro handhelds, a developer who came across this repository and noticed their game has a port, or a developer seeking information, I can't recommend enough this video by WULFF DEN which encapsulates the whole idea pretty well.
 
