@@ -15,6 +15,9 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          enable-mtime: true
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
