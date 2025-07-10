@@ -141,7 +141,7 @@ async function loadPorts() {
 
                 const download = document.createElement('a');
                 download.className = 'download-link';
-                download.href = `https://downgit.github.io/#/home?url=${encodeURIComponent(port.download_url)}`;
+                download.href = `https://download-directory.github.io/?url=${encodeURIComponent(port.download_url)}`;
                 download.target = '_blank';
                 download.rel = 'noopener noreferrer';
                 download.textContent = 'Download';
