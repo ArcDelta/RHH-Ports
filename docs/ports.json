@@ -656,7 +656,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-07-10T12:16:12.588Z"
+    "last_modified": "2025-07-14T13:24:25.283Z"
   },
   {
     "title": "Kanon",
@@ -1004,6 +1004,31 @@
     ],
     "min_glibc": "",
     "last_modified": "2025-07-08T20:20:30.163Z"
+  },
+  {
+    "title": "Plants vs Zombies : Neighborhood Defense",
+    "description": "Plants vs zombies Neighborhood defense is a PVZ fangame with high difficulty and new content! +90 levels, hard mode, versus mode, vasebreaker, endless zone and more!",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/pvznd",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/pvznd/screenshot.png",
+    "porter": [
+      "Jeod"
+    ],
+    "genres": [
+      "strategy"
+    ],
+    "availability": "free",
+    "store": [],
+    "instructions": "Download the *Windows* version from https://crisdevelop.itch.io/pvznd and add the zip to the `pvznd/assets` folder.",
+    "runtime": [
+      "gmtoolkit.squashfs"
+    ],
+    "exp": false,
+    "rtr": false,
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-07-16T18:27:23.409Z"
   },
   {
     "title": "Pocket Crystal League",
