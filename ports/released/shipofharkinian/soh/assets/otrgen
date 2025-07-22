@@ -79,7 +79,7 @@ process_rom() {
 
     if [ ! -e "$GAMEDIR/$OTRNAME" ]; then
         echo "Generating $OTRNAME from $romfile..."
-        ./assets/ZAPD.out ed -eh -i ./assets/extractor/xmls/$ROM -b "$romfile" -fl ./assets/extractor/filelists -o placeholder -osf placeholder -gsf 1 -rconf ./assets/extractor/Config_$ROM.xml -se OTR --otrfile "$OTRNAME" --portVer "9.0.0"
+        ./assets/ZAPD.out ed -eh -i ./assets/extractor/xmls/$ROM -b "$romfile" -fl ./assets/extractor/filelists -o placeholder -osf placeholder -gsf 1 -rconf ./assets/extractor/Config_$ROM.xml -se OTR --otrfile "$OTRNAME" --portVer "9.0.4"
         if [ $? -eq 0 ]; then
             echo "Successfully generated $OTRNAME"
             return 0
