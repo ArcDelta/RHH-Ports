@@ -22,15 +22,15 @@ process_rom() {
     d6133ace5afaa0882cf214cf88daba39e266c078) ROM=N64_US;;
     9743aa026e9269b339eb0e3044cd5830a440c1fd) ROM=GC_US;;
     *)
-        echo "$ROMHASH rom hash does not match: $ROMHASH" | tee -a log.txt
+        echo "$ROMHASH rom hash does not match: $ROMHASH" | tee -a $LOGFILE
         return 1
         ;;
     esac
 
     OTRNAME="mm.o2r"
     if [ ! -e "$GAMEDIR/$OTRNAME" ]; then
-        echo "Generating $OTRNAME from $romfile..." | tee -a log.txt
-        ./assets/ZAPD.out ed -eh -i ./assets/extractor/xmls/$ROM -b ./$romfile -fl ./assets/extractor/filelists -o placeholder -osf placeholder -gsf 1 -rconf ./assets/extractor/Config_$ROM.xml -se OTR --otrfile "$OTRNAME" --portVer "1.1.1"
+        echo "Generating $OTRNAME from $romfile..." | tee -a $LOGFILE
+        ./assets/extractor/ZAPD.out ed -eh -i ./assets/xml/$ROM -b ./$romfile -fl ./assets/extractor/filelists -o placeholder -osf placeholder -gsf 1 -rconf ./assets/extractor/Config_$ROM.xml -se OTR --otrfile "$OTRNAME" --portVer "2.0.0"
         if [ $? -eq 0 ]; then
             echo "Successfully generated $OTRNAME"
         else
@@ -45,7 +45,7 @@ GAMEDIR="$PWD"
 LOGFILE="$GAMEDIR/patchlog.txt"
 
 # Redirect output and error to the log file
-exec > >(tee -a "$LOGFILE") 2>&1
+exec > >(tee "$LOGFILE") 2>&1
 echo "GAMEDIR is set to: $GAMEDIR"
 
 # Exports
@@ -74,19 +74,32 @@ echo "Found $rom_count ROM files!"
 
 # Process them all
 counter=1
+processed_any_rom=0
+
 for romfile in *.*64; do
     if [ -f "$romfile" ]; then
         echo "Processing ${romfile}..."
         mv "$romfile" "rom${counter}.z64"
         if [ $? -eq 0 ]; then
             process_rom "rom${counter}.z64"
-            counter=$((counter + 1))
+            if [ $? -eq 0 ]; then
+                processed_any_rom=1
+                counter=$((counter + 1))
+            else
+                echo "Error: process_rom failed for rom${counter}.z64"
+            fi
+        else
+            echo "Error: Failed to rename $romfile"
         fi
     fi
 done
 
-# Cleanup
+# Conditional cleanup
+if [ "$processed_any_rom" -eq 1 ]; then
+    echo "Cleaning up..."
+    rm -rf ./placeholder
+    rm -rf *.*64
+fi
+
 echo "Finished processing all ROM files."
-rm -rf ./placeholder
-rm -rf *.*64
 echo "Patching process complete!"
