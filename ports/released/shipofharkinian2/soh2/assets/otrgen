@@ -53,12 +53,12 @@ export LD_LIBRARY_PATH="$GAMEDIR/libs:$LD_LIBRARY_PATH"
 
 # Extract extractor directory
 if [ -f assets/extractor.zip ]; then
-  echo Extracting xml files...
+  echo "Extracting xml files..."
   cd assets
-  rm -rf extractor
-  unzip extractor.zip
-  rm extractor.zip
-  cd ..
+  rm extractor
+  if unzip -q extractor.zip; then
+    rm extractor.zip
+    cd ..
 fi
 
 # Count the number of ROM files
