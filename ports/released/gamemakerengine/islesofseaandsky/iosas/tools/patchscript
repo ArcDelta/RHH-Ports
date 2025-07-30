@@ -29,7 +29,7 @@ else
 fi
 
 # Exports
-export PATH="$TOOLKIT/gmtools:$TOOLKIT/utmt-cli:$PATH"
+export PATH="$TOOLKIT/gmtools:$PATH"
 export LD_LIBRARY_PATH="/usr/lib:$TOOLKIT/libs:$LD_LIBRARY_PATH"
 export SDL_GAMECONTROLLERCONFIG="$sdl_controllerconfig"
 export DATADIR="$GAMEDIR/assets"
@@ -66,8 +66,15 @@ fi
 
 cpu_check() {
     
-    CONFIG="$SAVEDIR/pm-config.ini"
-    # Check for pm-config.ini, log if not found
+    CONFIG="$SAVEDIR/config.ini"
+
+    # Check for pm-config.ini, rename if found
+    if [ -f "$SAVEDIR/pm-config.ini" ]; then
+        mv "$SAVEDIR/pm-config.ini" "$CONFIG"
+        echo "Renamed old config ini file to match new version."
+    fi
+    
+    # Check for config.ini, log if not found
     if [ ! -f "$CONFIG" ]; then
         echo "Error: Configuration file ($CONFIG) not found!"
         return 1
@@ -114,39 +121,47 @@ apply_xdelta() {
         #v1.2b
         md5_steam="f24efe2f28a3db2b5e4eaa5294dce25d"
         md5_itch="a93de5a86378c7aa7ad25ab7857b3e19"
-
-        md5_current=$(md5sum "$DATADIR/data.win" | cut -d ' ' -f1)
+        checksum=$(md5sum "$DATADIR/data.win" | awk '{print $1}')
 
         if [ ! -x "$controlfolder/xdelta3" ]; then
             echo "xdelta3 binary not found or not executable!"
             return 1
         fi
 
-        if [ "$md5_current" = "$md5_steam" ]; then
-        echo "Found Steam game version"
-            patch="$GAMEDIR/tools/patches/iosas_steam.xdelta"
-        elif [ "$md5_current" = "$md5_itch" ] && [ -n "$md5_itch" ]; then
-            echo "Found itch.io game version"
-            patch="$GAMEDIR/tools/patches/iosas_itchio.xdelta"
-        else
-            echo "Datafile does not match any supported versions!"
-            mv "$LOGFILE" "$LOGERR"
-            return 1
-        fi
+        # Compare checksums
+        case "$checksum" in
+            "$md5_steam")
+                echo "Found Steam game version"
+                patch="$GAMEDIR/tools/patches/iosas_steam.xdelta"
+                ;;
+            "$md5_itch")
+                echo "Found itch.io game version"
+                patch="$GAMEDIR/tools/patches/iosas_itchio.xdelta"
+                ;;
+            *)
+                echo "Datafile does not match any supported versions!"
+                mv "$LOGFILE" "$LOGERR"
+                return 1
+                ;;
+        esac
 
-        output=$("$controlfolder/xdelta3" -d -s "$DATADIR/data.win" -f "$patch" "$DATADIR/game.droid" 2>&1)
-        if [ $? -eq 0 ]; then
-            echo "Patch applied successfully"
-            echo "$output"
-            rm -f "$DATADIR/data.win"
+        if [ -f "$GAMEDIR/tools/patches/$patch" ]; then
+            output=$("$controlfolder/xdelta3" -d -s "$DATADIR/data.win" -f "$patch" "$DATADIR/game.droid" 2>&1)
+            if [ $? -eq 0 ]; then
+                echo "Patch applied successfully"
+                echo "$output"
+                rm -f "$DATADIR/data.win"
+            else
+                echo "Failed to apply patch"
+                echo "$output"
+                return 1
+            fi
         else
-            echo "Failed to apply patch"
-            echo "$output"
-            mv "$LOGFILE" "$LOGERR"
+            echo "Patchfile ($patch) not found!"
             return 1
         fi
     else
-        echo "No data.win file found to patch!"
+        echo "No data.win found to patch!"
         return 1
     fi
 }

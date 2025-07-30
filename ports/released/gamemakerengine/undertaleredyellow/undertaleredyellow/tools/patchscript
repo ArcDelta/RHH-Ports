@@ -1,10 +1,11 @@
 #!/bin/bash
 # Set GAMEDIR to the current directory and set logfile
 GAMEDIR="$PWD"
-LOGFILE="$GAMEDIR/patchlog.txt"
+LOGFILE="patchlog.txt"
+LOGERR="patcherr.txt"
 
 # Redirect output and error to the log file
-exec > >(tee -a "$LOGFILE") 2>&1
+> "$GAMEDIR/$LOGFILE" && exec > >(tee "$GAMEDIR/$LOGFILE") 2>&1
 echo "GAMEDIR is set to: $GAMEDIR"
 
 # Patch failure function
@@ -12,7 +13,8 @@ patch_failure() {
     mv "$LOGFILE" "$LOGERR"
     $ESUDO umount "$TOOLKIT"
     echo "Patching process failed."
-    exit 1
+    # Exit script, or return if sourced
+    return 1 2>/dev/null || exit 1
 }
 
 # Mount the GMToolkit runtime
@@ -29,12 +31,13 @@ else
 fi
 
 # Exports
-export PATH="$TOOLKIT/gmtools:$TOOLKIT/utmt-cli:$PATH"
+export PATH="$TOOLKIT/gmtools:$PATH"
 export LD_LIBRARY_PATH="/usr/lib:$TOOLKIT/libs:$LD_LIBRARY_PATH"
 export SDL_GAMECONTROLLERCONFIG="$sdl_controllerconfig"
 export DATADIR="$GAMEDIR/assets"
 export DATAFILE="undertalery.port"
 export TMPDIR="$GAMEDIR/tmp"
+export TOOLDIR="$GAMEDIR/tools"
 
 # Permissions
 chmod 666 /dev/uinput
@@ -66,7 +69,6 @@ fi
 
 # First we need to verify the user placed everything correctly.
 prepare_assets() {
-
     # Identify ut-red-yellow.zip
     echo "Looking for Undertale Red & Yellow zip file..."
     sleep 1
@@ -86,11 +88,10 @@ prepare_assets() {
         fi
     else
         echo "Found ${MOD_ZIP}!"
+        mkdir -p "$DATADIR/utry"
+        unzip "$MOD_ZIP" -d "$DATADIR/utry" || { echo "Failed to unzip $MOD_ZIP"; exit 1; }
+        rm -rf "$MOD_ZIP"
     fi
-
-    mkdir -p "$DATADIR/utry"
-    unzip "$MOD_ZIP" -d "$DATADIR/utry" || { echo "Failed to unzip $MOD_ZIP"; exit 1; }
-    rm -rf "$MOD_ZIP"
 
     # Move .ogg files if any exist
     ogg=false
@@ -112,29 +113,12 @@ prepare_assets() {
     mkdir -p "$TOOLDIR/patches"
     FOUND=0
 
-    for f in "$DATADIR/utry/"*.xdelta; do
-        case "$f" in
-            *Undertalev1.0.8*)
-                dest="$TOOLDIR/patches/utry_steam.xdelta"
-                ;;
-            *v1.08_Windows_C*)
-                dest="$TOOLDIR/patches/utry_gog.xdelta"
-                ;;
-            *)
-                continue
-                ;;
-        esac
-
-        mv "$f" "$dest" || {
-            echo "Failed to move patch file: $f"
-            exit 1
-        }
-        FOUND=1
-    done
-
-    if [ $FOUND -eq 0 ]; then
-        echo "Could not find any base patch files!"
-        exit 1
+    # Pull the vanilla-to-utry patch
+    if [ ! -f "$DATADIR/utry/Undertale v1.08 to UTRY v2.1.1.xdelta" ]; then
+        echo "Did not find base patch file!"
+        return 1
+    else
+        mv "$DATADIR/utry/Undertale v1.08 to UTRY v2.1.1.xdelta" "$TOOLDIR/patches/utry_steam.xdelta"
     fi
 
     # Clean up
@@ -152,19 +136,8 @@ apply_xdelta() {
         STEAMSUM="5903fc5cb042a728d4ad8ee9e949c6eb"
 
         if [ "$FILESUM" != "$STEAMSUM" ]; then
-            echo "MD5 doesn't match Steam! Trying to apply the GOG patch..."
-            sleep 1
-            output=`"$controlfolder/xdelta3" -d -s "$DATADIR/data.win" -f "./tools/patches/utry_gog.xdelta" "$DATADIR/data2.win" 2>&1`
-            if [ $? -eq 0 ]; then
-                echo "Patch applied successfully"
-                echo "$output"
-                rm "$DATADIR/data.win" && mv "$DATADIR/data2.win" "$DATADIR/data.win"
-            else
-                echo "Failed to apply gog patch! Probably not GOG v1.08 Windows."
-                echo "$output"
-                mv "$LOGFILE" "$LOGERR"
-                exit 1
-            fi
+            echo "MD5 doesn't match Steam! UTRY is only compatible with Steam data!"
+            return 1
         fi    
 
         # Apply the Steam patch
@@ -215,17 +188,19 @@ zip_archive() {
 }
 
 process_game() {
-    prepare_assets || patch_failure
-    sleep 2
-    apply_xdelta || patch_failure
-    sleep 2
-    compress_audio || patch_failure
-    sleep 2
-    zip_archive || patch_failure
-    
-    # Unmount runtimes
-    $ESUDO umount "$TOOLKIT"
+    prepare_assets || { patch_failure; return 1; }
+    apply_xdelta || { patch_failure; return 1; }
+    compress_audio || { patch_failure; return 1; }
+    zip_archive || { patch_failure; return 1; }
 }
 
 # Call the function
-process_game
+if ! process_game; then
+    echo "Patching process failed!"
+    mv "$LOGFILE" "$LOGERR"
+else
+    echo "Patching process complete!"
+fi
+
+# Unmount runtimes
+$ESUDO umount "$TOOLKIT" 2>/dev/null || true
