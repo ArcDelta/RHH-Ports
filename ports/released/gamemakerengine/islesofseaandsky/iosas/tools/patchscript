@@ -119,7 +119,7 @@ apply_xdelta() {
     # Check if the data.win file exists and apply xdelta
     if [ -f "$DATADIR/data.win" ]; then
         #v1.2b
-        md5_steam="f24efe2f28a3db2b5e4eaa5294dce25d"
+        md5_steam="f6e8e39e2adc30e733c852e4c14e73b4" #v2.1b 08/04/2025
         md5_itch="a93de5a86378c7aa7ad25ab7857b3e19"
         checksum=$(md5sum "$DATADIR/data.win" | awk '{print $1}')
 
@@ -145,7 +145,7 @@ apply_xdelta() {
                 ;;
         esac
 
-        if [ -f "$GAMEDIR/tools/patches/$patch" ]; then
+        if [ -f "$patch" ]; then
             output=$("$controlfolder/xdelta3" -d -s "$DATADIR/data.win" -f "$patch" "$DATADIR/game.droid" 2>&1)
             if [ $? -eq 0 ]; then
                 echo "Patch applied successfully"
