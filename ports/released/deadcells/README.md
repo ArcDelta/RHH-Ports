@@ -34,3 +34,8 @@ deadcells/gamedata
 DO *NOT* REPLACE THE EXISTING `sdl.hdll` FILE!!!
 
 DLC content should work.
+
+## Thanks
+Motion Twin -- The game  
+Apprentice-Alchemist  -- The subtle hashlink sdl change that allows dynamic loading libGL  
+ptitseb -- Box64  
