@@ -1,7 +1,7 @@
 const fs = require('fs').promises;
 const path = require('path');
 
-const screenshotExtensions = ['.png', '.jpg', '.jpeg'];
+const screenshotExtensions = ['.png', '.jpg'];
 
 async function findPortsWithScreenshots(dir) {
     const ports = [];
@@ -61,7 +61,7 @@ async function getLatestModifiedDate(dir) {
 }
 
 async function main() {
-    const baseDir = path.resolve('./ports/released');  // Change or add unreleased folders if needed
+    const baseDir = path.resolve('./ports/released');
     const outputFile = path.resolve('./docs/ports.json');
 
     const portsFound = await findPortsWithScreenshots(baseDir);
