@@ -27,8 +27,6 @@ export LD_LIBRARY_PATH="$GAMEDIR/libs":$LD_LIBRARY_PATH
 export SDL_GAMECONTROLLERCONFIG="$sdl_controllerconfig"
 
 # Permissions
-$ESUDO chmod 666 /dev/tty0
-$ESUDO chmod 666 /dev/tty1
 $ESUDO chmod 777 $GAMEDIR/sonicmania
 
 # Set Pix Values
@@ -81,7 +79,6 @@ if grep -q "^fsHeight=" "$GAMEDIR/Settings.ini"; then
 else
   sed -i "/^\[Video\]/a fsHeight=$DISPLAY_HEIGHT" "$GAMEDIR/Settings.ini"
 fi
-
 
 # Run the game
 pm_platform_helper "$GAMEDIR/sonicmania"

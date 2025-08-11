@@ -35,17 +35,36 @@ else
   source "${controlfolder}/libgl_default.txt"
 fi
 
-# Calculate aspect ratio with full precision
-ASPECT=$(awk -v w="$DISPLAY_WIDTH" -v h="$DISPLAY_HEIGHT" 'BEGIN { printf "%.6f", w / h }')
+get_res() {
+    # RSDK default resolution
+    BASE_WIDTH=424
+    BASE_HEIGHT=240
 
-# Calculate pixWidth
-PIXWIDTH=$(awk -v h="240" -v a="$ASPECT" 'BEGIN { printf "%d", h * a }')
+    # Calculate integer scale factor for height
+    SCALE=$(( DISPLAY_HEIGHT / BASE_HEIGHT ))
 
-if grep -q "^ScreenWidth=[0-9]\+" "$GAMEDIR/settings.ini"; then
-    sed -i "s/^ScreenWidth=[0-9]\+/ScreenWidth=$PIXWIDTH/" "$GAMEDIR/settings.ini"
-else
-    echo "Possible invalid or missing settings.ini!"
-fi
+    # Calculate scaled width
+    SCALED_WIDTH=$(( BASE_WIDTH * SCALE ))
+
+    # If scaled width is too big for screen, reduce until it fits
+    while [ $SCALED_WIDTH -gt $DISPLAY_WIDTH ]; do
+        BASE_WIDTH=$(( BASE_WIDTH - 1 ))
+        SCALED_WIDTH=$(( BASE_WIDTH * SCALE ))
+    done
+
+    # Final internal width is base width after adjustment
+    WIDTH=$BASE_WIDTH
+
+    # Update settings.ini
+    if grep -q "^ScreenWidth=[0-9]\+" "$GAMEDIR/settings.ini"; then
+        sed -i "s/^ScreenWidth=[0-9]\+/ScreenWidth=$WIDTH/" "$GAMEDIR/settings.ini"
+    else
+        echo "Possible invalid or missing settings.ini!"
+    fi
+}
+
+# Adjust game resolution
+get_res
 
 # Check if running Sonic Forever
 result=$(grep "^SonicForeverMod=true" "$GAMEDIR/mods/modconfig.ini")
