@@ -1349,6 +1349,43 @@
     "last_modified": "2025-07-08T20:33:10.434Z"
   },
   {
+    "title": "Spine Lasher",
+    "description": "With a whip made of human spines, you face the nightmarish creatures of humankind. Lash your enemies with your whip, stab them with your knives, crush them under chandeliers, and deflect weapons back at them—do whatever it takes to cleanse this world of darkness!",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/spinelasher",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/spinelasher/screenshot.png",
+    "porter": [
+      "Jeod"
+    ],
+    "genres": [
+      "action",
+      "platformer"
+    ],
+    "availability": "demo",
+    "store": [
+      {
+        "name": "Steam",
+        "gameurl": "https://store.steampowered.com/app/3849530/Spine_Lasher/",
+        "developerurl": ""
+      },
+      {
+        "name": "Itch.io",
+        "gameurl": "https://pinkanvil.itch.io/spinelasher",
+        "developerurl": ""
+      }
+    ],
+    "instructions": "Choose where to download the game from and add all files to `spinelasher/assets`.",
+    "runtime": [
+      "gmtoolkit.squashfs"
+    ],
+    "exp": false,
+    "rtr": false,
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-08-12T00:30:41.444Z"
+  },
+  {
     "title": "Starship",
     "description": "A source port of Star Fox 64. Starship features extensive and significant enhancements over the original game, such as improved performance, increased frame-rate, native ultra-widescreen support, and extensive mod support (especially compared to emulated versions of the original), among other features.",
     "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/starship",

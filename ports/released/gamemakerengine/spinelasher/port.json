@@ -1,0 +1,47 @@
+{
+  "version": 4,
+  "name": "spinelasher.zip",
+  "items": [
+    "Spine Lasher.sh",
+    "spinelasher"
+  ],
+  "items_opt": [],
+  "attr": {
+    "title": "Spine Lasher",
+    "porter": [
+      "Jeod"
+    ],
+    "desc": "With a whip made of human spines, you face the nightmarish creatures of humankind. Lash your enemies with your whip, stab them with your knives, crush them under chandeliers, and deflect weapons back at them—do whatever it takes to cleanse this world of darkness!",
+    "desc_md": null,
+    "inst": "Choose where to download the game from and add all files to `spinelasher/assets`.",
+    "inst_md": null,
+    "genres": [
+      "action",
+	  "platformer"
+    ],
+    "image": null,
+    "rtr": false,
+    "exp": false,
+    "runtime": [
+      "gmtoolkit.squashfs"
+    ],
+    "store": [
+      {
+        "name": "Steam",
+        "gameurl": "https://store.steampowered.com/app/3849530/Spine_Lasher/",
+        "developerurl": ""
+      },
+      {
+        "name": "Itch.io",
+        "gameurl": "https://pinkanvil.itch.io/spinelasher",
+        "developerurl": ""
+      }
+    ],
+    "availability": "demo",
+    "reqs": [],
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": ""
+  }
+}
