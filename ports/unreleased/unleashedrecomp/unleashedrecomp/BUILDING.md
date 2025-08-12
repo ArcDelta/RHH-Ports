@@ -1,6 +1,6 @@
 # Building Sonic Unleashed Recomp
 
-You need some specific files to compile `UnleashedRecomp`. Use an existing release from `https://github.com/hedge-dev/UnleashedRecomp/releases` and install the game. Then get the following files:
+You need some specific files to compile `UnleashedRecomp`. Use an existing release from [UnleashedRecomp Repo](https://github.com/hedge-dev/UnleashedRecomp/releases) and install the game. Then get the following files:
 
 ```
 default.xex
@@ -14,13 +14,13 @@ You need to clone a specific fork that contains a branch for the `Nintendo Switc
 ```
 sudo apt-get update && sudo apt-get upgrade
 sudo apt-get install cmake clang
-git clone --recurse-submodules -b switch https://github.com/arexdiaz/UnleashedRecomp.git
+git clone --recurse-submodules https://github.com/hedge-dev/UnleashedRecomp.git
 cd UnleashedRecomp
 ```
 
 At this point, gather the above files and place them in `./UnleashedRecompLib/private/`. Next you must build `libdxcompiler.so` or it will be missing during the Recomp build.
 
-Build it and copy the final result to `/UnleashedRecomp/tools/XenosRecomp/thirdparty/dxc-bin/lib/arm64/libdxcompiler.so`.
+Build it and copy the final result to `/UnleashedRecomp/tools/XenosRecomp/thirdparty/dxc-bin/lib/arm64/libdxcompiler.so`:
 
 ```
 cd UnleashedRecomp/tools/XenosRecomp/thirdparty/dxc-bin
@@ -38,16 +38,22 @@ cmake -B $BUILD_DIR_UNIVERSAL \
   -DCMAKE_BUILD_TYPE=Release
 
 ninja -C $BUILD_DIR_UNIVERSAL
+```
 
+This will take some time. Once the build is complete copy the library to the appropriate directory.
+
+```
 cp "$BUILD_DIR_UNIVERSAL/bin/dxc-3.7" ../bin/arm64/dxc
 cp "$BUILD_DIR_UNIVERSAL/lib/libdxcompiler.so" ../lib/arm64/libdxcompiler.so
 ```
 
-Next back out to the root of the repository. Assign executable permissions for the build script and run it.
+Now you can build the UnleashedRecomp binary:
 
 ```
-chmod +x scripts/arm-build.sh
-./scripts/arm-build.sh
+cd ../../../../../
+export VCPKG_FORCE_SYSTEM_BINARIES=1
+cmake . --preset linux-release -DVCPKG_TARGET_TRIPLET=arm64-linux
+cmake --build ./out/build/linux-release --target UnleashedRecomp
 ```
 
 Build will be in `out/build/linux-release`.
