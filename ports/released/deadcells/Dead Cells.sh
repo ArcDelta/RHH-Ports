@@ -35,8 +35,10 @@ gl_test() {
 
     # Check if it's at least 3.3
     if [ "$major" -lt 3 ] || { [ "$major" -eq 3 ] && [ "$minor" -lt 3 ]; }; then
-        echo "Hashlink requires minimum OpenGL 3.3, and your version ($version) is too old."
-        exit 1
+        # Dead Cells doesn't use geometry shaders, so let's fake the version.
+        export MESA_GL_VERSION_OVERRIDE=3.3
+        export MESA_GLSL_VERSION_OVERRIDE=330
+        export MESA_NO_ASYNC_COMPILE=1
     fi
 }
 
@@ -48,8 +50,17 @@ export SDL_GAMECONTROLLERCONFIG="$sdl_controllerconfig"
 export LD_LIBRARY_PATH="$GAMEDIR/box64/x64:$GAMEDIR/libs.aarch64:$GAMEDIR/gamedata:$LD_LIBRARY_PATH"
 export BOX64_LD_LIBRARY_PATH="$GAMEDIR/box64/x64:$GAMEDIR/gamedata:$LD_LIBRARY_PATH"
 export SDL_VIDEODRIVER="x11"
+
+# Box64 optimizations
 export BOX64_NOBANNER=1
 export BOX64_DYNAREC=1
+export BOX64_DYNAREC_SAFEFLAGS=1
+export BOX64_DYNAREC_FASTROUND=0
+export BOX64_DYNAREC_BIGBLOCK=0
+export BOX64_DYNAREC_CALLRET=0
+export BOX64_VSYNC=0
+export LIBGL_NOERROR=1
+export MESA_NO_ERROR=1
 
 # Run it
 $GPTOKEYB "deadcells" xbox360 & 

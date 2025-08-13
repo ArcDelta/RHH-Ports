@@ -1,7 +1,9 @@
 # Dead Cells - Retro Handhelds Port
 
 ## Requirements
-Hashlink engine requires OpenGL 3.3 minimum. GL4ES does not support this minimum version, so you must use a mainline linux device with a compatible OpenGL version. This port is tested and verified functional for RockNIX on Retroid Pocket systems.
+Hashlink engine requires OpenGL 3.3 minimum. GL4ES does not support this minimum version. Since Dead Cells doesn't use geometry shaders, the launch script spoofs OpenGL 3.3 so the game runs. However!
+
+This port is tested and verified functional for Rocknix on Retroid Pocket systems. On the RG353V, it hit a vram memory limit on loading a save file. Other devices are untested.
 
 ## Installation
 You *MUST* use GOG Linux data!
