@@ -3,7 +3,7 @@ Download the Windows version of Undertale from Steam and copy all the data to `u
 
 NEXT! Download the `Undertale Red & Yellow` mod from Gamejolt: https://gamejolt.com/games/undertale-red-yellow/877387. Copy the zip file (not its contents) to the `undertaleredyellow/assets` folder alongside your Undertale game data.
 
-* Verified compatible with v2.1.1
+* Verified compatible with v2.1.2
 
 Run the game! If it doesn't boot, check `patcherr.txt` for clues.
 

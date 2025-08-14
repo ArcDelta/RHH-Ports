@@ -111,14 +111,14 @@ prepare_assets() {
     fi
 
     mkdir -p "$TOOLDIR/patches"
-    FOUND=0
 
     # Pull the vanilla-to-utry patch
-    if [ ! -f "$DATADIR/utry/Undertale v1.08 to UTRY v2.1.1.xdelta" ]; then
-        echo "Did not find base patch file!"
+    BASEPATCH="$DATADIR/utry/Undertale v1.08 to UTRY v2.1.2.xdelta"
+    if [ ! -f "$BASEPATCH" ]; then
+        echo "Did not find base patch file $BASEPATCH! If this game has been updated, maybe notify the port creator."
         return 1
     else
-        mv "$DATADIR/utry/Undertale v1.08 to UTRY v2.1.1.xdelta" "$TOOLDIR/patches/utry_steam.xdelta"
+        mv "$BASEPATCH" "$TOOLDIR/patches/utry_steam.xdelta"
     fi
 
     # Clean up
@@ -147,7 +147,7 @@ apply_xdelta() {
             echo "Patch applied successfully"
             echo "$output"
             rm "$DATADIR/data.win"
-            output=`"$controlfolder/xdelta3" -d -s "$DATADIR/game.droid" -f "./tools/patches/pm-fix.xdelta" "$DATADIR/game2.droid" 2>&1`
+            output=`"$controlfolder/xdelta3" -d -s "$DATADIR/game.droid" -f "./tools/patches/rhh-fix.xdelta" "$DATADIR/game2.droid" 2>&1`
             if [ $? -eq 0 ]; then
                 echo "Second patch applied successfully"
                 echo "$output"
