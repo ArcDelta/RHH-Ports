@@ -119,7 +119,7 @@ apply_xdelta() {
     # Check if the data.win file exists and apply xdelta
     if [ -f "$DATADIR/data.win" ]; then
         #v1.2b
-        md5_steam="f730404fd182a542ebde4198826fedca" #v2.2 08/08/2025 - https://steamcommunity.com/app/1233070/discussions/0/592904149587292277/
+        md5_steam="1d28259629638653fa96438762b78141" #v2.3 08/14/2025 - https://steamcommunity.com/app/1233070/discussions/0/592904149587292277/
         md5_itch="a93de5a86378c7aa7ad25ab7857b3e19"
         checksum=$(md5sum "$DATADIR/data.win" | awk '{print $1}')
 
