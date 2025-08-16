@@ -130,44 +130,56 @@ prepare_assets() {
 # Hopefully the stage is set. Now ensure they copied their Undertale game data and apply the patch.
 apply_xdelta() {
     # Check if the data.win file exists
-    if [ -f "$DATADIR/data.win" ]; then
-        # Compute md5sum
-        FILESUM=`md5sum "$DATADIR/data.win" | awk '{ print $1 }'`
-        STEAMSUM="5903fc5cb042a728d4ad8ee9e949c6eb"
+    if [ ! -f "$DATADIR/data.win" ]; then
+        echo "No data.win file found! Did you copy your Undertale Steam or GOG data to the assets folder?"
+        return 1
+    fi
 
-        if [ "$FILESUM" != "$STEAMSUM" ]; then
-            echo "MD5 doesn't match Steam! UTRY is only compatible with Steam data!"
-            return 1
-        fi    
+    # Compute md5sum
+    FILESUM=$(md5sum "$DATADIR/data.win" | awk '{print $1}')
+    STEAMSUM="5903fc5cb042a728d4ad8ee9e949c6eb"
+    GOGSUM="ff4f10d0434b332f46e1f35a900ec862"
 
-        # Apply the Steam patch
-        echo "Applying xdelta patch..."
-        output=`"$controlfolder/xdelta3" -d -s "$DATADIR/data.win" -f "./tools/patches/utry_steam.xdelta" "$DATADIR/game.droid" 2>&1`
-        if [ $? -eq 0 ]; then
-            echo "Patch applied successfully"
-            echo "$output"
-            rm "$DATADIR/data.win"
-            output=`"$controlfolder/xdelta3" -d -s "$DATADIR/game.droid" -f "./tools/patches/rhh-fix.xdelta" "$DATADIR/game2.droid" 2>&1`
-            if [ $? -eq 0 ]; then
-                echo "Second patch applied successfully"
-                echo "$output"
-                rm "$DATADIR/game.droid" && mv "$DATADIR/game2.droid" "$DATADIR/game.droid"
-            else
-                echo "Failed to apply secondary patch"
-                echo "$output"
-                mv "$LOGFILE" "$LOGERR"
-                exit 1
-            fi
+    # Game version doesn't match GOG or Steam v1.08
+    if [ "$FILESUM" != "$STEAMSUM" ] && [ "$FILESUM" != "$GOGSUM" ]; then
+        echo "MD5 doesn't match Steam or GOG! UTRY is not compatible with this version!"
+        return 1
+    fi
+
+    # If GOG, first patch to Steam
+    if [ "$FILESUM" = "$GOGSUM" ]; then
+        echo "GOG data found, patching to Steam version..."
+        if "$controlfolder/xdelta3" -d -s "$DATADIR/data.win" -f "./tools/patches/rhh-gog-to-steam.xdelta" "$DATADIR/data2.win"; then
+            echo "GOG to Steam patch applied successfully."
+            mv -f "$DATADIR/data2.win" "$DATADIR/data.win"
         else
-            echo "Failed to apply patch"
-            echo "$output"
-            mv "$LOGFILE" "$LOGERR"
-            exit 1
+            echo "Failed to apply GOG to Steam patch!"
+            return 1
         fi
+    fi
+
+    # Apply the Steam patch
+    echo "Applying Undertale Red & Yellow patch..."
+    if "$controlfolder/xdelta3" -d -s "$DATADIR/data.win" -f "./tools/patches/utry_steam.xdelta" "$DATADIR/game.droid"; then
+        echo "Undertale Red & Yellow patch applied successfully"
+        # Remove original after success
+        rm -f "$DATADIR/data.win"
     else
-        echo "No data.win file found to patch! Did you copy your Undertale Steam data to the assets folder?"
+        echo "Failed to apply Undertale Red & Yellow patch!"
+        return 1
+    fi
+
+    # Apply Retro Handhelds fix patch
+    echo "Applying Retro Handhelds Fix patch..."
+    if "$controlfolder/xdelta3" -d -s "$DATADIR/game.droid" -f "./tools/patches/rhh-fix.xdelta" "$DATADIR/game2.droid"; then
+        echo "Retro Handhelds Fix patch applied successfully"
+        mv -f "$DATADIR/game2.droid" "$DATADIR/game.droid"
+    else
+        echo "Failed to apply Retro Handhelds Fix patch"
+        return 1
     fi
 }
+
 
 compress_audio() {  
     if $PYTHON "$TOOLKIT/gmtools/gmKtool.py" -vv -m 1000 -r -b 64 -d "$TMPDIR" "$DATADIR/game.droid"; then

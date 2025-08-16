@@ -1,5 +1,5 @@
 ## Installation
-Download the Windows version of Undertale from Steam and copy all the data to `undertaleredyellow/assets`. You want to copy over the contents of the folder that has all the `.ogg` files.
+Download the Windows version of Undertale from Steam or GOG and copy all the data to `undertaleredyellow/assets`. You want to copy over the contents of the folder that has all the `.ogg` files.
 
 NEXT! Download the `Undertale Red & Yellow` mod from Gamejolt: https://gamejolt.com/games/undertale-red-yellow/877387. Copy the zip file (not its contents) to the `undertaleredyellow/assets` folder alongside your Undertale game data.
 
