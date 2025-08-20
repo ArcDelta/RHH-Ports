@@ -1,4 +1,4 @@
-# Doom Engines -- A PortMaster implementation of Crispy Doom and GZDoom to play Doom WADs
+# Doom Engines -- A more universal retro handheld implementation of Crispy Doom and GZDoom to play Doom WADs
 
 ## Installation
 This port comes with the free Doom shareware and Freedoom1 and Freedoom2 WAD files. To use your own, place your WAD files in `ports/doomengines/iwads`.

@@ -1,0 +1,6 @@
+ENGINE=gzdoom_4.14.2/gzdoom
+IWAD=iwads/freedoom2.wad
+MOD=mods/ashes/AshesSAMenu.pk3
+MOD=mods/ashes/lightmodepatch.pk3
+MOD=mods/ashes/AshesHardReset_105.pk3
+-- end --
