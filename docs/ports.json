@@ -681,7 +681,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-08-24T19:36:50.044Z"
+    "last_modified": "2025-08-24T21:15:36.949Z"
   },
   {
     "title": "Kanon",
@@ -1883,6 +1883,7 @@
     "store": [],
     "instructions": "Purchase the game on Steam and add the game data to `ports/vhr/assets`.",
     "runtime": [
+      "dotnet-8.0.12.squashfs",
       "gmtoolkit.squashfs"
     ],
     "exp": false,
@@ -1891,7 +1892,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-08-16T23:55:00.926Z"
+    "last_modified": "2025-08-25T21:30:12.115Z"
   },
   {
     "title": "Wolfenstein 3D",
