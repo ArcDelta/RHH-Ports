@@ -12,8 +12,6 @@ else
   controlfolder="/roms/ports/PortMaster"
 fi
 
-export controlfolder
-
 source $controlfolder/control.txt
 [ -f "${controlfolder}/mod_${CFW_NAME}.txt" ] && source "${controlfolder}/mod_${CFW_NAME}.txt"
 get_controls
@@ -21,94 +19,42 @@ get_controls
 # Variables
 GAMEDIR="/$directory/ports/soniccolorsdemastered"
 
-if [[ -f "${GAMEDIR}/swap_${CFW_NAME}.txt" ]]; then
-  SWAP_SIZE="$(< "${GAMEDIR}/swap_${CFW_NAME}.txt")"  # Careful, don't go too big, it's on the root filesystem !
-else
-  SWAP_SIZE="0"
-fi
-
-case $CFW_NAME in
-  "muOS")
-    SWAP_FILE="/pm.swap"
-    ;;
-  "knulli")
-    SWAP_FILE="/userdata/pm.swap"
-    ;;
-  "ArkOS")
-    SWAP_FILE="/pm.swap"
-    ;;
-  *)
-    echo "swap not implemented for $CFW_NAME"
-    SWAP_SIZE="0"
-    ;;
-esac
-
-# CD and set permissions
+# CD and set logging
 cd $GAMEDIR
 > "$GAMEDIR/log.txt" && exec > >(tee "$GAMEDIR/log.txt") 2>&1
-$ESUDO chmod +x -R $GAMEDIR/*
+
+# Setup permissions
+$ESUDO chmod +xwr "$GAMEDIR/gmloadernext.aarch64"
+$ESUDO chmod +xr "$GAMEDIR/tools/splash"
 
 # Exports
-export LD_LIBRARY_PATH="/usr/lib:$GAMEDIR/lib:$GAMEDIR/libs:$LD_LIBRARY_PATH"
-export PATCHER_FILE="$GAMEDIR/tools/patchscript"
-export PATCHER_GAME="$(basename "${0%.*}")" # This gets the current script filename without the extension
-export PATCHER_TIME="2 to 5 minutes"
+export SDL_GAMECONTROLLERCONFIG="$sdl_controllerconfig"
 
-# dos2unix in case we need it
-dos2unix "$GAMEDIR/tools/gmKtool.py"
-dos2unix "$GAMEDIR/tools/Klib/GMblob.py"
-dos2unix "$GAMEDIR/tools/patchscript"
-
-# -------------------- BEGIN FUNCTIONS --------------------
-
-create_swap()
-{
-  [[ "${SWAP_SIZE}" == "0" ]] && return 1
-  $ESUDO fallocate -l ${SWAP_SIZE} "${SWAP_FILE}"
-  $ESUDO chmod 600 "${SWAP_FILE}"
-  $ESUDO mkswap "${SWAP_FILE}"
-}
-
-enable_swap()
-{
-  [[ "${SWAP_SIZE}" != "0" ]] && [[ ! -f "${SWAP_FILE}" ]] && create_swap
-  $ESUDO swapon "${SWAP_FILE}"
-}
-
-disable_swap()
-{
-  [[ -f "${SWAP_FILE}" ]] && $ESUDO swapoff "${SWAP_FILE}" && $ESUDO rm "${SWAP_FILE}"
-}
-
-# --------------------- END FUNCTIONS ---------------------
-
-# Check if patchlog.txt to skip patching
-if [ ! -f patchlog.txt ]; then
+# Check if we need to patch the game
+if [ ! -f patchlog.txt ] || [ -f "$GAMEDIR/assets/data.win" ]; then
     if [ -f "$controlfolder/utils/patcher.txt" ]; then
+        export PATCHER_FILE="$GAMEDIR/tools/patchscript"
+        export PATCHER_GAME="$(basename "${0%.*}")"
+        export PATCHER_TIME="20 to 30 minutes"
+        export controlfolder
+        export ESUDO
         source "$controlfolder/utils/patcher.txt"
         $ESUDO kill -9 $(pidof gptokeyb)
     else
-        echo "This port requires the latest version of PortMaster." > $CUR_TTY
+        echo "This port requires the latest version of PortMaster."
     fi
-else
-    echo "Patching process already completed. Skipping."
 fi
 
 # Display loading splash
 if [ -f "$GAMEDIR/patchlog.txt" ]; then
-    [[ "$CFW_NAME" == "muOS" ]] && $ESUDO ./tools/splash "splash.png" 1 
-    $ESUDO ./tools/splash "splash.png" 2000
+    [ "$CFW_NAME" == "muOS" ] && $ESUDO "$GAMEDIR/tools/splash" "$GAMEDIR/splash.png" 1
+    $ESUDO "$GAMEDIR/tools/splash" "$GAMEDIR/splash.png" 8000 & 
 fi
 
-# Run the game
-$GPTOKEYB "gmloader.aarch64" -c "./sonic.gptk" &
-pm_platform_helper "$GAMEDIR/gmloader.aarch64"
-
-[[ $DEVICE_RAM -le 1 ]] && enable_swap
-
-./gmloader.aarch64 -c "gmloader.json"
-
-[[ -f "${SWAP_FILE}" ]] && disable_swap
+# Assign gptokeyb and load the game
+$GPTOKEYB "gmloadernext.aarch64" -c "sonic.gptk" &
+pm_platform_helper "$GAMEDIR/gmloadernext.aarch64" >/dev/null
+./gmloadernext.aarch64 -c gmloader.json
 
 # Kill processes
 pm_finish
