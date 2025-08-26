@@ -16,12 +16,13 @@
     "inst": "Copy all game assets from your windows install to `valhalla/assets`.",
     "inst_md": null,
     "genres": [
-      "visual novel"
+      "visual-novel"
     ],
     "image": null,
     "rtr": false,
     "exp": false,
     "runtime": [
+      "dotnet-8.0.12.squashfs",
       "gmtoolkit.squashfs"
     ],
     "store": [

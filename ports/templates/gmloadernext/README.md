@@ -1,7 +1,7 @@
 ## Installation
 
 
-## Default Gameplay Controls (Xbox Layout)
+## Default Gameplay Controls
 | Button            | Action |
 |--                 |--|
 | START             | |

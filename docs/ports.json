@@ -564,7 +564,7 @@
       "Jeod"
     ],
     "genres": [
-      "visual novel"
+      "visual-novel"
     ],
     "availability": "free",
     "store": [
@@ -582,7 +582,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-07-03T17:03:55.834Z"
+    "last_modified": "2025-08-26T00:08:23.587Z"
   },
   {
     "title": "Hallow's Eve",
@@ -1866,6 +1866,48 @@
     ],
     "min_glibc": "",
     "last_modified": "2025-07-08T20:30:48.600Z"
+  },
+  {
+    "title": "VA-11 Hall-A: Cyberpunk Bartender Action",
+    "description": "VA-11 HALL-A: Cyberpunk Bartender Action is a booze em' up about waifus, technology, and post-dystopia life. In this world, corporations reign supreme, all human life is infected with nanomachines designed to oppress them, and the terrifying White Knights ensure that everyone obeys the laws..",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/valhalla",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/valhalla/screenshot.png",
+    "porter": [
+      "Tekkenfede"
+    ],
+    "genres": [
+      "visual-novel"
+    ],
+    "availability": "paid",
+    "store": [
+      {
+        "name": "Steam",
+        "gameurl": "https://store.steampowered.com/app/447530/VA11_HallA_Cyberpunk_Bartender_Action/",
+        "developerurl": ""
+      },
+      {
+        "name": "Itch.io",
+        "gameurl": "https://sukebangames.itch.io/valhalla-bar",
+        "developerurl": ""
+      },
+      {
+        "name": "GOG",
+        "gameurl": "https://www.gog.com/en/game/va11_halla",
+        "developerurl": ""
+      }
+    ],
+    "instructions": "Copy all game assets from your windows install to `valhalla/assets`.",
+    "runtime": [
+      "dotnet-8.0.12.squashfs",
+      "gmtoolkit.squashfs"
+    ],
+    "exp": false,
+    "rtr": false,
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-08-26T00:33:01.181Z"
   },
   {
     "title": "Victory Heat Rally",

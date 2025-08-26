@@ -18,6 +18,10 @@ get_controls
 
 # Variables
 GAMEDIR="/$directory/ports/valhalla"
+BIG_SCALE=4000
+BIG_DELAY=8
+SMALL_SCALE=6000
+SMALL_DELAY=16
 
 # CD and set permissions
 cd $GAMEDIR
@@ -27,11 +31,11 @@ cd $GAMEDIR
 export SDL_GAMECONTROLLERCONFIG="$sdl_controllerconfig"
 
 # Check if patchlog.txt to skip patching
-if [ ! -f "$GAMEDIR/patchlog.txt" ]; then
+if [ ! -f "$GAMEDIR/patchlog.txt" ] || [ -f "$GAMEDIR/assets/data.win" ]; then
     if [ -f "$controlfolder/utils/patcher.txt" ]; then
         export PATCHER_FILE="$GAMEDIR/tools/patchscript"
         export PATCHER_GAME="$(basename "${0%.*}")"
-        export PATCHER_TIME="2 to 5 minutes"
+        export PATCHER_TIME="5 to 10 minutes"
         export controlfolder
         export DEVICE_ARCH
         source "$controlfolder/utils/patcher.txt"
@@ -44,10 +48,13 @@ fi
 # Post patcher setup
 export LD_LIBRARY_PATH="$GAMEDIR/lib:$LD_LIBRARY_PATH"
 
-# Display loading splash
-if [ -f "$GAMEDIR/patchlog.txt" ]; then
-    [ "$CFW_NAME" == "muOS" ] && $ESUDO ./tools/splash "splash.png" 1
-    $ESUDO ./tools/splash "splash.png" 2000 &
+# Apply mouse scaling according to screen size
+if [ $DISPLAY_WIDTH -gt 720 ]; then
+    sed -i "s/^mouse_scale *= *[0-9]\+/mouse_scale = $BIG_SCALE/" "$GAMEDIR/pcl.gptk"
+    sed -i "s/^mouse_delay *= *[0-9]\+/mouse_delay = $BIG_DELAY/" "$GAMEDIR/pcl.gptk"
+else
+    sed -i "s/^mouse_scale *= *[0-9]\+/mouse_scale = $SMALL_SCALE/" "$GAMEDIR/pcl.gptk"
+    sed -i "s/^mouse_delay *= *[0-9]\+/mouse_delay = $SMALL_DELAY/" "$GAMEDIR/pcl.gptk"
 fi
 
 # Assign gptokeyb and load the game
