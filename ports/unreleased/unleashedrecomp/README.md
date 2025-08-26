@@ -1,5 +1,5 @@
 # Sonic Unleashed Recompiled - Linux ARM64 Wrapper
-This wrapper is made for retro handhelds to run Unleashed Recompiled. The binary needed to run the game is not included and must be built--see [BUILDING.md](https://github.com/JeodC/PortMaster-UnleashedRecomp/blob/main/unleashedrecomp/BUILDING.md). You must also provide your own game files.
+This wrapper is made for retro handhelds to run Unleashed Recompiled. The binary needed to run the game is not included and must be built--see [BUILDING.md](https://github.com/JeodC/RHH-Ports/blob/main/ports/unreleased/unleashedrecomp/unleashedrecomp/BUILDING.md). You must also provide your own game files.
 
 - The current build steps may or may not work. The original build steps relied on a fork that is no longer available. While the primary repository should be buildable for linux arm64, build steps may be incorrect as none are provided for the target.
 
