@@ -33,7 +33,7 @@ export controlfolder
 export ESUDO
 
 # Check if we need to patch the game
-if [ ! -f patchlog.txt ] || [ -f "$GAMEDIR/assets/data.win" ]; then
+if [ ! -f patchlog.txt ] || [ -n "$(find "$GAMEDIR/assets" -mindepth 1 -maxdepth 1 2>/dev/null)" ]; then
     if [ -f "$controlfolder/utils/patcher.txt" ]; then
         export PATCHER_FILE="$GAMEDIR/tools/patchscript"
         export PATCHER_GAME="$(basename "${0%.*}")"
@@ -46,6 +46,12 @@ if [ ! -f patchlog.txt ] || [ -f "$GAMEDIR/assets/data.win" ]; then
     else
         echo "This port requires the latest version of PortMaster."
     fi
+fi
+
+# Display loading splash
+if [ -f "$GAMEDIR/patchlog.txt" ]; then
+    [ "$CFW_NAME" == "muOS" ] && $ESUDO "$GAMEDIR/tools/splash" "$GAMEDIR/splash.png" 1
+    $ESUDO "$GAMEDIR/tools/splash" "$GAMEDIR/splash.png" 8000 & 
 fi
 
 # Assign gptokeyb and load the game

@@ -56,7 +56,7 @@ chmod 666 /dev/uinput
 cd "$GAMEDIR"
 
 # Set up trap for cleaning TMPDIR on exit
-trap 'rm -rf "$TMPDIR"' 0
+trap 'rm -rf "$TMPDIR"; echo "Cleaned up temporary files." >> "$LOGFILE"' 0
 
 # Attempt to get SAVEDIR from gmloader.json using jq
 if command -v jq >/dev/null 2>&1; then
@@ -66,13 +66,13 @@ else
 fi
 
 # Test for commands: python, zip
-PYTHON=$(which python3)
+PYTHON=$(command -v python3)
 if [ -z "$PYTHON" ]; then
     echo "Missing Python!"
     patch_failure
 fi
 
-ZIP=$(which zip)
+ZIP=$(command -v zip)
 if [ -z "$ZIP" ]; then
     echo "Missing zip!"
     patch_failure
@@ -83,7 +83,7 @@ prepare_files() {
     
     # Delete excess files
     find "$DATADIR" -type f \( \
-        -name "*.exe" -o -name "*.dll" -o -name "*.hashdb" -o \
+        -name "*.gitkeep" -o -name "*.exe" -o -name "*.dll" -o -name "*.hashdb" -o \
         -name "*.ico" -o -name "*.lnk" -o -name "*.msg" -o -name "*.zip" \
     \) -exec rm -f {} \;
 
@@ -93,57 +93,69 @@ prepare_files() {
     fi
 }
 
-# Apply a patch to enforce stretching to fill the display
-apply_xdelta() {
-    STEAM_MD5="15fa7dd3aa534bb5e7bb06d8995d1b50"
+# Dump game code entries from data.win
+dump_code() {
+    # Purge cache before operations
+    rm -rf "$TMPDIR/"*
 
-    if [ -f "$DATADIR/data.win" ]; then
-        checksum=$(md5sum "$DATADIR/data.win" | awk '{print $1}')
-        case "$checksum" in
-            "$STEAM_MD5")
-                PATCH="ringo_steam.xdelta"
-                ;;
-            *)
-                echo "Unknown data.win checksum: $checksum"
-                return
-                ;;
-        esac
+    # Specify which code entries to extract
+    CODE_ENTRIES=(
+        "gml_GlobalScript_screen_init"
+    )
 
-        if [ -f "$GAMEDIR/tools/$PATCH" ]; then
-            output=$($controlfolder/xdelta3 -d -s "$DATADIR/data.win" -f "$GAMEDIR/tools/$PATCH" "$DATADIR/data2.win" 2>&1)
-            if [ $? -eq 0 ]; then
-                echo "Patch applied successfully"
-                echo "$output"
-                rm "$DATADIR/data.win" && mv "$DATADIR/data2.win" "$DATADIR/data.win"
-                sleep 1
-            else
-                echo "Failed to apply patch"
-                echo "$output"
-            fi
-        else
-            echo "Patch file not found: $GAMEDIR/tools/$PATCH"
-        fi
-    else
-        echo "data.win not found in $DATADIR"
+    CODEARGS=""
+    for entry in "${CODE_ENTRIES[@]}"; do
+        CODEARGS="$CODEARGS --code $entry"
+    done
+
+    echo "Dumping GML scripts: ${CODE_ENTRIES[*]}"
+
+    dotnet "$TOOLKIT/utmt-cli/UndertaleModCli.dll" \
+        dump "$DATADIR/data.win" \
+        -o "$TMPDIR" \
+        $CODEARGS
+
+    if [ $? -ne 0 ]; then
+        echo "Failed to dump GML scripts."
+        return 1
+    fi
+
+    echo "GML scripts dumped to $TMPDIR"
+}
+
+modify_code() {
+    # Modify the extracted gml
+    $PYTHON "$GAMEDIR/tools/mod.py" "$TMPDIR/CodeEntries"
+    if [ $? -ne 0 ]; then
+        echo "Failed to modify GML scripts."
+        return 1
     fi
 }
 
-# Externalize game textures with compression
-dump_textures() {
-    # Purge cache before operations
-    rm -rf "$TMPDIR/"*
-    
-    # Begin texture operations
-    strace -o dotnet_trace.log dotnet "$TOOLKIT/utmt-cli/UndertaleModCli.dll" \
-        dump "$DATADIR/data.win" \
-        -e "$DATADIR/textures" "$DATADIR/game.droid"
+# Replace game code entries for data.win
+replace_code() {
+    # Build --code args from all gml files
+    CODEARGS=""
+    for file in "$TMPDIR/CodeEntries/"*.gml; do
+        [ -f "$file" ] || continue
+        entry=$(basename "$file" .gml)
+        echo "Will replace gml script: $file"
+        CODEARGS="$CODEARGS --code $entry=$file"
+    done
+
+    # Begin replace operations
+    dotnet "$TOOLKIT/utmt-cli/UndertaleModCli.dll" \
+        replace "$DATADIR/data.win" \
+        -o "$DATADIR/data2.win" \
+        $CODEARGS
 
     if [ $? -ne 0 ]; then
-        echo "[DOTNET]: Texture dumping failed to apply."
-        patch_failure
+        echo "Failed to replace gml scripts."
+        return 1
     else
+        echo "Successfully replaced gml scripts."
         rm -f "$DATADIR/data.win"
-        mv "$DATADIR/textures" "$SAVEDIR/textures"
+        mv "$DATADIR/data2.win" "$DATADIR/data.win"
         [ -d "$TMPDIR" ] && rm -rf "$TMPDIR"/*
     fi
 }
@@ -155,14 +167,14 @@ compress_audio() {
     fi
     
     # Do audio compression
-    if $PYTHON "$TOOLKIT/gmtools/gmKtool.py" -v -m 1000 -r -b 64 -d "$TMPDIR" "$DATADIR/game.droid"; then
+    if $PYTHON "$TOOLKIT/gmtools/gmKtool.py" -vv -m 1000 -r -b 64 -d "$TMPDIR" "$DATADIR/game.droid"; then
         mv "$TMPDIR/"* "$DATADIR" && rmdir "$TMPDIR"
         echo "Audio compression applied successfully."
     else
         # Failure
         echo "Audio compression failed for $GAMEFILE."
         rmdir "$TMPDIR"
-        patch_failure
+        return 1
     fi
 }
 
@@ -175,17 +187,13 @@ zip_archive() {
 process_game() {
     echo "Preparing game..."
     prepare_files || { patch_failure; return 1; }
-    
-    echo "Applying xdelta patch..."
-    apply_xdelta
-
-    #echo "Externalizing textures..."
-    #dump_textures || { patch_failure; return 1; }
-
+    dump_code || { patch_failure; return 1; }
+    echo "Modifying gml scripts..."
+    modify_code || { patch_failure; return 1; }
+    echo "Repacking gml scripts..."
+    replace_code || { patch_failure; return 1; }
     echo "Compressing audio..."
     compress_audio || { patch_failure; return 1; }
-
-    sleep 1
     echo "Finishing up..."
     zip_archive || { patch_failure; return 1; }
 }
