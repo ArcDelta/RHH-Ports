@@ -9,8 +9,6 @@ shader.ar
 ```
 When sourcing these files from an Unleashed Recompiled installation, they will be stored under `game` and `update` subdirectories.
 
-You need to clone a specific fork that contains a branch for the `Nintendo Switch`. This will compile for linux arm64.
-
 ```
 sudo apt-get update && sudo apt-get upgrade
 sudo apt-get install cmake clang
