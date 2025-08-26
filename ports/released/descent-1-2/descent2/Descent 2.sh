@@ -40,13 +40,18 @@ else
 fi
 
 # Exports
-export LD_LIBRARY_PATH="$GAMEDIR/libs:$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH="/usr/lib:$GAMEDIR/libs:$LD_LIBRARY_PATH"
 export SDL_GAMECONTROLLERCONFIG="$sdl_controllerconfig"
 export SDL_FORCE_SOUNDFONTS=1
 export SDL_SOUNDFONTS="$GAMEDIR/soundfont.sf2"
 export TEXTINPUTPRESET=$CHEATS
 export TEXTINPUTINTERACTIVE="Y"
 export TEXTINPUTNUMBERSONLY="Y"
+
+# Check if GLX (X11 OpenGL) is available
+if command -v glxinfo >/dev/null 2>&1; then
+    export SDL_VIDEODRIVER=x11
+fi
 
 # Edit .cfg file with updated resolution and aspect ratio
 sed -i "s/^ResolutionX=[0-9]\{1,4\}/ResolutionX=$DISPLAY_WIDTH/g" "$GAMEDIR/config/descent.cfg"

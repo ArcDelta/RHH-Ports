@@ -71,6 +71,7 @@
     ],
     "instructions": "Copy your \"arrest of a stone buddha.exe\" file to the assets folder.",
     "runtime": [
+      "dotnet-8.0.12.squashfs",
       "gmtoolkit.squashfs"
     ],
     "exp": false,
@@ -79,7 +80,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-08-26T16:39:39.626Z"
+    "last_modified": "2025-08-26T16:55:29.697Z"
   },
   {
     "title": "Aurascope Demo",
@@ -329,7 +330,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-07-08T21:07:36.622Z"
+    "last_modified": "2025-08-26T19:03:05.889Z"
   },
   {
     "title": "Descent II",
@@ -355,7 +356,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-07-08T21:07:44.105Z"
+    "last_modified": "2025-08-26T19:03:21.115Z"
   },
   {
     "title": "Descent III",
@@ -513,6 +514,7 @@
     ],
     "instructions": "Copy your game files to the assets folder.",
     "runtime": [
+      "dotnet-8.0.12.squashfs",
       "gmtoolkit.squashfs"
     ],
     "exp": false,
@@ -521,7 +523,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-08-26T16:12:48.854Z"
+    "last_modified": "2025-08-26T16:55:29.698Z"
   },
   {
     "title": "Guns of Fury",
@@ -1513,6 +1515,7 @@
     ],
     "instructions": "Add all files to `ports/friendsofringo/assets/install`.",
     "runtime": [
+      "dotnet-8.0.12.squashfs",
       "gmtoolkit.squashfs"
     ],
     "exp": false,
@@ -1521,7 +1524,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-08-26T16:07:20.585Z"
+    "last_modified": "2025-08-26T16:55:29.698Z"
   },
   {
     "title": "The Legend of Zelda: Mercuris Chess",
@@ -1934,7 +1937,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-08-25T21:30:12.115Z"
+    "last_modified": "2025-08-26T16:55:30.301Z"
   },
   {
     "title": "Wolfenstein 3D",
