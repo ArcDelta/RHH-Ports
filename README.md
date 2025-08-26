@@ -40,7 +40,9 @@ cmd: `copy /b gmtoolkit.squashfs.part.001 + gmtoolkit.squashfs.part.002 + gmtool
 powershell: `Get-ChildItem -Filter "gmtoolkit.squashfs.part.*" | Sort-Object Name | Get-Content -Encoding Byte -ReadCount 0 | Set-Content gmtoolkit.squashfs -Encoding Byte`
 
 ## Keeping up
-You can keep up with ports that I consider "complete" by checking the [commit history](https://github.com/JeodC/PortMaster-Games/commits/main) for the format `[PORTNAME] Move to released folder`. You can also browse the [unreleased](https://github.com/JeodC/PortMaster-Games/tree/main/ports/unreleased) folder to see what I'm working on. If you star and watch this repository, you'll get GitHub notifications when I make changes.
+You can keep up with ports that I consider "complete" by checking the [commit history](https://github.com/JeodC/RHH-Ports/commits/main) for the format `[PORTNAME] Move to released folder`. You can also browse the [unreleased](https://github.com/JeodC/RHH-Ports/tree/main/ports/unreleased) folder to see what I'm working on. If you star and watch this repository, you'll get GitHub notifications when I make changes.
+
+For a monthly summary, see the [CHANGELOG.md](https://github.com/JeodC/RHH-Ports/blob/main/CHANGELOG.md) which I try to keep updated.
 
 ## Contributing
 If you see potential for improvements to my ports, I'm open to suggestions and pull requests--especially for unreleased ports, which are either in progress or in limbo for one reason or another. Please do not open issues to suggest new ports unless you're certain they can be ported. Although, if you're certain a game can be ported, why not do it yourself?
