@@ -43,8 +43,8 @@ else
 fi
 
 # Exports
-export PATH="$DOTNETDIR:$TOOLKIT/gmtools:$TOOLKIT/utmt-cli:$PATH"
-export LD_LIBRARY_PATH="$TOOLKIT/libs:$LD_LIBRARY_PATH"
+export PATH="$DOTNETDIR:$TOOLKIT/gmtools:$GAMEDIR/tools/utmt-cli:$PATH"
+export LD_LIBRARY_PATH="/usr/lib:$TOOLKIT/libs:$LD_LIBRARY_PATH"
 export SDL_GAMECONTROLLERCONFIG="$sdl_controllerconfig"
 export DATADIR="$GAMEDIR/assets"
 export DATAFILE="picayune.port"
@@ -56,7 +56,7 @@ chmod 666 /dev/uinput
 cd "$GAMEDIR"
 
 # Set up trap for cleaning TMPDIR on exit
-trap 'rm -rf "$TMPDIR"' 0
+trap 'rm -rf "$TMPDIR"; echo "Cleaned up temporary files." >> "$LOGFILE"' 0
 
 # Attempt to get SAVEDIR from gmloader.json using jq
 if command -v jq >/dev/null 2>&1; then
@@ -66,13 +66,13 @@ else
 fi
 
 # Test for commands: python, zip
-PYTHON=$(which python3)
+PYTHON=$(command -v python3)
 if [ -z "$PYTHON" ]; then
     echo "Missing Python!"
     patch_failure
 fi
 
-ZIP=$(which zip)
+ZIP=$(command -v zip)
 if [ -z "$ZIP" ]; then
     echo "Missing zip!"
     patch_failure
@@ -95,17 +95,16 @@ prepare_files() {
 
 # Externalize game textures with compression
 dump_textures() {
-    # Purge cache before operations
-    rm -rf "$TMPDIR/"*
+    mkdir -p "$TMPDIR"
     
     # Begin texture operations
-    strace -o dotnet_trace.log dotnet "$TOOLKIT/utmt-cli/UndertaleModCli.dll" \
+    dotnet "$TOOLKIT/utmt-cli/UndertaleModCli.dll" \
         dump "$DATADIR/data.win" \
-        -e "$DATADIR/textures" "$DATADIR/game.droid"
+        -e "$DATADIR/textures" "$DATADIR/game.droid" -v
 
     if [ $? -ne 0 ]; then
         echo "[DOTNET]: Texture dumping failed to apply."
-        patch_failure
+        return 1
     else
         rm -f "$DATADIR/data.win"
         mv "$DATADIR/textures" "$SAVEDIR/textures"
@@ -114,6 +113,9 @@ dump_textures() {
 }
 
 compress_audio() {
+    # Purge cache before operations
+    [ -d "$TMPDIR" ] && rm -rf "$TMPDIR"/*
+    
     if [ -f "$DATADIR/data.win" ]; then
         mv "$DATADIR/data.win" "$DATADIR/game.droid"
     fi
@@ -139,8 +141,8 @@ process_game() {
     echo "Preparing game..."
     prepare_files || { patch_failure; return 1; }
 
-    #echo "Externalizing textures..."
-    #dump_textures || { patch_failure; return 1; }
+    echo "Externalizing textures..."
+    dump_textures || { patch_failure; return 1; }
 
     echo "Compressing audio..."
     compress_audio || { patch_failure; return 1; }
