@@ -146,6 +146,7 @@ dump_code() {
     # Specify which code entries to extract
     CODE_ENTRIES=(
         "gml_Script_screen_init"
+        "gml_Object_obj_options_21_Create_0"
     )
 
     CODEARGS=""
