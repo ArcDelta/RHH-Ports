@@ -74,22 +74,8 @@ def replace_screen_init(gml_dir):
     with open(file_path, "w") as f:
         f.writelines(line + "\n" for line in new_code)
 
-def modify_options_create(gml_dir):
-    """Prepend screen_init(); to gml_Object_obj_options_129_Create_0.gml"""
-    filename = "gml_Object_obj_options_129_Create_0.gml"
-    file_path = os.path.join(gml_dir, filename)
-
-    with open(file_path, "r") as f:
-        existing_code = f.readlines()
-    existing_code = [line.rstrip("\n") for line in existing_code]
-    new_code = ["screen_init();"] + existing_code
-
-    with open(file_path, "w") as f:
-        f.writelines(line + "\n" for line in new_code)
-
 def main(gml_dir):
     replace_screen_init(gml_dir)
-    modify_options_create(gml_dir)
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
