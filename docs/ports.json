@@ -683,7 +683,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-08-24T21:15:36.949Z"
+    "last_modified": "2025-09-01T20:29:45.271Z"
   },
   {
     "title": "Kanon",
@@ -732,6 +732,29 @@
     ],
     "min_glibc": "",
     "last_modified": "2025-07-08T20:20:22.792Z"
+  },
+  {
+    "title": "LOZ Oracles Randomizer NG",
+    "description": "A randomizer tool for Oracle of Ages/Seasons! Randomized roms are generated on-device. No external tools needed!",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/oracles-randomizer-ng",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/oracles-randomizer-ng/screenshot.png",
+    "porter": [
+      "Jeod"
+    ],
+    "genres": [
+      "other"
+    ],
+    "availability": "full",
+    "store": [],
+    "instructions": "Please see the readme file.",
+    "runtime": [],
+    "exp": false,
+    "rtr": true,
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-09-02T23:34:40.376Z"
   },
   {
     "title": "Lunar Lux",
@@ -1177,7 +1200,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-07-24T21:44:41.357Z"
+    "last_modified": "2025-09-02T20:39:12.000Z"
   },
   {
     "title": "Sonic 1",
@@ -1937,7 +1960,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-08-27T00:47:17.127Z"
+    "last_modified": "2025-08-27T19:59:02.676Z"
   },
   {
     "title": "Wolfenstein 3D",

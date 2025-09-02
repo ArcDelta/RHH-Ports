@@ -1,0 +1,134 @@
+#!/bin/bash
+GAMEDIR="$PWD"
+SRCDIR="$GAMEDIR/randomizer"
+SEARCHDIRS="/$directory/gbc"
+
+echo "Looking for roms in $SEARCHDIRS"
+
+to_lower() {
+    echo "$1" | tr '[:upper:]' '[:lower:]'
+}
+
+candidate_keywords=("zelda" "loz")
+
+search_gbc_files() {
+    local rom_keywords=("${@:2}")  # e.g., "oracle" "seasons"
+    local rom_file=""
+
+    for dir in $SEARCHDIRS; do
+        for f in "$dir"/*.gbc "$dir"/*.GBC; do
+            [[ -f "$f" ]] || continue
+            local fname=$(to_lower "$(basename "$f")")
+
+            # Candidate keyword check
+            local match_candidate=0
+            for kw in "${candidate_keywords[@]}"; do
+                [[ "$fname" == *"$kw"* ]] && match_candidate=1
+            done
+            [[ $match_candidate -eq 1 ]] || continue
+
+            # Must match all rom_keywords
+            local match_all=1
+            for kw in "${rom_keywords[@]}"; do
+                [[ "$fname" == *"$kw"* ]] || match_all=0
+            done
+            if [[ $match_all -eq 1 ]]; then
+                rom_file="$f"
+                break 2
+            fi
+        done
+    done
+
+    echo "$rom_file"
+}
+
+search_zip_files() {
+    local rom_keywords=("${@:2}")
+    local rom_file=""
+    local zip_file=""
+
+    # Use find with -print0 to handle spaces
+    while IFS= read -r -d '' z; do
+        while IFS= read -r entry; do
+            local entry_lc=$(to_lower "$entry")
+            [[ "$entry_lc" == *.gbc ]] || continue
+
+            # Candidate keyword check
+            local match_candidate=0
+            for kw in "${candidate_keywords[@]}"; do
+                [[ "$entry_lc" == *"$kw"* ]] && match_candidate=1
+            done
+            [[ $match_candidate -eq 1 ]] || continue
+
+            # Must match all rom_keywords
+            local match_all=1
+            for kw in "${rom_keywords[@]}"; do
+                [[ "$entry_lc" == *"$kw"* ]] || match_all=0
+            done
+            if [[ $match_all -eq 1 ]]; then
+                rom_file="$entry"
+                zip_file="$z"
+                break 2
+            fi
+        done < <(unzip -Z1 "$z")
+    done < <(find $SEARCHDIRS -type f \( -iname "*.zip" \) -print0)
+
+    echo "$zip_file::$rom_file"
+}
+
+untrim_rom() {
+    local input="$1"
+    local target_size=$((2048 * 1024))  # 2048 KB
+    local current_size
+    current_size=$(stat -c %s "$input")
+
+    if [ "$current_size" -ge "$target_size" ]; then
+        return 0  # already full size
+    fi
+
+    local padding=$((target_size - current_size))
+    echo "[LOG]: Padding '$input' with $padding bytes to reach $target_size bytes"
+    cat "$input" <(dd if=/dev/zero bs=1 count=$padding 2>/dev/null) > "${input}.tmp" && mv "${input}.tmp" "$input"
+}
+
+find_and_copy_rom() {
+    local game_name="$1"
+    shift
+    local rom_keywords=("$@")
+    mkdir -p "$SRCDIR"
+
+    # First search for plain .gbc files
+    local rom_file
+    rom_file=$(search_gbc_files "$game_name" "${rom_keywords[@]}")
+
+    if [[ -n "$rom_file" ]]; then
+        local dest_file="$SRCDIR/${game_name}.gbc"
+        echo "[LOG]: Copying '$rom_file' to '$dest_file'"
+        cp "$rom_file" "$dest_file"
+        untrim_rom "$dest_file"
+        export ROM_FILE="$dest_file"
+        return 0
+    fi
+
+    # Then search zip files
+    local zip_entry
+    zip_entry=$(search_zip_files "$game_name" "${rom_keywords[@]}")
+    local zip_file="${zip_entry%%::*}"
+    local rom_file="${zip_entry##*::}"
+
+    if [[ -n "$zip_file" && -n "$rom_file" ]]; then
+        local dest_file="$SRCDIR/${game_name}.gbc"
+        echo "[LOG]: Extracting '$rom_file' from '$zip_file' to '$dest_file'"
+        unzip -p "$zip_file" "$rom_file" > "$dest_file"
+        untrim_rom "$dest_file"
+        export ROM_FILE="$dest_file"
+        return 0
+    fi
+
+    echo "[ERROR]: ROM for $game_name not found in $SEARCHDIRS (keywords: ${rom_keywords[*]})" >&2
+    return 1
+}
+
+# Usage
+find_and_copy_rom "seasons" "oracle" "seasons" || exit 1
+find_and_copy_rom "ages" "oracle" "ages" || exit 1

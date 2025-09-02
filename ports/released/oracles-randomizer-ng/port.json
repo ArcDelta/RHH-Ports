@@ -1,0 +1,33 @@
+{
+  "version": 4,
+  "name": "oracles-randomizer-ng.zip",
+  "items": [
+    "LOZ Oracles Randomizer NG.sh",
+    "oracles-randomizer-ng"
+  ],
+  "items_opt": [],
+  "attr": {
+    "title": "LOZ Oracles Randomizer NG",
+    "porter": [
+      "Jeod"
+    ],
+    "desc": "A randomizer tool for Oracle of Ages/Seasons! Randomized roms are generated on-device. No external tools needed!",
+    "desc_md": null,
+    "inst": "Please see the readme file.",
+    "inst_md": null,
+    "genres": [
+      "other"
+    ],
+    "image": null,
+    "rtr": true,
+    "exp": false,
+    "runtime": [],
+    "store": [],
+    "availability": "full",
+    "reqs": [],
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": ""
+  }
+}
