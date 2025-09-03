@@ -97,6 +97,11 @@ You do not need to adhere to the existing folder structure. For example, one tes
 ## The Master Levels
 Doom II comes with an addon called The Master Levels, but they're sometimes packaged as one WAD per level. You can use a WAD editor to merge them into one WAD (example, `masterlevels.wad` how it is for the commercial `Doom + Doom II` release) and load that as a mod to `DOOM2`. If you manage to do this, you will want to also load the [Master Levels Menu Interface](https://www.doomworld.com/idgames/utils/frontends/zdmlmenu) mod so you can actually select the addon.
 
+## Heretic + Hexen
+The `Heretic + Hexen` release by Nightdive Studios is partially compatible with Doom Engines. You may copy `heretic.wad`, `hexen.wad`, and `hexdd.wad` to play Heretic, Hexen, and Deathkings of the Dark Citadel. The two new episodes, Heretic: Faith Renewed and Hexen: Vestiges of Grandeur, are not compatible with GZDoom yet and will not function despite the base wads containing the new content.
+
+A list of files included with `Heretic + Hexen` can be found at the [Doom Wiki page](https://doomwiki.org/wiki/Heretic_+_Hexen) and may be useful in determining what can and cannot be used--and why.
+
 ## Thanks
 id Software -- Original games  
 GZDoom Team -- GZDoom, see license file for individual contributions.  
