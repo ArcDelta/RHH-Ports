@@ -8,7 +8,7 @@ To use the randomizer, you need clean ROM files—these are untrimmed, unmodifie
 
 If you already have clean ROM files stored in your `roms/gbc` folder, you’re ready to go.
 
-The randomizer looks for `1ages.gbc` and `seasons.gbc` in the `oracles-randomizer-ng/randomizer` folder. If it doesn’t find them there, it will automatically search your `roms/gbc` folder and copy the ROMs into the randomizer folder for you.
+The randomizer looks for `ages.gbc` and `seasons.gbc` in the `oracles-randomizer-ng/randomizer` folder. If it doesn’t find them there, it will automatically search your `roms/gbc` folder and copy the ROMs into the randomizer folder for you.
 
 ## Using the randomizer
 
