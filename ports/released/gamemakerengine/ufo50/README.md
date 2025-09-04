@@ -13,7 +13,7 @@ This port features audio compression in an attempt to reduce memory usage. This 
 
 UFO 50 v1.7.0.1 implemented dynamic texture loading, which may alleviate slowdowns in these particular games further.
 
-## xDelta Patch Notes
+## RHH Patch Notes
 For the more technically inclined, here are specific modifications made in order to make UFO 50 run smoothly on the targeted devices:
 
 - [GMTools](https://github.com/cdeletre/gmtools) by Cyril Deletre to convert WAV to OGG and lower their bitrate
@@ -30,12 +30,11 @@ To use them, you will want to do the following:
 #### ON A DESKTOP COMPUTER:
 - Download [GMLoader](https://github.com/phil-macrocheira/GMLoader-UFO50) and extract it. Not to be confused with the GMLoader that runs GMS games.
 - Download the mods you want and put them in the `my mods` folder.
-- Download the `UFO50 v1.7.6 for PortMaster.zip` from this repository and extract it to the `my mods` folder.
 - Start `UFO 50 Mod Installer.exe` and UNCHECK the `UFO50 Modding Framework` mod.
-- Check the boxes for `UFO50 v1.7.6 for PortMaster` as well as other mods you want to merge into your game.
+- Check the boxes for mods you want to merge into your game.
 - Click the `Install Mods` button. Wait for confirmation your mods were installed.
 
-#### ON YOUR PORTMASTER DEVICE
+#### ON YOUR RETRO HANDHELD DEVICE
 - Copy all the game data to `ufo50/assets`.
 - Run the port. The patcher gui will appear and begin processing your modifications.
 
