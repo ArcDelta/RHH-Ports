@@ -250,7 +250,7 @@ compress_audio() {
         echo "Audio compression applied successfully."
     else
         # Failure
-        echo "Audio compression failed for $GAMEFILE."
+        echo "Audio compression failed."
         rmdir "$TMPDIR"
         return 1
     fi
