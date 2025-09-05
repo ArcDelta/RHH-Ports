@@ -647,6 +647,41 @@
     "last_modified": "2025-06-28T00:28:16.798Z"
   },
   {
+    "title": "Hollow Knight",
+    "description": "Forge your own path in Hollow Knight! An epic action adventure through a vast ruined kingdom of insects and heroes. Explore twisting caverns, battle tainted creatures and befriend bizarre bugs, all in a classic, hand-drawn 2D style.",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/hollow_knight",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/hollow_knight/screenshot.png",
+    "porter": [
+      "Jeod"
+    ],
+    "genres": [
+      "action",
+      "adventure"
+    ],
+    "availability": "paid",
+    "store": [
+      {
+        "name": "Steam",
+        "gameurl": "https://store.steampowered.com/app/367520/Hollow_Knight/",
+        "developerurl": "https://store.steampowered.com/developer/teamcherry"
+      },
+      {
+        "name": "GOG",
+        "gameurl": "https://www.gog.com/en/game/hollow_knight",
+        "developerurl": "https://www.gog.com/en/games?developers=team-cherry"
+      }
+    ],
+    "instructions": "This port of Hollow Knight uses the Linux game assets with Box64. Wine is not involved. Copy your game assets to the `data` folder.\n\nIf you own the Steam version, you can use `download_depot 367520 367523 5829533265112705522` in the console to download the Linux package.",
+    "runtime": [],
+    "exp": false,
+    "rtr": false,
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-09-05T17:55:00.564Z"
+  },
+  {
     "title": "Isles of Sea and Sky",
     "description": "A fantastic, oceanic, open world puzzle adventure. Solve innovative block puzzles while unearthing a mystifying story and unlock powers that provide more options for how you choose to progress through the enigmatic Isles of Sea and Sky!",
     "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/islesofseaandsky",
