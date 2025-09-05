@@ -1585,6 +1585,37 @@
     "last_modified": "2025-08-27T17:36:47.522Z"
   },
   {
+    "title": "The Girl From Arkanya",
+    "description": "The Girl from Arkanya is a top-down treasure hunting RPG, mimicking the style and feel of 2D Zelda games. Explore the jungles of Amazonia as Marisa, alongside her capybara companion!",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/thegirlfromarkanya",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/thegirlfromarkanya/screenshot.png",
+    "porter": [
+      "Jeod"
+    ],
+    "genres": [
+      "action",
+      "adventure",
+      "rpg"
+    ],
+    "availability": "paid",
+    "store": [
+      {
+        "name": "Steam",
+        "gameurl": "https://store.steampowered.com/app/1447820/The_Girl_from_Arkanya/",
+        "developerurl": ""
+      }
+    ],
+    "instructions": "This port uses the Linux game assets with Box64. Wine is not involved. Copy your game assets to the `data` folder. If you own the Steam version, you can use https://steamdb.info/depot/1447822/manifests/ to grab the latest depot download link. Copy it into the Steam console to download the Linux package.",
+    "runtime": [],
+    "exp": false,
+    "rtr": false,
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-09-05T19:57:50.036Z"
+  },
+  {
     "title": "The Legend of Zelda: Mercuris Chess",
     "description": "The sequel to Mystery of Solarus XD. While Link and Zelda were away, a rich businessman bought Hyrule! There begins your next adventure, in a world where everything has a price and where truth and lies become undistinguishable.",
     "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/solarus/zeldaxd-mercurischess",
