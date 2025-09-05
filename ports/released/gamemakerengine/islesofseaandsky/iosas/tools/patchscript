@@ -233,7 +233,7 @@ dump_textures() {
 
     # Cleanup & move textures
     rm -f "$DATADIR/data.win"
-    [ -d "$SAVEDIR/textures" ] && rmdir "$SAVEDIR/textures"
+    [ -d "$SAVEDIR/textures" ] && rm -rf "$SAVEDIR/textures"
     mv "$DATADIR/textures" "$SAVEDIR/textures"
 
     # Final cleanup

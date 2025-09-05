@@ -25,6 +25,17 @@ BOX64="$GAMEDIR/box64/box64"
 cd $GAMEDIR/data
 > "$GAMEDIR/log.txt" && exec > >(tee "$GAMEDIR/log.txt") 2>&1
 
+# Pre-flight checks for X11 and OpenGL
+if [ -z "$DISPLAY" ]; then
+    echo "Error: Display manager not found. Hollow Knight requires OpenGL and X11 to run."
+    exit 1
+fi
+
+if ! command -v glxinfo >/dev/null 2>&1; then
+    echo "Error: OpenGL not found. Hollow Knight requires OpenGL and X11 to run."
+    exit 1
+fi
+
 # Exports
 export LD_LIBRARY_PATH="$GAMEDIR/box64/x64:$GAMEDIR/libs.aarch64:$GAMEDIR/data:$LD_LIBRARY_PATH"
 export BOX64_LD_LIBRARY_PATH="$GAMEDIR/box64/x64:$GAMEDIR/gamedata:$LD_LIBRARY_PATH"
@@ -46,28 +57,13 @@ export MESA_NO_ERROR=1
 [ "$CFW_NAME" == "muOS" ] && $ESUDO "$GAMEDIR/tools/splash" "$GAMEDIR/splash.png" 1 
 $ESUDO "$GAMEDIR/tools/splash" "$GAMEDIR/splash.png" 30000 &
 
-swapabxy() {
-    # Swap A/B and X/Y in SDL_GAMECONTROLLERCONFIG
-    export SDL_GAMECONTROLLERCONFIG="$sdl_controllerconfig"
-    if [ -n "$SDL_GAMECONTROLLERCONFIG" ] && [ -x "$GAMEDIR/tools/swapabxy.py" ]; then
-        export SDL_GAMECONTROLLERCONFIG="$(echo "$SDL_GAMECONTROLLERCONFIG" | "$GAMEDIR/tools/swapabxy.py")"
-    else
-        echo "swapabxy: SDL_GAMECONTROLLERCONFIG is empty or swapabxy.py is not executable"
-    fi
-}
-
-# Swap buttons only if swapabxy.txt exists
-if [ -f "$GAMEDIR/tools/swapabxy.txt" ]; then
-    swapabxy
-fi
-
 # Use x11 for game but not for splash
 export SDL_VIDEODRIVER="x11"
 
 # Run it
 $GPTOKEYB $GAME -c "$GAMEDIR/hollowknight.gptk" & 
 pm_platform_helper $GAME > /dev/null
-$BOX64 $GAME -force-opengl -screen-width
+$BOX64 $GAME -force-opengl -screen-fullscreen 1 -screen-width $DISPLAY_WIDTH -screen-height $DISPLAY_HEIGHT
 
 #Clean up after ourselves
 pm_finish
