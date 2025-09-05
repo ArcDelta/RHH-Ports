@@ -26,7 +26,6 @@ cd $GAMEDIR/data
 > "$GAMEDIR/log.txt" && exec > >(tee "$GAMEDIR/log.txt") 2>&1
 
 # Exports
-export SDL_GAMECONTROLLERCONFIG="$sdl_controllerconfig"
 export LD_LIBRARY_PATH="$GAMEDIR/box64/x64:$GAMEDIR/libs.aarch64:$GAMEDIR/data:$LD_LIBRARY_PATH"
 export BOX64_LD_LIBRARY_PATH="$GAMEDIR/box64/x64:$GAMEDIR/gamedata:$LD_LIBRARY_PATH"
 export XDG_CONFIG_HOME="$GAMEDIR/config" && mkdir -p "$GAMEDIR/config"
@@ -45,23 +44,20 @@ export MESA_NO_ERROR=1
 
 # Display loading splash
 [ "$CFW_NAME" == "muOS" ] && $ESUDO "$GAMEDIR/tools/splash" "$GAMEDIR/splash.png" 1 
-$ESUDO "$GAMEDIR/tools/splash" "$GAMEDIR/splash.png" 20000 &
+$ESUDO "$GAMEDIR/tools/splash" "$GAMEDIR/splash.png" 30000 &
 
 swapabxy() {
-    # Update SDL_GAMECONTROLLERCONFIG to swap a/b and x/y button
-
-    if [ "$CFW_NAME" == "knulli" ] && [ -f "$SDL_GAMECONTROLLERCONFIG_FILE" ];then
-	    # Knulli seems to use SDL_GAMECONTROLLERCONFIG_FILE (on rg40xxh at least)
-        cat "$SDL_GAMECONTROLLERCONFIG_FILE" | swapabxy.py > "$GAMEDIR/gamecontrollerdb_swapped.txt"
-	    export SDL_GAMECONTROLLERCONFIG_FILE="$GAMEDIR/gamecontrollerdb_swapped.txt"
+    # Swap A/B and X/Y in SDL_GAMECONTROLLERCONFIG
+    export SDL_GAMECONTROLLERCONFIG="$sdl_controllerconfig"
+    if [ -n "$SDL_GAMECONTROLLERCONFIG" ] && [ -x "$GAMEDIR/tools/swapabxy.py" ]; then
+        export SDL_GAMECONTROLLERCONFIG="$(echo "$SDL_GAMECONTROLLERCONFIG" | "$GAMEDIR/tools/swapabxy.py")"
     else
-        # Other CFW use SDL_GAMECONTROLLERCONFIG
-        export SDL_GAMECONTROLLERCONFIG="`echo "$SDL_GAMECONTROLLERCONFIG" | swapabxy.py`"
+        echo "swapabxy: SDL_GAMECONTROLLERCONFIG is empty or swapabxy.py is not executable"
     fi
 }
 
-# Swap a/b and x/y button if needed
-if [ -f "$GAMEDIR/swapabxy.txt" ]; then
+# Swap buttons only if swapabxy.txt exists
+if [ -f "$GAMEDIR/tools/swapabxy.txt" ]; then
     swapabxy
 fi
 
