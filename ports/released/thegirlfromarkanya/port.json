@@ -1,0 +1,45 @@
+{
+  "version": 4,
+  "name": "thegirlfromarkanya.zip",
+  "items": [
+    "The Girl From Arkanya.sh",
+    "thegirlfromarkanya"
+  ],
+  "items_opt": [],
+  "attr": {
+    "title": "The Girl From Arkanya",
+    "porter": [
+      "Jeod"
+    ],
+    "desc": "The Girl from Arkanya is a top-down treasure hunting RPG, mimicking the style and feel of 2D Zelda games. Explore the jungles of Amazonia as Marisa, alongside her capybara companion!",
+    "desc_md": null,
+    "inst": "This port uses the Linux game assets with Box64. Wine is not involved. Copy your game assets to the `data` folder. If you own the Steam version, you can use https://steamdb.info/depot/1447822/manifests/ to grab the latest depot download link. Copy it into the Steam console to download the Linux package.",
+    "inst_md": null,
+    "genres": [
+      "action",
+      "adventure",
+	  "rpg"
+    ],
+    "image": null,
+    "rtr": false,
+    "exp": false,
+    "runtime": [],
+    "store": [
+      {
+        "name": "Steam",
+        "gameurl": "https://store.steampowered.com/app/1447820/The_Girl_from_Arkanya/",
+        "developerurl": ""
+      },
+    ],
+    "availability": "paid",
+    "reqs": [
+      "!lowres",
+      "2gb",
+      "opengl"
+    ],
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": ""
+  }
+}
