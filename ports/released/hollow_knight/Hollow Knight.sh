@@ -38,7 +38,7 @@ fi
 # Find game
 if [ -f "$GAMEDIR/data/hollow_knight.x86_64" ]; then
     GAME="$GAMEDIR/data/hollow_knight.x86_64"
-else if [ -f "$GAMEDIR/data/Hollow Knight" ]; then
+elif [ -f "$GAMEDIR/data/Hollow Knight" ]; then
     GAME="$GAMEDIR/data/Hollow Knight"
 fi
 
