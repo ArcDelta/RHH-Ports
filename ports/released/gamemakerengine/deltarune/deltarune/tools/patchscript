@@ -173,6 +173,7 @@ dump_textures() {
         exit 1
     else
         rm -f "$INSTALLDIR/assets/data.win"
+        [ -d "$SAVEDIR/textures/$GAMEFILE/" ] && rm -rf "$SAVEDIR/textures/$GAMEFILE/"
         mkdir -p "$SAVEDIR/textures/$GAMEFILE/"
         mv "$INSTALLDIR/assets/textures"/* "$SAVEDIR/textures/$GAMEFILE/"
         rmdir "$INSTALLDIR/assets/textures"

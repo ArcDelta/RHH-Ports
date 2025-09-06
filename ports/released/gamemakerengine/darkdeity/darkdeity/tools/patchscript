@@ -142,21 +142,23 @@ apply_xdelta() {
 # Externalize game textures with compression
 dump_textures() {
     # Purge cache before operations
-    rm -rf "$TMPDIR/"*
-    
-    # Begin texture operations
-    dotnet "$TOOLKIT/utmt-cli/UndertaleModCli.dll" \
-        dump "$DATADIR/data.win" \
-        -e "$DATADIR/textures" "$DATADIR/game.droid"
+    [ -d "$TMPDIR" ] && rm -rf "$TMPDIR"/*
 
-    if [ $? -ne 0 ]; then
+    # Begin texture operations
+    if ! dotnet "$TOOLKIT/utmt-cli/UndertaleModCli.dll" \
+        dump "$DATADIR/data.win" \
+        -e "$DATADIR/textures" "$DATADIR/game.droid"; then
         echo "[DOTNET]: Texture dumping failed to apply."
-        patch_failure
-    else
-        rm -f "$DATADIR/data.win"
-        mv "$DATADIR/textures" "$SAVEDIR/textures"
-        [ -d "$TMPDIR" ] && rm -rf "$TMPDIR"/*
+        return 1
     fi
+
+    # Cleanup & move textures
+    rm -f "$DATADIR/data.win"
+    [ -d "$SAVEDIR/textures" ] && rm -rf "$SAVEDIR/textures"
+    mv "$DATADIR/textures" "$SAVEDIR/textures"
+
+    # Final cleanup
+    [ -d "$TMPDIR" ] && rm -rf "$TMPDIR"/*
 }
 
 compress_audio() {  
