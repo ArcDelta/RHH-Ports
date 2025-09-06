@@ -18,7 +18,6 @@ get_controls
 
 # Variables
 GAMEDIR="/$directory/ports/hollow_knight"
-GAME="$GAMEDIR/data/hollow_knight.x86_64"
 BOX64="$GAMEDIR/box64/box64"
 
 # CD and set log
@@ -34,6 +33,13 @@ fi
 if ! command -v glxinfo >/dev/null 2>&1; then
     echo "Error: OpenGL not found. Hollow Knight requires OpenGL and X11 to run."
     exit 1
+fi
+
+# Find game
+if [ -f "$GAMEDIR/data/hollow_knight.x86_64" ]; then
+    GAME="$GAMEDIR/data/hollow_knight.x86_64"
+else if [ -f "$GAMEDIR/data/Hollow Knight" ]; then
+    GAME="$GAMEDIR/data/Hollow Knight"
 fi
 
 # Exports
