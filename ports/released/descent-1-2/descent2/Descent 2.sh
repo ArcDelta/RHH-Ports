@@ -48,11 +48,6 @@ export TEXTINPUTPRESET=$CHEATS
 export TEXTINPUTINTERACTIVE="Y"
 export TEXTINPUTNUMBERSONLY="Y"
 
-# Check if GLX (X11 OpenGL) is available
-if command -v glxinfo >/dev/null 2>&1; then
-    export SDL_VIDEODRIVER=x11
-fi
-
 # Edit .cfg file with updated resolution and aspect ratio
 sed -i "s/^ResolutionX=[0-9]\{1,4\}/ResolutionX=$DISPLAY_WIDTH/g" "$GAMEDIR/config/descent.cfg"
 sed -i "s/^ResolutionY=[0-9]\{1,4\}/ResolutionY=$DISPLAY_HEIGHT/g" "$GAMEDIR/config/descent.cfg"
