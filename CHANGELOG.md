@@ -2,6 +2,11 @@
 
 This changelog provides a brief summary of ports that have been updated by month. If multiple updates occur in a single month, the latest is logged here.
 
+## Released Ports - September 2025
+
+#### Hollow Knight
+Add port and update to resolve input issues on Retroid Pocket 5 family of systems.
+
 ## Released Ports - August 2025
 
 #### Isles of Sea and Sky
