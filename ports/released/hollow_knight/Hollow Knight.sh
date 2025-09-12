@@ -33,13 +33,38 @@ fi
 if ! command -v glxinfo >/dev/null 2>&1; then
     echo "Error: OpenGL not found. Hollow Knight requires OpenGL and X11 to run."
     exit 1
+else
+    # Extract the OpenGL version number (e.g., "4.6" or "3.3")
+    version=$(glxinfo | grep -oP 'OpenGL version string: \K[0-9]+\.[0-9]+' | head -n 1)
+
+    # Split into major and minor version
+    major=${version%%.*}
+    minor=${version#*.}
+
+    # Check if it's at least 3.3
+    if [ "$major" -lt 3 ] || { [ "$major" -eq 3 ] && [ "$minor" -lt 3 ]; }; then
+        # Spoof the GL version so we can launch the game
+        export MESA_GL_VERSION_OVERRIDE=3.3
+        export MESA_GLSL_VERSION_OVERRIDE=330
+        export MESA_NO_ASYNC_COMPILE=1
+    fi
+    
+    # Warn the user in log
+    echo "[WARNING] Overriding GL version to run the game; this may have unintended side effects or performance issues!"
 fi
 
 # Find game
 if [ -f "$GAMEDIR/data/hollow_knight.x86_64" ]; then
     GAME="$GAMEDIR/data/hollow_knight.x86_64"
+
 elif [ -f "$GAMEDIR/data/Hollow Knight" ]; then
     GAME="$GAMEDIR/data/Hollow Knight"
+
+    # Rename the accompanying Unity data folder, if it exists
+    if [ -d "$GAMEDIR/data/Hollow Knight_Data" ]; then
+        mv "$GAMEDIR/data/Hollow Knight_Data" \
+           "$GAMEDIR/data/Hollow_Knight_Data"
+    fi
 fi
 
 # Exports
