@@ -1,0 +1,50 @@
+{
+  "version": 4,
+  "name": "hollow_knight_silksong.zip",
+  "items": [
+    "Hollow Knight Silksong.sh",
+    "hollow_knight_silksong"
+  ],
+  "items_opt": [],
+  "attr": {
+    "title": "Hollow Knight: Silksong",
+    "porter": [
+      "Jeod",
+	  "ReddestDream"
+    ],
+    "desc": "Discover a vast, haunted kingdom in Hollow Knight: Silksong! Explore, fight and survive as you ascend to the peak of a land ruled by silk and song.",
+    "desc_md": null,
+    "inst": "This port of Hollow Knight: Silksong uses the Linux game assets with Box64. Wine is not involved. Copy your game assets to the `data` folder.",
+    "inst_md": null,
+    "genres": [
+      "action",
+      "adventure"
+    ],
+    "image": null,
+    "rtr": false,
+    "exp": false,
+    "runtime": [],
+    "store": [
+      {
+        "name": "Steam",
+        "gameurl": "https://store.steampowered.com/app/1030300/Hollow_Knight_Silksong/",
+        "developerurl": "https://store.steampowered.com/developer/teamcherry"
+      },
+      {
+        "name": "GOG",
+        "gameurl": "https://www.gog.com/en/game/hollow_knight_silksong",
+        "developerurl": "https://www.gog.com/en/games?developers=team-cherry"
+      }
+    ],
+    "availability": "paid",
+    "reqs": [
+      "!lowres",
+      "2gb",
+      "opengl"
+    ],
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": ""
+  }
+}

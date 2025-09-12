@@ -679,7 +679,43 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-09-12T16:44:03.195Z"
+    "last_modified": "2025-09-12T17:26:27.080Z"
+  },
+  {
+    "title": "Hollow Knight: Silksong",
+    "description": "Discover a vast, haunted kingdom in Hollow Knight: Silksong! Explore, fight and survive as you ascend to the peak of a land ruled by silk and song.",
+    "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/hollow_knight_silksong",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/hollow_knight_silksong/screenshot.png",
+    "porter": [
+      "Jeod",
+      "ReddestDream"
+    ],
+    "genres": [
+      "action",
+      "adventure"
+    ],
+    "availability": "paid",
+    "store": [
+      {
+        "name": "Steam",
+        "gameurl": "https://store.steampowered.com/app/1030300/Hollow_Knight_Silksong/",
+        "developerurl": "https://store.steampowered.com/developer/teamcherry"
+      },
+      {
+        "name": "GOG",
+        "gameurl": "https://www.gog.com/en/game/hollow_knight_silksong",
+        "developerurl": "https://www.gog.com/en/games?developers=team-cherry"
+      }
+    ],
+    "instructions": "This port of Hollow Knight: Silksong uses the Linux game assets with Box64. Wine is not involved. Copy your game assets to the `data` folder.",
+    "runtime": [],
+    "exp": false,
+    "rtr": false,
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "",
+    "last_modified": "2025-09-12T18:55:31.216Z"
   },
   {
     "title": "Isles of Sea and Sky",
