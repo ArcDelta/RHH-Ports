@@ -11,3 +11,4 @@ Hollow Knight was designed to maintain its 16:9 aspect ratio. This cannot be cha
 ## Thanks
 ptitseb for box64  
 stolen (rocknix) for a workaround hack for input issues  
+ReddestDream for some box64 performance/optimization research and suggestions  
