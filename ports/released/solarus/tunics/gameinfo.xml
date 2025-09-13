@@ -1,8 +1,12 @@
 <?xml version='1.0' encoding='utf-8'?>
 <gameList>
-  <game>
-    <path>./Tunics!.sh</path>
-    <name>Tunics!</name>
-    <image>./tunics/cover.png</image>
-  </game>
+    <game>
+        <path>./Tunics!.sh</path>
+        <name>Tunics!</name>
+        <desc>Tunics! is a Rogue-like Legend of Zelda quest. It means it’s only dungeons, and they are randomly generated. Moreover, once you’re dead, you’ll have to restart from the beginning, losing all your improvements (weapons, health, etc).</desc>
+        <image>./tunics/cover.png</image>
+        <releasedate>20150909</releasedate>
+        <developer>Legofarmen</developer>
+        <genre>Action, Adventure</genre>
+    </game>
 </gameList>
