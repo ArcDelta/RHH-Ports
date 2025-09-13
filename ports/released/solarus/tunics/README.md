@@ -16,6 +16,7 @@ Download game from https://solarus-games.org/games/tunics/ and put the .solarus 
 ## Thanks
 Cebion  
 Testers and Devs from the PortMaster Discord  
+Ten for finding a solution to a memory limit and compiling Solarus 2.0.1 to resolve it  
 
 
 
