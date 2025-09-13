@@ -47,10 +47,10 @@ else
         export MESA_GL_VERSION_OVERRIDE=3.3
         export MESA_GLSL_VERSION_OVERRIDE=330
         export MESA_NO_ASYNC_COMPILE=1
+
+	# Warn the user in log
+	echo "[WARNING] Overriding GL version to run the game; this may have unintended side effects or performance issues!"
     fi
-    
-    # Warn the user in log
-    echo "[WARNING] Overriding GL version to run the game; this may have unintended side effects or performance issues!"
 fi
 
 # Find game
