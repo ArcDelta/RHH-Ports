@@ -83,9 +83,13 @@ prepare_files() {
     
     # Delete excess files
     find "$DATADIR" -type f \( \
-        -name "*.exe" -o -name "*.dll" -o -name "*.hashdb" -o \
-        -name "*.ico" -o -name "*.lnk" -o -name "*.msg" -o -name "*.zip" \
-    \) -exec rm -f {} \;
+        -name "*.exe"      -o -name "*.dll"   -o -name "*.hashdb" \
+        -o -name "*.ico"   -o -name "*.lnk"   -o -name "*.msg"   \
+        -o -name "*.zip"   -o -name "._*"     -o -name ".DS_Store" \
+    \) -exec rm -f {} +
+    
+    # Also remove __MACOSX directories if they slipped in
+    find "$DATADIR" -type d -name "__MACOSX" -exec rm -rf {} +
 
     # Move splash file if it exists
     if [ -f "$DATADIR/splash.png" ]; then
@@ -93,8 +97,13 @@ prepare_files() {
     fi
     
     # Move data folder and mp4 file(s)
-    mkdir -p "$SAVEDIR" && mv "$DATADIR"/data "$SAVEDIR"/data
-    mv "$DATADIR"/*.mp4 "$SAVEDIR"
+    mkdir -p "$SAVEDIR" && mv "$DATADIR"/*.mp4 "$SAVEDIR"
+    
+    if [ -d "$DATADIR/data" ]; then
+        mv "$DATADIR"/data "$SAVEDIR"/data
+    else
+        echo "$DATADIR/data folder not found! This will cause errors!"
+    fi
 }
 
 # Dump game code entries from data.win
