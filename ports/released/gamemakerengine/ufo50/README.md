@@ -38,6 +38,9 @@ To use them, you will want to do the following:
 - Copy all the game data to `ufo50/assets`.
 - Run the port. The patcher gui will appear and begin processing your modifications.
 
+#### IF A MODDED UFO 50 DOES NOT WORK AS EXPECTED
+- The modified gml scripts used for this Retro Handheld port are in `tools/gml`. These replace the existing gml scripts, so if any mods are dependent on them, there will be conflicts.
+
 ## Thanks
 Mossmouth -- The absolutely amazing game  
 JohnnyOnFlame -- GMLoader-Next and TextureRepacker via UTMT  

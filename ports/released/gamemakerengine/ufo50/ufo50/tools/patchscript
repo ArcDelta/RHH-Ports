@@ -29,6 +29,19 @@ else
     patch_failure
 fi
 
+# Mount the dotnet runtime
+DOTNETDIR="$HOME/mono"
+DOTNETFILE="$controlfolder/libs/dotnet-8.0.12.squashfs"
+if [ -f "$DOTNETFILE" ]; then
+    $ESUDO mkdir -p "$DOTNETDIR"
+    $ESUDO umount "$DOTNETDIR" 2>/dev/null || true
+    $ESUDO mount "$DOTNETFILE" "$DOTNETDIR"
+else
+    echo "This port requires the Dotnet runtime. Please download it."
+    sleep 2
+    patch_failure
+fi
+
 # Exports
 export PATH="$DOTNETDIR:$TOOLKIT/gmtools:$TOOLKIT/utmt-cli:$PATH"
 export LD_LIBRARY_PATH="/usr/lib:$TOOLKIT/libs:$LD_LIBRARY_PATH"
@@ -94,22 +107,24 @@ unzip_audiogroups() {
     fi
 }
 
-# Apply the xdelta patch (v1.7.8.21)
-apply_xdelta() {
-    # Check if the data.win file exists and apply xdelta
-    if [ -f "$DATADIR/data.win" ]; then
-        # v1.7.6
-        output=$($controlfolder/xdelta3 -d -s "$DATADIR/data.win" -f "./tools/patches/ufo50.xdelta" "$DATADIR/game.droid" 2>&1)
-        if [ $? -eq 0 ]; then
-            echo "Patch applied successfully"
-            echo "$output"
-            rm "$DATADIR/data.win"
-        else
-            echo "Failed to apply patch: $output"
-            return 1
-        fi
+# Replace game code entries for data.win
+replace_code() {
+    # Build --code args from all gml files
+    CODEARGS=()
+    for file in "$GAMEDIR/tools/gml/"*.gml; do
+        [ -f "$file" ] || continue
+        entry=$(basename "$file" .gml)
+        echo "Adding modified gml script: $file"
+        CODEARGS+=(--code "$entry=$file")
+    done
+
+    # Replace scripts
+    if dotnet "$TOOLKIT/utmt-cli/UndertaleModCli.dll" replace "$DATADIR/data.win" -o "$DATADIR/data2.win" "${CODEARGS[@]}"; then
+        echo "Successfully replaced gml scripts."
+        mv -f "$DATADIR/data2.win" "$DATADIR/data.win"
+        [ -d "$TMPDIR" ] && rm -rf "$TMPDIR"/*
     else
-        echo "No data.win found to patch!"
+        echo "Failed to replace gml scripts."
         return 1
     fi
 }
@@ -161,8 +176,8 @@ zip_archive() {
 process_game() {
     echo "Preparing game files..."
     prepare_files
-    echo "Applying xdelta patch..."
-    apply_xdelta || { patch_failure; return 1; }
+    echo "Adding modified scripts..."
+    replace_code || { patch_failure; return 1; }
     echo "Compressing audio..."
     compress_audio || { patch_failure; return 1; }
     echo "Finishing up..."
