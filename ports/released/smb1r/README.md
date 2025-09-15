@@ -10,6 +10,9 @@ Mods can be found at [Gamebanana](https://gamebanana.com/mods/games/22798) and c
 
 Custom levels are hosted with nonprofit [Level Share Square](https://levelsharesquare.com/SMBR/levels) and can be installed the same way or can be downloaded directly within SMB1R with an internet connection.
 
+## Notes
+This port requires x11 or wayland since Godot 4.5 requires it. Although a 4.5 export template for arm64 exists, the game still relies on `libgodotgif.linux.template_release.x86_64.so` and `libdiscord_game_sdk.so` which do not have readily available arm64 builds.
+
 ## Thanks
 JHDev2006 and contributors -- The remaster  
 ptitSeb -- Box64  
