@@ -93,12 +93,12 @@ prepare_files() {
     fi
 }
 
-# Externalize game textures with compression
+# Upgrade the game's bytecode to 16
 upgrade_bytecode() {
     # Purge cache before operations
     rm -rf "$TMPDIR/"*
     
-    # Begin texture operations
+    # Run script
     dotnet "$TOOLKIT/utmt-cli/UndertaleModCli.dll" \
         load "$DATADIR/data.win" \
         -s "$GAMEDIR/tools/bytecode.csx" \
